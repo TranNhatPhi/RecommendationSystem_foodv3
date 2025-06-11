@@ -6,10 +6,10 @@ def create_data_summary():
     print("=" * 40)
 
     try:
-        df = pd.read_csv('interactions_enhanced.csv')
+        df = pd.read_csv('interactions_enhanced_final.csv')
         print(f"✅ Đọc file thành công: {len(df):,} dòng")
     except:
-        print("❌ Không thể đọc file interactions_enhanced.csv")
+        print("❌ Không thể đọc file interactions_enhanced_final.csv")
         return
 
     # 1. Summary statistics

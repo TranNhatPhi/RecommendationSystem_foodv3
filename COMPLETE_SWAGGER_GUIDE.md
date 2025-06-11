@@ -359,7 +359,7 @@ pip install werkzeug==2.3.7
 - Disable firewall/antivirus tạm thời
 
 #### 4. API trả về lỗi 500
-- Kiểm tra file `interactions_enhanced.csv` có tồn tại không
+- Kiểm tra file `interactions_enhanced_final.csv` có tồn tại không
 - Kiểm tra model file `catboost_best_model.cbm`
 - Xem log chi tiết trong terminal
 

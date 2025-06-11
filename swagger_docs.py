@@ -23,7 +23,7 @@ except Exception as e:
 
 # Load interaction data
 try:
-    interactions_df = pd.read_csv('interactions_enhanced.csv')
+    interactions_df = pd.read_csv('interactions_enhanced_final.csv')
     print(
         f"✅ Loaded enhanced dataset with {len(interactions_df)} interactions")
 except Exception as e:

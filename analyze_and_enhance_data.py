@@ -365,7 +365,7 @@ def main():
     final_df = add_more_diverse_data(enhanced_df)
 
     # Lưu file mới
-    output_file = 'interactions_enhanced.csv'
+    output_file = 'interactions_enhanced_final.csv'
     final_df.to_csv(output_file, index=False, encoding='utf-8')
 
     print(f"\n✅ HOÀN THÀNH!")

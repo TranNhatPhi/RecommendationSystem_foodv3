@@ -85,7 +85,7 @@ Parameters:
 
 ## 📊 DỮ LIỆU SAU CẢI TIẾN
 
-### File mới: `interactions_enhanced.csv`
+### File mới: `interactions_enhanced_final.csv`
 - **Tổng số dòng:** 9,157 (+157)
 - **Số khách hàng:** 330 (+30)
 - **Số món ăn:** 85 (+10)
@@ -123,7 +123,7 @@ nutrition_keywords = {
 ## 📁 FILES ĐƯỢC TẠO/CẬP NHẬT
 
 ### Files mới:
-1. `interactions_enhanced.csv` - Dữ liệu đã được bổ sung
+1. `interactions_enhanced_final.csv` - Dữ liệu đã được bổ sung
 2. `analyze_and_enhance_data.py` - Script phân tích và bổ sung
 3. `create_summary_report.py` - Script tạo báo cáo
 4. `data_summary_report.xlsx` - Báo cáo Excel chi tiết

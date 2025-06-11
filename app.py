@@ -17,7 +17,7 @@ except Exception as e:
 
 # Load interaction data (we'll load just what we need for memory efficiency)
 try:
-    interactions_df = pd.read_csv('interactions_enhanced.csv')
+    interactions_df = pd.read_csv('interactions_enhanced_final.csv')
     print(
         f"✅ Loaded enhanced dataset with {len(interactions_df)} interactions")
 except Exception as e:
@@ -45,10 +45,10 @@ def preprocess_data():
 
     print("Preprocessing data for recommendations...")
 
-    # Extract unique customer IDs (up to 300)
+    # Extract unique customer IDs (up to 1300)
     customer_ids = sorted(interactions_df['customer_id'].unique().tolist())
-    if len(customer_ids) > 300:
-        customer_ids = customer_ids[:300]
+    if len(customer_ids) > 1300:
+        customer_ids = customer_ids[:1300]
     print(f"Extracted {len(customer_ids)} unique customer IDs")
 
     # Group interactions by user
