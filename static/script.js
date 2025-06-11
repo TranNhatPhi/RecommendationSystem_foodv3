@@ -107,7 +107,7 @@
             console.log('✅ All systems initialized successfully');
 
         } catch (error) {
-            console.error('❌ System initialization error:', error);    
+            console.error('❌ System initialization error:', error);
         }
     }
 })();
@@ -2120,73 +2120,117 @@ function displayMealPlans(mealPlans) {
         contentContainer.innerHTML = `
             <div class="meal-plans-placeholder">
                 <div class="placeholder-icon">
-                    <i class="fas fa-calendar-times fa-3x"></i>
+                    <i class="fas fa-calendar-times fa-4x"></i>
                 </div>
                 <div class="placeholder-content">
                     <h4>Không có thực đơn gợi ý</h4>
                     <p class="text-muted">Hãy thử với khách hàng khác hoặc liên hệ để được hỗ trợ</p>
+                    <button class="btn btn-primary" onclick="loadMealPlans()">
+                        <i class="fas fa-refresh me-2"></i>Thử lại
+                    </button>
                 </div>
             </div>
         `;
         return;
     }
 
+    // Create horizontal scrollable meal plan layout
     let html = '';
 
-    mealPlans.forEach((plan, index) => {
+    // Generate meal plan columns (up to 6 plans)
+    const maxPlans = Math.min(mealPlans.length, 6);
+
+    for (let i = 0; i < maxPlans; i++) {
+        const plan = mealPlans[i];
+        const isHighlighted = [1, 3, 5].includes(i); // Highlight plans 2, 4, 6 (0-indexed: 1, 3, 5)
+
         html += `
-            <div class="meal-plan-card" style="animation-delay: ${index * 150}ms">
+            <div class="meal-plan-column ${isHighlighted ? 'highlighted' : ''}" data-plan-index="${i}">
                 <div class="meal-plan-header">
-                    <h5><i class="fas fa-calendar-day me-2"></i>Thực đơn ${index + 1}</h5>
-                    <span class="meal-date">Ngày ${index + 1}</span>
+                    <div class="meal-plan-title">Thực đơn</div>
+                    <div class="meal-plan-number">${i + 1}</div>
                 </div>
                 <div class="meal-plan-content">
-                    ${['breakfast', 'lunch', 'dinner'].map(mealTime => {
-            const meal = plan[mealTime];
-            if (!meal) return '';
-
-            return `
-                            <div class="meal-item">
-                                <div class="meal-time">
-                                    <i class="fas ${getMealTimeIcon(mealTime)} me-2"></i>
-                                    ${translateMealTimeToVietnamese(mealTime)}
-                                </div>
-                                <div class="meal-name" title="${meal.recipe_name}">
-                                    ${truncateText(meal.recipe_name, 40)}
-                                </div>
-                                <div class="meal-meta">
-                                    ${meal.estimated_calories ? `<span class="meal-calories">${meal.estimated_calories} cal</span>` : ''}
-                                    ${meal.difficulty ? `<span class="meal-difficulty ${getDifficultyClass(meal.difficulty)}">${meal.difficulty}</span>` : ''}
-                                </div>
-                                <div class="meal-actions">
-                                    <a href="${meal.recipe_url}" target="_blank" class="btn btn-outline-primary btn-xs">
-                                        <i class="fas fa-book-open me-1"></i>Công thức
-                                    </a>
-                                </div>
-                            </div>
-                        `;
-        }).join('')}
-                </div>
-                <div class="meal-plan-footer">
-                    <button class="btn btn-primary btn-sm w-100" onclick="selectMealPlan(${index})">
-                        <i class="fas fa-check me-2"></i>Chọn thực đơn này
-                    </button>
+                    ${generateMealSlots(plan)}
                 </div>
             </div>
         `;
-    });    // Add fade-in animation
+    }
+
+    // Add fade-in animation
     contentContainer.style.opacity = '0';
     contentContainer.innerHTML = html;
-    console.log('🍽️ HTML content set, length:', html.length);
-    console.log('🍽️ Container innerHTML length after set:', contentContainer.innerHTML.length);
 
     setTimeout(() => {
         contentContainer.style.transition = 'opacity 0.5s ease';
         contentContainer.style.opacity = '1';
-        console.log('🍽️ Fade-in animation applied');
+        console.log('🍽️ Horizontal scrollable meal plans displayed');
     }, 100);
 
     console.log('🍽️ === DISPLAY MEAL PLANS ENDED ===');
+}
+
+// Helper function to generate meal slots for each meal plan column
+function generateMealSlots(plan) {
+    const mealTimes = ['breakfast', 'lunch', 'dinner'];
+    let slotsHtml = '';
+
+    mealTimes.forEach(mealTime => {
+        const meal = plan[mealTime];
+
+        if (meal && meal.recipe_name) {
+            slotsHtml += `
+                <div class="meal-slot" title="${meal.recipe_name}">
+                    ${meal.image_url
+                    ? `<img src="${meal.image_url}" alt="${meal.recipe_name}" class="meal-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                           <div class="meal-image-placeholder" style="display: none;">
+                               <i class="fas fa-utensils"></i>
+                           </div>`
+                    : `<div class="meal-image-placeholder">
+                               <i class="fas fa-utensils"></i>
+                           </div>`
+                }
+                    <div class="meal-name">${truncateText(meal.recipe_name, 25)}</div>
+                    ${meal.recipe_url
+                    ? `<a href="${meal.recipe_url}" target="_blank" class="meal-detail-link">Chi tiết</a>`
+                    : ''
+                }
+                </div>
+            `;
+        } else {
+            slotsHtml += `
+                <div class="meal-slot">
+                    <div class="meal-image-placeholder">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <div class="meal-name empty-meal">Chưa có món</div>
+                </div>
+            `;
+        }
+    });
+
+    return slotsHtml;
+}
+
+// Function to scroll meal plans horizontally
+function scrollMealPlans(direction) {
+    const scrollContainer = document.getElementById('meal-plans-content');
+    if (!scrollContainer) return;
+
+    const scrollAmount = 240; // Width of one meal plan column + gap
+    const currentScroll = scrollContainer.scrollLeft;
+
+    if (direction === 'left') {
+        scrollContainer.scrollTo({
+            left: currentScroll - scrollAmount,
+            behavior: 'smooth'
+        });
+    } else {
+        scrollContainer.scrollTo({
+            left: currentScroll + scrollAmount,
+            behavior: 'smooth'
+        });
+    }
 }
 
 // Helper functions for meal plans

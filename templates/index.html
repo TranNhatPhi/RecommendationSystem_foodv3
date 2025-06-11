@@ -320,24 +320,43 @@
             }
             setTimeout(() => clickCount = 0, 1000);
         });
-    </script><!-- Phần gợi ý thực đơn theo bữa -->
-    <div class="meal-plan-section my-5" id="meal-plans">
-        <h2 class="text-center mb-4">📅 Gợi ý thực đơn theo bữa</h2>
-        <div class="meal-plans-row" id="meal-plans-container">
-            <!-- Cột thời gian bữa ăn -->
-            <div class="meal-times">
-                <div class="meal-time-label">Sáng</div>
-                <div class="meal-time-label">Trưa</div>
-                <div class="meal-time-label">Tối</div>
+    </script> <!-- Phần gợi ý thực đơn theo bữa -->
+    <div class="meal-plans-section my-5" id="meal-plans">
+        <h2 class="section-title">
+            <i class="fas fa-calendar-alt"></i>
+            Gợi ý thực đơn theo bữa
+        </h2>
+
+        <div class="meal-plans-container">
+            <div class="meal-plans-scroll-wrapper">
+                <!-- Left column with meal times -->
+                <div class="meal-times-column">
+                    <div class="meal-time-label sang">Sáng</div>
+                    <div class="meal-time-label trua">Trưa</div>
+                    <div class="meal-time-label toi">Tối</div>
+                </div>
+
+                <!-- Horizontal scrollable meal plans -->
+                <div class="meal-plans-scroll" id="meal-plans-content">
+                    <!-- Meal plans will be dynamically generated here -->
+                    <div class="text-center py-4">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Đang tải...</span>
+                        </div>
+                        <p>Đang tải thực đơn gợi ý...</p>
+                    </div>
+                </div>
             </div>
 
-            <!-- Các cột thực đơn sẽ được load bằng JavaScript -->
-            <div id="meal-plans-content">
-                <div class="text-center py-4">
-                    <div class="spinner-border text-primary" role="status">
-                        <span class="visually-hidden">Đang tải...</span>
-                    </div>
-                    <p>Đang tải thực đơn gợi ý...</p>
+            <!-- Navigation arrows -->
+            <div class="meal-plans-nav left" onclick="scrollMealPlans('left')">
+                <div class="nav-arrow">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+            </div>
+            <div class="meal-plans-nav right" onclick="scrollMealPlans('right')">
+                <div class="nav-arrow">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
         </div>
