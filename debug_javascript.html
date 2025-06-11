@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug JavaScript Errors</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+
+        .debug-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-log {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .test-section {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .status-success {
+            color: #28a745;
+        }
+
+        .status-error {
+            color: #dc3545;
+        }
+
+        .status-warning {
+            color: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="debug-container">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-bug me-2 text-danger"></i>
+            JavaScript Debug Tool
+        </h2>
+
+        <!-- Error Monitor -->
+        <div class="test-section">
+            <h4><i class="fas fa-exclamation-triangle me-2"></i>Error Monitor</h4>
+            <div id="errorCount" class="mb-2">Errors: <span class="badge bg-danger">0</span></div>
+            <div class="error-log" id="errorLog">No errors detected yet...</div>
+            <button class="btn btn-outline-danger btn-sm" onclick="clearErrors()">Clear Errors</button>
+        </div>
+
+        <!-- Form Test -->
+        <div class="test-section">
+            <h4><i class="fas fa-flask me-2"></i>Form Test</h4>
+            <form id="testRecommendationForm" class="mb-3">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="testUserId" class="form-label">Khách hàng</label>
+                        <select class="form-select" id="testUserId" required>
+                            <option value="">-- Chọn khách hàng --</option>
+                            <option value="1">KH0001 - Test Customer 1</option>
+                            <option value="50">KH0050 - Test Customer 50</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="testRecommendationType" class="form-label">Loại gợi ý</label>
+                        <select class="form-select" id="testRecommendationType" required>
+                            <option value="">-- Chọn loại --</option>
+                            <option value="upsell_combos">Combo món ăn</option>
+                            <option value="upsell_sides">Món phụ</option>
+                            <option value="family_combos">Combo gia đình</option>
+                            <option value="age_based">Theo độ tuổi</option>
+                        </select>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-search me-2"></i>
+                    Test Tìm món ăn phù hợp
+                </button>
+            </form>
+            <div id="formResults" class="error-log">Chưa có kết quả test...</div>
+        </div>
+
+        <!-- Function Tests -->
+        <div class="test-section">
+            <h4><i class="fas fa-cogs me-2"></i>Function Tests</h4>
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-outline-primary btn-sm" onclick="testFunctions()">Test All Functions</button>
+                <button class="btn btn-outline-success btn-sm" onclick="testCustomerSelection()">Test Customer
+                    Selection</button>
+                <button class="btn btn-outline-warning btn-sm" onclick="testFormHandling()">Test Form Handling</button>
+                <button class="btn btn-outline-info btn-sm" onclick="testAPICall()">Test API Call</button>
+            </div>
+            <div id="functionResults" class="error-log mt-3">Click buttons to test functions...</div>
+        </div>
+
+        <!-- Console Output -->
+        <div class="test-section">
+            <h4><i class="fas fa-terminal me-2"></i>Console Output</h4>
+            <div id="consoleOutput" class="error-log">Console messages will appear here...</div>
+            <button class="btn btn-outline-secondary btn-sm" onclick="clearConsole()">Clear Console</button>
+        </div>
+    </div>
+
+    <!-- Load main script -->
+    <script src="/static/script.js"></script>
+
+    <script>
+        let errorCount = 0;
+        let originalConsoleLog = console.log;
+        let originalConsoleError = console.error;
+        let originalConsoleWarn = console.warn;
+
+        // Override console functions to capture output
+        console.log = function (...args) {
+            originalConsoleLog.apply(console, args);
+            addConsoleMessage('LOG', args.join(' '), 'primary');
+        };
+
+        console.error = function (...args) {
+            originalConsoleError.apply(console, args);
+            addConsoleMessage('ERROR', args.join(' '), 'danger');
+            addError('Console Error: ' + args.join(' '));
+        };
+
+        console.warn = function (...args) {
+            originalConsoleWarn.apply(console, args);
+            addConsoleMessage('WARN', args.join(' '), 'warning');
+        };
+
+        // Capture JavaScript errors
+        window.addEventListener('error', function (e) {
+            const errorMsg = `${e.message} at ${e.filename}:${e.lineno}:${e.colno}`;
+            addError(errorMsg);
+        });
+
+        // Capture unhandled promise rejections
+        window.addEventListener('unhandledrejection', function (e) {
+            addError('Unhandled Promise Rejection: ' + e.reason);
+        });
+
+        function addError(errorMsg) {
+            errorCount++;
+            const errorLog = document.getElementById('errorLog');
+            const timestamp = new Date().toLocaleTimeString();
+
+            errorLog.textContent += `[${timestamp}] ERROR: ${errorMsg}\n`;
+            errorLog.scrollTop = errorLog.scrollHeight;
+
+            document.getElementById('errorCount').innerHTML = `Errors: <span class="badge bg-danger">${errorCount}</span>`;
+        }
+
+        function addConsoleMessage(type, message, variant) {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+
+            consoleOutput.innerHTML += `<div class="text-${variant}">[${timestamp}] ${type}: ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        function clearErrors() {
+            document.getElementById('errorLog').textContent = 'Errors cleared...';
+            errorCount = 0;
+            document.getElementById('errorCount').innerHTML = `Errors: <span class="badge bg-success">${errorCount}</span>`;
+        }
+
+        function clearConsole() {
+            document.getElementById('consoleOutput').innerHTML = 'Console cleared...';
+        }
+
+        // Test functions
+        function testFunctions() {
+            const results = document.getElementById('functionResults');
+            results.innerHTML = 'Testing functions...\n';
+
+            const functionsToTest = [
+                'showModernToast',
+                'initModernCustomerSelection',
+                'handleFormSubmission',
+                'generateStars',
+                'getDifficultyClass',
+                'truncateText',
+                'scrollToCustomerSelection'
+            ];
+
+            functionsToTest.forEach(funcName => {
+                try {
+                    if (typeof window[funcName] === 'function') {
+                        results.innerHTML += `✅ ${funcName}: Function exists\n`;
+                    } else {
+                        results.innerHTML += `❌ ${funcName}: Function missing or not accessible\n`;
+                    }
+                } catch (e) {
+                    results.innerHTML += `❌ ${funcName}: Error - ${e.message}\n`;
+                }
+            });
+        }
+
+        function testCustomerSelection() {
+            const results = document.getElementById('functionResults');
+            results.innerHTML = 'Testing customer selection...\n';
+
+            try {
+                const userSelect = document.getElementById('testUserId');
+                if (userSelect) {
+                    results.innerHTML += '✅ User select element found\n';
+
+                    // Test selection
+                    userSelect.value = '1';
+                    userSelect.dispatchEvent(new Event('change'));
+                    results.innerHTML += '✅ Customer selection change event triggered\n';
+                } else {
+                    results.innerHTML += '❌ User select element not found\n';
+                }
+            } catch (e) {
+                results.innerHTML += `❌ Customer selection test failed: ${e.message}\n`;
+            }
+        }
+
+        function testFormHandling() {
+            const results = document.getElementById('functionResults');
+            results.innerHTML = 'Testing form handling...\n';
+
+            try {
+                const form = document.getElementById('testRecommendationForm');
+                if (form) {
+                    results.innerHTML += '✅ Form element found\n';
+
+                    // Test form submission
+                    const submitEvent = new Event('submit');
+                    form.dispatchEvent(submitEvent);
+                    results.innerHTML += '✅ Form submit event triggered\n';
+                } else {
+                    results.innerHTML += '❌ Form element not found\n';
+                }
+            } catch (e) {
+                results.innerHTML += `❌ Form handling test failed: ${e.message}\n`;
+            }
+        }
+
+        async function testAPICall() {
+            const results = document.getElementById('functionResults');
+            results.innerHTML = 'Testing API call...\n';
+
+            try {
+                const response = await fetch('/api/upsell_combos?user_id=1&item_id=54');
+                if (response.ok) {
+                    const data = await response.json();
+                    results.innerHTML += `✅ API call successful\n`;
+                    results.innerHTML += `✅ Response data: ${JSON.stringify(data, null, 2)}\n`;
+                } else {
+                    results.innerHTML += `❌ API call failed: ${response.status} ${response.statusText}\n`;
+                }
+            } catch (e) {
+                results.innerHTML += `❌ API call error: ${e.message}\n`;
+            }
+        }
+
+        // Form submission handler
+        document.getElementById('testRecommendationForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const results = document.getElementById('formResults');
+            const userId = document.getElementById('testUserId').value;
+            const type = document.getElementById('testRecommendationType').value;
+
+            results.innerHTML = `Form submitted with:\nUser ID: ${userId}\nType: ${type}\n`;
+
+            if (!userId || !type) {
+                results.innerHTML += '❌ Missing required fields\n';
+                return;
+            }
+
+            // Test if handleFormSubmission function exists and can be called
+            try {
+                if (typeof handleFormSubmission === 'function') {
+                    results.innerHTML += '✅ handleFormSubmission function found\n';
+                    handleFormSubmission(userId, type);
+                    results.innerHTML += '✅ handleFormSubmission called successfully\n';
+                } else {
+                    results.innerHTML += '❌ handleFormSubmission function not found\n';
+                }
+            } catch (e) {
+                results.innerHTML += `❌ handleFormSubmission error: ${e.message}\n`;
+            }
+        });
+
+        // Auto-run tests on load
+        setTimeout(() => {
+            console.log('🔧 Debug tool loaded - running initial tests...');
+            testFunctions();
+        }, 2000);
+    </script>
+</body>
+
+</html>

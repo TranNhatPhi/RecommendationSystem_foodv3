@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Customer Selection - Standalone</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .customer-select-wrapper {
+            background: #f8f9fa;
+            border: 2px solid #007bff;
+            border-radius: 15px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quick-customer-selection {
+            display: flex;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .quick-customer-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .quick-customer-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .customer-info {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .customer-search-box {
+            margin: 1rem 0;
+            display: none;
+        }
+
+        .customer-search-box.active {
+            display: block;
+        }
+
+        .form-select,
+        .form-control {
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-select:focus,
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h1 class="text-center mb-4">
+            <i class="fas fa-users text-primary me-3"></i>
+            Test Customer Selection
+        </h1>
+
+        <div class="alert alert-info" role="alert">
+            <i class="fas fa-info-circle me-2"></i>
+            Đây là trang test độc lập cho tính năng chọn khách hàng. Tất cả elements phải hiển thị và hoạt động.
+        </div>
+
+        <div class="customer-select-wrapper">
+            <label for="userId" class="form-label h5">
+                <i class="fas fa-user me-2 text-primary"></i>Chọn khách hàng
+            </label>
+
+            <select class="form-select" id="userId" required>
+                <option value="">-- Chọn ID khách hàng --</option>
+                <option value="1">KH0001 - Nguyễn Văn A</option>
+                <option value="2">KH0002 - Trần Thị B</option>
+                <option value="3">KH0003 - Lê Văn C</option>
+                <option value="4">KH0004 - Phạm Thị D</option>
+                <option value="5">KH0005 - Hoàng Văn E</option>
+            </select>
+
+            <!-- Enhanced Search Box -->
+            <div class="customer-search-box" id="customerSearchBox">
+                <label class="form-label">Tìm kiếm khách hàng:</label>
+                <input type="text" class="form-control" id="customerSearch"
+                    placeholder="Nhập tên hoặc ID để tìm kiếm...">
+            </div>
+
+            <!-- Quick Selection Buttons -->
+            <div class="quick-customer-selection">
+                <button type="button" class="quick-customer-btn" id="randomCustomer">
+                    <i class="fas fa-random me-1"></i>Ngẫu nhiên
+                </button>
+                <button type="button" class="quick-customer-btn" id="firstCustomer">
+                    <i class="fas fa-user me-1"></i>Khách đầu tiên
+                </button>
+                <button type="button" class="quick-customer-btn" id="vipCustomer">
+                    <i class="fas fa-crown me-1"></i>VIP
+                </button>
+                <button type="button" class="quick-customer-btn" id="toggleSearch">
+                    <i class="fas fa-search me-1"></i>Tìm kiếm
+                </button>
+            </div>
+
+            <!-- Customer Info Display -->
+            <div class="customer-info" id="customerInfo">
+                <i class="fas fa-info-circle me-2"></i>
+                <span class="info-text">Chọn khách hàng để xem thông tin</span>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-success text-white">
+                        <h6 class="mb-0"><i class="fas fa-check me-2"></i>Test Results</h6>
+                    </div>
+                    <div class="card-body">
+                        <div id="testResults">Đang kiểm tra...</div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        <h6 class="mb-0"><i class="fas fa-cog me-2"></i>Actions</h6>
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-primary w-100 mb-2" onclick="runAllTests()">
+                            <i class="fas fa-play me-2"></i>Chạy tất cả test
+                        </button>
+                        <button class="btn btn-success w-100 mb-2" onclick="simulateSelection()">
+                            <i class="fas fa-magic me-2"></i>Test tự động
+                        </button>
+                        <button class="btn btn-warning w-100" onclick="showConsoleInfo()">
+                            <i class="fas fa-terminal me-2"></i>Xem console
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Test Customer Selection Implementation
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🚀 Standalone test page loaded');
+            initStandaloneCustomerSelection();
+            runAllTests();
+        });
+
+        function initStandaloneCustomerSelection() {
+            const userIdSelect = document.getElementById('userId');
+            const customerInfo = document.getElementById('customerInfo');
+            const randomBtn = document.getElementById('randomCustomer');
+            const firstBtn = document.getElementById('firstCustomer');
+            const vipBtn = document.getElementById('vipCustomer');
+            const toggleSearchBtn = document.getElementById('toggleSearch');
+            const searchBox = document.getElementById('customerSearchBox');
+
+            // Random customer selection
+            randomBtn.addEventListener('click', function () {
+                const options = userIdSelect.querySelectorAll('option[value!=""]');
+                if (options.length > 0) {
+                    const randomOption = options[Math.floor(Math.random() * options.length)];
+                    userIdSelect.value = randomOption.value;
+                    updateCustomerInfo(randomOption.value, randomOption.textContent);
+                    showToast('✅ Đã chọn khách hàng ngẫu nhiên!', 'success');
+                }
+            });
+
+            // First customer selection
+            firstBtn.addEventListener('click', function () {
+                const firstOption = userIdSelect.querySelector('option[value!=""]');
+                if (firstOption) {
+                    userIdSelect.value = firstOption.value;
+                    updateCustomerInfo(firstOption.value, firstOption.textContent);
+                    showToast('✅ Đã chọn khách hàng đầu tiên!', 'info');
+                }
+            });
+
+            // VIP customer selection
+            vipBtn.addEventListener('click', function () {
+                const options = userIdSelect.querySelectorAll('option[value!=""]');
+                if (options.length > 0) {
+                    const randomOption = options[Math.floor(Math.random() * options.length)];
+                    userIdSelect.value = randomOption.value;
+                    updateCustomerInfo(randomOption.value, randomOption.textContent + ' ⭐ VIP');
+                    showToast('👑 Đã chọn khách hàng VIP!', 'success');
+                }
+            });
+
+            // Toggle search
+            toggleSearchBtn.addEventListener('click', function () {
+                searchBox.classList.toggle('active');
+                if (searchBox.classList.contains('active')) {
+                    toggleSearchBtn.innerHTML = '<i class="fas fa-times me-1"></i>Đóng';
+                    document.getElementById('customerSearch').focus();
+                } else {
+                    toggleSearchBtn.innerHTML = '<i class="fas fa-search me-1"></i>Tìm kiếm';
+                }
+            });
+
+            // Handle select change
+            userIdSelect.addEventListener('change', function () {
+                if (this.value) {
+                    const selectedOption = this.options[this.selectedIndex];
+                    updateCustomerInfo(this.value, selectedOption.textContent);
+                }
+            });
+
+            console.log('✅ Standalone customer selection initialized');
+        }
+
+        function updateCustomerInfo(customerId, customerText) {
+            const customerInfo = document.getElementById('customerInfo');
+            const timestamp = new Date().toLocaleTimeString('vi-VN');
+            customerInfo.innerHTML = `
+                <div class="d-flex align-items-center">
+                    <i class="fas fa-user-check me-3 fs-4"></i>
+                    <div>
+                        <div class="fw-bold">${customerText}</div>
+                        <small class="opacity-75">ID: ${customerId} • Chọn lúc: ${timestamp}</small>
+                    </div>
+                </div>
+            `;
+        }
+
+        function showToast(message, type) {
+            const colors = {
+                success: '#28a745',
+                error: '#dc3545',
+                info: '#17a2b8',
+                warning: '#ffc107'
+            };
+
+            const toast = document.createElement('div');
+            toast.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${colors[type] || colors.info};
+                color: white;
+                padding: 1rem 1.5rem;
+                border-radius: 10px;
+                box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+                z-index: 9999;
+                font-weight: 500;
+                max-width: 350px;
+                animation: slideInRight 0.3s ease;
+            `;
+            toast.textContent = message;
+
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.style.animation = 'slideOutRight 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        function runAllTests() {
+            const elements = {
+                'Customer Select Dropdown': document.getElementById('userId'),
+                'Search Box': document.getElementById('customerSearchBox'),
+                'Random Button': document.getElementById('randomCustomer'),
+                'First Button': document.getElementById('firstCustomer'),
+                'VIP Button': document.getElementById('vipCustomer'),
+                'Toggle Search Button': document.getElementById('toggleSearch'),
+                'Customer Info': document.getElementById('customerInfo'),
+                'Wrapper Container': document.querySelector('.customer-select-wrapper')
+            };
+
+            let results = '<strong>🧪 Test Results:</strong><br><br>';
+            let allPassed = true;
+
+            for (const [name, element] of Object.entries(elements)) {
+                if (element) {
+                    const styles = window.getComputedStyle(element);
+                    const isVisible = styles.display !== 'none' && styles.visibility !== 'hidden' && styles.opacity !== '0';
+
+                    if (isVisible) {
+                        results += `✅ <strong>${name}</strong>: OK<br>`;
+                    } else {
+                        results += `⚠️ <strong>${name}</strong>: Có thể bị ẩn<br>`;
+                        allPassed = false;
+                    }
+                } else {
+                    results += `❌ <strong>${name}</strong>: Không tìm thấy!<br>`;
+                    allPassed = false;
+                }
+            }
+
+            results += `<br><strong>Tổng kết:</strong> ${allPassed ? '🎉 Tất cả test PASS!' : '⚠️ Có vấn đề cần kiểm tra'}`;
+
+            document.getElementById('testResults').innerHTML = results;
+
+            if (allPassed) {
+                showToast('🎉 Tất cả elements hoạt động tốt!', 'success');
+            }
+        }
+
+        function simulateSelection() {
+            const userIdSelect = document.getElementById('userId');
+            const options = userIdSelect.querySelectorAll('option[value!=""]');
+
+            if (options.length > 0) {
+                let index = 0;
+                const interval = setInterval(() => {
+                    if (index < options.length) {
+                        userIdSelect.value = options[index].value;
+                        updateCustomerInfo(options[index].value, options[index].textContent);
+                        index++;
+                    } else {
+                        clearInterval(interval);
+                        showToast('🤖 Demo tự động hoàn thành!', 'success');
+                    }
+                }, 1000);
+            }
+        }
+
+        function showConsoleInfo() {
+            console.log('=== CUSTOMER SELECTION DEBUG INFO ===');
+            console.log('Current customer:', document.getElementById('userId').value);
+            console.log('Available options:', document.querySelectorAll('#userId option[value!=""]').length);
+            console.log('Wrapper element:', document.querySelector('.customer-select-wrapper'));
+            console.log('=== END DEBUG INFO ===');
+
+            alert('Debug info đã được ghi vào console. Nhấn F12 để xem chi tiết.');
+        }
+    </script>
+
+    <style>
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideOutRight {
+            from {
+                opacity: 1;
+                transform: translateX(0);
+            }
+
+            to {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+        }
+    </style>
+</body>
+
+</html>

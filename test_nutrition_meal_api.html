@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Nutrition & Meal Plans API</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .test-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .api-test-card {
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .result-box {
+            background: #fff;
+            border: 1px solid #dee2e6;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-top: 1rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .btn-test {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .status-success {
+            color: #28a745;
+        }
+
+        .status-error {
+            color: #dc3545;
+        }
+
+        .status-loading {
+            color: #ffc107;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h1 class="text-center mb-4">
+            <i class="fas fa-flask text-primary me-3"></i>
+            Test Nutrition & Meal Plans API
+        </h1>
+
+        <!-- Test Controls -->
+        <div class="text-center mb-4">
+            <label for="testUserId" class="form-label"><strong>Test User ID:</strong></label>
+            <select class="form-select w-auto d-inline-block mx-2" id="testUserId">
+                <option value="1">Customer 1</option>
+                <option value="5">Customer 5</option>
+                <option value="10">Customer 10</option>
+                <option value="25">Customer 25</option>
+                <option value="50">Customer 50</option>
+            </select>
+            <button class="btn btn-primary" onclick="runAllTests()">
+                <i class="fas fa-play me-2"></i>Run All Tests
+            </button>
+        </div>
+
+        <!-- Nutrition Recommendations Test -->
+        <div class="api-test-card">
+            <h4><i class="fas fa-apple-alt me-2 text-success"></i>Nutrition Recommendations API</h4>
+            <p class="text-muted">Testing /api/nutrition_recommendations endpoint</p>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-test w-100 mb-2" onclick="testNutrition('weight-loss')">
+                        <i class="fas fa-weight me-2"></i>Weight Loss
+                    </button>
+                    <button class="btn btn-test w-100 mb-2" onclick="testNutrition('balanced')">
+                        <i class="fas fa-balance-scale me-2"></i>Balanced
+                    </button>
+                </div>
+                <div class="col-md-6">
+                    <button class="btn btn-test w-100 mb-2" onclick="testNutrition('blood-boost')">
+                        <i class="fas fa-heart me-2"></i>Blood Boost
+                    </button>
+                    <button class="btn btn-test w-100 mb-2" onclick="testNutrition('brain-boost')">
+                        <i class="fas fa-brain me-2"></i>Brain Boost
+                    </button>
+                </div>
+            </div>
+
+            <div id="nutritionStatus" class="mt-2"></div>
+            <div id="nutritionResult" class="result-box" style="display: none;"></div>
+        </div>
+
+        <!-- Meal Plans Test -->
+        <div class="api-test-card">
+            <h4><i class="fas fa-calendar-alt me-2 text-info"></i>Meal Plans API</h4>
+            <p class="text-muted">Testing /api/meal_plans endpoint</p>
+
+            <button class="btn btn-test" onclick="testMealPlans()">
+                <i class="fas fa-utensils me-2"></i>Test Meal Plans
+            </button>
+
+            <div id="mealPlansStatus" class="mt-2"></div>
+            <div id="mealPlansResult" class="result-box" style="display: none;"></div>
+        </div>
+
+        <!-- Summary -->
+        <div class="api-test-card">
+            <h4><i class="fas fa-chart-line me-2 text-warning"></i>Test Summary</h4>
+            <div id="testSummary">
+                <p>Click "Run All Tests" to start testing all APIs</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let testResults = {
+            nutrition: {},
+            mealPlans: null
+        };
+
+        async function testNutrition(nutritionType) {
+            const userId = document.getElementById('testUserId').value;
+            const statusDiv = document.getElementById('nutritionStatus');
+            const resultDiv = document.getElementById('nutritionResult');
+
+            statusDiv.innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i><span class="status-loading">Testing ${nutritionType}...</span>`;
+            resultDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`/api/nutrition_recommendations?user_id=${userId}&nutrition_type=${nutritionType}&count=6`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i><span class="status-success">✅ ${nutritionType} - Success (${data.recommendations?.length || 0} items)</span>`;
+                    resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    resultDiv.style.display = 'block';
+                    testResults.nutrition[nutritionType] = { success: true, count: data.recommendations?.length || 0 };
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${data.error || 'Unknown error'}`);
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<i class="fas fa-times-circle me-2"></i><span class="status-error">❌ ${nutritionType} - Error: ${error.message}</span>`;
+                resultDiv.innerHTML = `<div class="text-danger">Error: ${error.message}</div>`;
+                resultDiv.style.display = 'block';
+                testResults.nutrition[nutritionType] = { success: false, error: error.message };
+            }
+
+            updateSummary();
+        }
+
+        async function testMealPlans() {
+            const userId = document.getElementById('testUserId').value;
+            const statusDiv = document.getElementById('mealPlansStatus');
+            const resultDiv = document.getElementById('mealPlansResult');
+
+            statusDiv.innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i><span class="status-loading">Testing meal plans...</span>`;
+            resultDiv.style.display = 'none';
+
+            try {
+                const response = await fetch(`/api/meal_plans?user_id=${userId}&days=3`);
+                const data = await response.json();
+
+                if (response.ok) {
+                    statusDiv.innerHTML = `<i class="fas fa-check-circle me-2"></i><span class="status-success">✅ Meal Plans - Success (${data.meal_plans?.length || 0} plans)</span>`;
+                    resultDiv.innerHTML = `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                    resultDiv.style.display = 'block';
+                    testResults.mealPlans = { success: true, count: data.meal_plans?.length || 0 };
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${data.error || 'Unknown error'}`);
+                }
+            } catch (error) {
+                statusDiv.innerHTML = `<i class="fas fa-times-circle me-2"></i><span class="status-error">❌ Meal Plans - Error: ${error.message}</span>`;
+                resultDiv.innerHTML = `<div class="text-danger">Error: ${error.message}</div>`;
+                resultDiv.style.display = 'block';
+                testResults.mealPlans = { success: false, error: error.message };
+            }
+
+            updateSummary();
+        }
+
+        async function runAllTests() {
+            const userId = document.getElementById('testUserId').value;
+            document.getElementById('testSummary').innerHTML = `<i class="fas fa-spinner fa-spin me-2"></i>Running all tests for User ID ${userId}...`;
+
+            // Test all nutrition types
+            const nutritionTypes = ['weight-loss', 'balanced', 'blood-boost', 'brain-boost'];
+            for (const type of nutritionTypes) {
+                await testNutrition(type);
+                await new Promise(resolve => setTimeout(resolve, 500)); // Small delay between tests
+            }
+
+            // Test meal plans
+            await testMealPlans();
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summaryDiv = document.getElementById('testSummary');
+            let html = '<h5>Test Results Summary:</h5>';
+
+            // Nutrition results
+            html += '<strong>Nutrition API:</strong><br>';
+            for (const [type, result] of Object.entries(testResults.nutrition)) {
+                if (result.success) {
+                    html += `<span class="status-success">✅ ${type}: ${result.count} items</span><br>`;
+                } else {
+                    html += `<span class="status-error">❌ ${type}: ${result.error}</span><br>`;
+                }
+            }
+
+            // Meal plans results
+            html += '<br><strong>Meal Plans API:</strong><br>';
+            if (testResults.mealPlans) {
+                if (testResults.mealPlans.success) {
+                    html += `<span class="status-success">✅ Meal Plans: ${testResults.mealPlans.count} plans</span><br>`;
+                } else {
+                    html += `<span class="status-error">❌ Meal Plans: ${testResults.mealPlans.error}</span><br>`;
+                }
+            } else {
+                html += '<span class="text-muted">Not tested yet</span><br>';
+            }
+
+            summaryDiv.innerHTML = html;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('API Test page loaded');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vietnamese Food Recommendation API Documentation</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 0;
+        }
+
+        .api-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 1.5rem;
+        }
+
+        .api-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .method-badge {
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .method-get {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .method-post {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .nav-link {
+            color: #495057;
+            padding: 0.5rem 1rem;
+            margin-bottom: 0.25rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover,
+        .nav-link.active {
+            background: #007bff;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h1 class="display-4 fw-bold mb-3">
+                        <i class="fas fa-utensils me-3"></i>
+                        Vietnamese Food Recommendation API
+                    </h1>
+                    <p class="lead mb-4">
+                        Hệ thống gợi ý món ăn Việt Nam với API RESTful hoàn chỉnh
+                    </p>
+                    <div class="d-flex gap-3">
+                        <a href="#documentation" class="btn btn-light btn-lg">
+                            <i class="fas fa-book me-2"></i>Xem tài liệu
+                        </a>
+                        <a href="/swagger/" class="btn btn-outline-light btn-lg" target="_blank">
+                            <i class="fas fa-external-link-alt me-2"></i>Swagger UI
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-center">
+                    <div class="display-1">
+                        <i class="fas fa-code"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 sidebar">
+                <h5 class="mb-3">API Endpoints</h5>
+                <nav class="nav flex-column">
+                    <a class="nav-link active" href="#overview">Tổng quan</a>
+                    <a class="nav-link" href="#authentication">Xác thực</a>
+                    <a class="nav-link" href="#upsell">Gợi ý bán kèm</a>
+                    <a class="nav-link" href="#family">Combo gia đình</a>
+                    <a class="nav-link" href="#age-based">Gợi ý theo tuổi</a>
+                    <a class="nav-link" href="#meals">Gợi ý theo bữa</a>
+                    <a class="nav-link" href="#nutrition">Gợi ý dinh dưỡng</a>
+                    <a class="nav-link" href="#response-format">Định dạng response</a>
+                    <a class="nav-link" href="#examples">Ví dụ</a>
+                </nav>
+            </div>
+
+            <!-- Content -->
+            <div class="col-lg-9" id="documentation">
+                <div class="p-4">
+                    <!-- Overview Section -->
+                    <section id="overview" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-info-circle text-primary me-2"></i>
+                            Tổng quan API
+                        </h2>
+                        <div class="card api-card">
+                            <div class="card-body">
+                                <h5>Base URL</h5>
+                                <div class="code-block">
+                                    https://your-domain.com/api/
+                                </div>
+                                <h5 class="mt-3">Content Type</h5>
+                                <div class="code-block">
+                                    Content-Type: application/json
+                                </div>
+                                <h5 class="mt-3">Mô tả</h5>
+                                <p>API này cung cấp các dịch vụ gợi ý món ăn Việt Nam dựa trên machine learning và
+                                    collaborative filtering. Hỗ trợ nhiều loại gợi ý khác nhau từ combo bán kèm đến gợi
+                                    ý theo dinh dưỡng.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Authentication Section -->
+                    <section id="authentication" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-lock text-warning me-2"></i>
+                            Xác thực
+                        </h2>
+                        <div class="card api-card">
+                            <div class="card-body">
+                                <p>Hiện tại API không yêu cầu xác thực. Tất cả endpoints đều có thể truy cập trực tiếp.
+                                </p>
+                                <div class="alert alert-info">
+                                    <i class="fas fa-info-circle me-2"></i>
+                                    Trong môi trường production, nên thêm API key hoặc JWT token để bảo mật.
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Upsell Section -->
+                    <section id="upsell" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-chart-line text-success me-2"></i>
+                            Gợi ý bán kèm
+                        </h2>
+
+                        <!-- Upsell Combos -->
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý combo món ăn</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/upsell_combos</code></p>
+                                <p><strong>Mô tả:</strong> Gợi ý các combo món ăn để tăng doanh thu dựa trên món đã chọn
+                                </p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>item_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>ID món ăn hiện tại</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/upsell_combos?user_id=12345&item_id=54
+                                </div>
+
+                                <h6>Response mẫu:</h6>
+                                <div class="code-block">
+                                    {
+                                    "combo_recommendations": [
+                                    {
+                                    "recipe_name": "Phở bò",
+                                    "recipe_url": "https://example.com/pho-bo",
+                                    "combo_discount": "10%",
+                                    "combo_price": "150,000 VND",
+                                    "predicted_rating": 4.5
+                                    }
+                                    ],
+                                    "message": "These items are frequently ordered together"
+                                    }
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Upsell Sides -->
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý món phụ</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/upsell_sides</code></p>
+                                <p><strong>Mô tả:</strong> Gợi ý các món phụ đi kèm với món chính</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>main_dish_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>ID món chính</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/upsell_sides?user_id=12345&main_dish_id=54
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Family Section -->
+                    <section id="family" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-users text-info me-2"></i>
+                            Combo gia đình
+                        </h2>
+
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý combo gia đình</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/family_combos</code></p>
+                                <p><strong>Mô tả:</strong> Tạo combo món ăn hoàn chỉnh cho gia đình</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Mặc định</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>-</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>family_size</td>
+                                            <td>integer</td>
+                                            <td>Không</td>
+                                            <td>4</td>
+                                            <td>Số người trong gia đình</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/family_combos?user_id=12345&family_size=6
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Age-based Section -->
+                    <section id="age-based" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-birthday-cake text-danger me-2"></i>
+                            Gợi ý theo độ tuổi
+                        </h2>
+
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý món ăn theo độ tuổi</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/age_based_recommendations</code></p>
+                                <p><strong>Mô tả:</strong> Gợi ý món ăn phù hợp với từng nhóm tuổi</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Giá trị hợp lệ</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>-</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>age_group</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>children, teenagers, adults, elderly</td>
+                                            <td>Nhóm tuổi</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/age_based_recommendations?user_id=12345&age_group=children
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Meals Section -->
+                    <section id="meals" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-clock text-secondary me-2"></i>
+                            Gợi ý theo bữa ăn
+                        </h2>
+
+                        <!-- Meal Recommendations -->
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý món theo bữa ăn</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/meal_recommendations</code></p>
+                                <p><strong>Mô tả:</strong> Gợi ý món ăn cho từng bữa (sáng, trưa, tối)</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Giá trị hợp lệ</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>-</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>meal_type</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>breakfast, lunch, dinner</td>
+                                            <td>Loại bữa ăn</td>
+                                        </tr>
+                                        <tr>
+                                            <td>count</td>
+                                            <td>integer</td>
+                                            <td>Không</td>
+                                            <td>1-20</td>
+                                            <td>Số lượng gợi ý (mặc định: 6)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- Meal Plans -->
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Thực đơn hoàn chỉnh</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/meal_plans</code></p>
+                                <p><strong>Mô tả:</strong> Tạo 6 thực đơn hoàn chỉnh với đầy đủ bữa sáng, trưa, tối</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/meal_plans?user_id=12345
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Nutrition Section -->
+                    <section id="nutrition" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-heart text-danger me-2"></i>
+                            Gợi ý dinh dưỡng
+                        </h2>
+
+                        <div class="card api-card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h5 class="mb-0">Gợi ý theo mục tiêu dinh dưỡng</h5>
+                                <span class="method-badge method-get">GET</span>
+                            </div>
+                            <div class="card-body">
+                                <p><strong>Endpoint:</strong> <code>/api/nutrition_recommendations</code></p>
+                                <p><strong>Mô tả:</strong> Gợi ý món ăn theo mục tiêu dinh dưỡng cụ thể</p>
+
+                                <h6>Tham số:</h6>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Tham số</th>
+                                            <th>Kiểu</th>
+                                            <th>Bắt buộc</th>
+                                            <th>Giá trị hợp lệ</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>user_id</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>-</td>
+                                            <td>ID khách hàng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>nutrition_type</td>
+                                            <td>string</td>
+                                            <td>Có</td>
+                                            <td>weight-loss, balanced, blood-boost, brain-boost, digestive-support</td>
+                                            <td>Loại dinh dưỡng</td>
+                                        </tr>
+                                        <tr>
+                                            <td>count</td>
+                                            <td>integer</td>
+                                            <td>Không</td>
+                                            <td>1-20</td>
+                                            <td>Số lượng gợi ý (mặc định: 6)</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h6>Các loại dinh dưỡng:</h6>
+                                <ul>
+                                    <li><strong>weight-loss:</strong> Giảm cân</li>
+                                    <li><strong>balanced:</strong> Cân bằng dinh dưỡng</li>
+                                    <li><strong>blood-boost:</strong> Bổ máu</li>
+                                    <li><strong>brain-boost:</strong> Tăng cường trí não</li>
+                                    <li><strong>digestive-support:</strong> Hỗ trợ tiêu hóa</li>
+                                </ul>
+
+                                <h6>Ví dụ request:</h6>
+                                <div class="code-block">
+                                    GET /api/nutrition_recommendations?user_id=12345&nutrition_type=weight-loss&count=10
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Response Format Section -->
+                    <section id="response-format" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-code text-primary me-2"></i>
+                            Định dạng Response
+                        </h2>
+
+                        <div class="card api-card">
+                            <div class="card-body">
+                                <h5>HTTP Status Codes</h5>
+                                <table class="table table-sm">
+                                    <thead>
+                                        <tr>
+                                            <th>Status Code</th>
+                                            <th>Ý nghĩa</th>
+                                            <th>Mô tả</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr class="table-success">
+                                            <td>200</td>
+                                            <td>OK</td>
+                                            <td>Request thành công</td>
+                                        </tr>
+                                        <tr class="table-warning">
+                                            <td>400</td>
+                                            <td>Bad Request</td>
+                                            <td>Thiếu tham số hoặc tham số không hợp lệ</td>
+                                        </tr>
+                                        <tr class="table-danger">
+                                            <td>500</td>
+                                            <td>Internal Server Error</td>
+                                            <td>Lỗi server</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                                <h5 class="mt-4">Error Response Format</h5>
+                                <div class="code-block">
+                                    {
+                                    "error": "Missing user_id parameter"
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Examples Section -->
+                    <section id="examples" class="mb-5">
+                        <h2 class="mb-4">
+                            <i class="fas fa-play-circle text-success me-2"></i>
+                            Ví dụ sử dụng
+                        </h2>
+
+                        <div class="card api-card">
+                            <div class="card-body">
+                                <h5>JavaScript/Fetch API</h5>
+                                <div class="code-block">
+                                    // Lấy gợi ý dinh dưỡng
+                                    const response = await
+                                    fetch('/api/nutrition_recommendations?user_id=12345&nutrition_type=weight-loss');
+                                    const data = await response.json();
+                                    console.log(data);
+
+                                    // Lấy thực đơn hoàn chỉnh
+                                    const mealPlans = await fetch('/api/meal_plans?user_id=12345');
+                                    const menus = await mealPlans.json();
+                                    console.log(menus);
+                                </div>
+
+                                <h5 class="mt-4">Python/Requests</h5>
+                                <div class="code-block">
+                                    import requests
+
+                                    # Gợi ý combo gia đình
+                                    url = "http://localhost:5000/api/family_combos"
+                                    params = {"user_id": "12345", "family_size": 4}
+                                    response = requests.get(url, params=params)
+                                    data = response.json()
+                                    print(data)
+
+                                    # Gợi ý theo độ tuổi
+                                    url = "http://localhost:5000/api/age_based_recommendations"
+                                    params = {"user_id": "12345", "age_group": "adults"}
+                                    response = requests.get(url, params=params)
+                                    data = response.json()
+                                    print(data)
+                                </div>
+
+                                <h5 class="mt-4">cURL</h5>
+                                <div class="code-block">
+                                    # Gợi ý món sáng
+                                    curl -X GET
+                                    "http://localhost:5000/api/meal_recommendations?user_id=12345&meal_type=breakfast&count=5"
+
+                                    # Gợi ý bán kèm
+                                    curl -X GET "http://localhost:5000/api/upsell_combos?user_id=12345&item_id=54"
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Quick Links -->
+                    <section class="mb-5">
+                        <div class="card api-card">
+                            <div class="card-body text-center">
+                                <h5 class="mb-3">Liên kết nhanh</h5>
+                                <div class="d-flex justify-content-center gap-3 flex-wrap">
+                                    <a href="/swagger/" class="btn btn-primary" target="_blank">
+                                        <i class="fas fa-external-link-alt me-2"></i>Swagger UI
+                                    </a>
+                                    <a href="/" class="btn btn-success">
+                                        <i class="fas fa-home me-2"></i>Trang chủ
+                                    </a>
+                                    <button class="btn btn-info" onclick="window.print()">
+                                        <i class="fas fa-print me-2"></i>In tài liệu
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">
+                <i class="fas fa-utensils me-2"></i>
+                Vietnamese Food Recommendation System API Documentation
+            </p>
+            <small class="text-muted">Version 1.0 - Powered by Flask & Machine Learning</small>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+
+                    // Update active nav link
+                    document.querySelectorAll('.nav-link').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section[id]');
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                if (window.pageYOffset >= sectionTop) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Nút Tìm Món Ăn Phù Hợp</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .test-section {
+            border: 1px solid #e9ecef;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .test-results {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+        }
+
+        .modern-btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border: none;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .modern-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-shimmer {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .status-success {
+            background-color: #28a745;
+        }
+
+        .status-warning {
+            background-color: #ffc107;
+        }
+
+        .status-error {
+            background-color: #dc3545;
+        }
+
+        .status-info {
+            background-color: #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-bug me-2 text-primary"></i>
+            Test Nút "Tìm Món Ăn Phù Hợp"
+        </h2>
+
+        <!-- Test Form Section -->
+        <div class="test-section">
+            <h4><i class="fas fa-flask me-2"></i>Form Test</h4>
+            <form id="testForm">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="testUserId" class="form-label">Chọn khách hàng</label>
+                        <select class="form-select" id="testUserId" required>
+                            <option value="">-- Chọn khách hàng --</option>
+                            <option value="1">KH0001 - Khách hàng 1</option>
+                            <option value="2">KH0002 - Khách hàng 2</option>
+                            <option value="50">KH0050 - Khách hàng 50</option>
+                            <option value="100">KH0100 - Khách hàng 100</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="testRecommendationType" class="form-label">Loại gợi ý</label>
+                        <select class="form-select" id="testRecommendationType" required>
+                            <option value="">-- Chọn loại gợi ý --</option>
+                            <option value="upsell_combos">🍱 Combo món ăn</option>
+                            <option value="upsell_sides">🥗 Món phụ</option>
+                            <option value="family_combos">👨‍👩‍👧‍👦 Combo gia đình</option>
+                            <option value="age_based">🎂 Theo độ tuổi</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Additional Options -->
+                <div id="additionalOptions">
+                    <div class="mb-3 d-none" id="testItemIdOption">
+                        <label for="testItemId" class="form-label">ID món chính</label>
+                        <input type="text" class="form-control" id="testItemId" value="54">
+                    </div>
+                    <div class="mb-3 d-none" id="testMainDishIdOption">
+                        <label for="testMainDishId" class="form-label">ID món chính</label>
+                        <input type="text" class="form-control" id="testMainDishId" value="54">
+                    </div>
+                    <div class="mb-3 d-none" id="testFamilySizeOption">
+                        <label for="testFamilySize" class="form-label">Số người trong gia đình</label>
+                        <input type="number" class="form-control" id="testFamilySize" value="4" min="1" max="10">
+                    </div>
+                    <div class="mb-3 d-none" id="testAgeGroupOption">
+                        <label for="testAgeGroup" class="form-label">Nhóm tuổi</label>
+                        <select class="form-select" id="testAgeGroup">
+                            <option value="children">👶 Trẻ em (3-12 tuổi)</option>
+                            <option value="teenagers">🧒 Thanh thiếu niên (13-19 tuổi)</option>
+                            <option value="adults">👨 Người lớn (20-59 tuổi)</option>
+                            <option value="elderly">👴 Người cao tuổi (60+ tuổi)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="btn modern-btn btn-lg">
+                        <i class="fas fa-search me-2"></i>
+                        <span>Tìm món ăn phù hợp</span>
+                        <div class="btn-shimmer"></div>
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Test Status Section -->
+        <div class="test-section">
+            <h4><i class="fas fa-chart-line me-2"></i>Trạng thái Test</h4>
+            <div id="testStatus">
+                <div class="mb-2"><span class="status-indicator status-info"></span>Đang chờ test...</div>
+            </div>
+        </div>
+
+        <!-- Test Results Section -->
+        <div class="test-section">
+            <h4><i class="fas fa-clipboard-list me-2"></i>Kết quả Test</h4>
+            <div class="test-results" id="testResults">
+                Chưa có kết quả test nào...
+            </div>
+        </div>
+
+        <!-- Quick Test Buttons -->
+        <div class="test-section">
+            <h4><i class="fas fa-rocket me-2"></i>Quick Test</h4>
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-outline-primary" onclick="quickTest('upsell_combos')">
+                    <i class="fas fa-utensils me-1"></i>Test Combo
+                </button>
+                <button class="btn btn-outline-success" onclick="quickTest('upsell_sides')">
+                    <i class="fas fa-leaf me-1"></i>Test Món phụ
+                </button>
+                <button class="btn btn-outline-warning" onclick="quickTest('family_combos')">
+                    <i class="fas fa-users me-1"></i>Test Gia đình
+                </button>
+                <button class="btn btn-outline-info" onclick="quickTest('age_based')">
+                    <i class="fas fa-birthday-cake me-1"></i>Test Theo tuổi
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let testCounter = 0;
+
+        // Initialize form handlers
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('testForm');
+            const typeSelect = document.getElementById('testRecommendationType');
+
+            // Handle recommendation type change
+            typeSelect.addEventListener('change', function () {
+                showRelevantOptions(this.value);
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                performTest();
+            });
+
+            updateStatus('Đã khởi tạo form test thành công', 'success');
+        });
+
+        // Show relevant options based on recommendation type
+        function showRelevantOptions(type) {
+            const allOptions = ['testItemIdOption', 'testMainDishIdOption', 'testFamilySizeOption', 'testAgeGroupOption'];
+
+            // Hide all options
+            allOptions.forEach(id => {
+                document.getElementById(id).classList.add('d-none');
+            });
+
+            // Show relevant option
+            switch (type) {
+                case 'upsell_combos':
+                    document.getElementById('testItemIdOption').classList.remove('d-none');
+                    break;
+                case 'upsell_sides':
+                    document.getElementById('testMainDishIdOption').classList.remove('d-none');
+                    break;
+                case 'family_combos':
+                    document.getElementById('testFamilySizeOption').classList.remove('d-none');
+                    break;
+                case 'age_based':
+                    document.getElementById('testAgeGroupOption').classList.remove('d-none');
+                    break;
+            }
+
+            updateStatus(`Đã chuyển sang loại gợi ý: ${type}`, 'info');
+        }
+
+        // Perform test
+        async function performTest() {
+            testCounter++;
+            const testId = `Test-${testCounter}`;
+
+            updateStatus(`Bắt đầu ${testId}...`, 'info');
+
+            const userId = document.getElementById('testUserId').value;
+            const type = document.getElementById('testRecommendationType').value;
+
+            if (!userId || !type) {
+                updateStatus('❌ Thiếu thông tin khách hàng hoặc loại gợi ý', 'error');
+                return;
+            }
+
+            // Prepare API URL and parameters
+            let apiUrl = '/api/';
+            let params = new URLSearchParams();
+            params.append('user_id', userId);
+
+            switch (type) {
+                case 'upsell_combos':
+                    apiUrl += 'upsell_combos';
+                    const itemId = document.getElementById('testItemId').value || '54';
+                    params.append('item_id', itemId);
+                    break;
+                case 'upsell_sides':
+                    apiUrl += 'upsell_sides';
+                    const mainDishId = document.getElementById('testMainDishId').value || '54';
+                    params.append('main_dish_id', mainDishId);
+                    break;
+                case 'family_combos':
+                    apiUrl += 'family_combos';
+                    const familySize = document.getElementById('testFamilySize').value || '4';
+                    params.append('family_size', familySize);
+                    break;
+                case 'age_based':
+                    apiUrl += 'age_based_recommendations';
+                    const ageGroup = document.getElementById('testAgeGroup').value || 'adults';
+                    params.append('age_group', ageGroup);
+                    break;
+            }
+
+            const fullUrl = `${apiUrl}?${params.toString()}`;
+            appendResult(`[${testId}] Gửi request: ${fullUrl}`);
+
+            try {
+                updateStatus(`Đang gửi request API...`, 'warning');
+
+                const startTime = Date.now();
+                const response = await fetch(fullUrl);
+                const endTime = Date.now();
+
+                appendResult(`[${testId}] Response time: ${endTime - startTime}ms`);
+                appendResult(`[${testId}] Status: ${response.status} ${response.statusText}`);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                appendResult(`[${testId}] ✅ SUCCESS!`);
+                appendResult(`[${testId}] Data received:`, JSON.stringify(data, null, 2));
+
+                updateStatus(`✅ ${testId} hoàn thành thành công`, 'success');
+
+            } catch (error) {
+                appendResult(`[${testId}] ❌ ERROR: ${error.message}`);
+                updateStatus(`❌ ${testId} thất bại`, 'error');
+            }
+        }
+
+        // Quick test function
+        async function quickTest(type) {
+            document.getElementById('testUserId').value = '1';
+            document.getElementById('testRecommendationType').value = type;
+            showRelevantOptions(type);
+            await performTest();
+        }
+
+        // Update status
+        function updateStatus(message, type) {
+            const statusDiv = document.getElementById('testStatus');
+            const statusClass = `status-${type}`;
+            const timestamp = new Date().toLocaleTimeString();
+
+            statusDiv.innerHTML = `
+                <div class="mb-2">
+                    <span class="status-indicator ${statusClass}"></span>
+                    [${timestamp}] ${message}
+                </div>
+            `;
+        }
+
+        // Append result
+        function appendResult(message, data = null) {
+            const resultsDiv = document.getElementById('testResults');
+            const timestamp = new Date().toLocaleTimeString();
+
+            let content = `[${timestamp}] ${message}`;
+            if (data) {
+                content += '\n' + data;
+            }
+            content += '\n' + '='.repeat(50) + '\n';
+
+            resultsDiv.textContent += content;
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        // Clear results
+        function clearResults() {
+            document.getElementById('testResults').textContent = 'Đã xóa kết quả test...\n';
+            updateStatus('Đã xóa kết quả test', 'info');
+        }
+    </script>
+</body>
+
+</html>

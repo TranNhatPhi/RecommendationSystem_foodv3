@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Recommendation Button Function</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 600px;
+        }
+
+        .test-result {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .status-success {
+            color: #28a745;
+        }
+
+        .status-error {
+            color: #dc3545;
+        }
+
+        .status-info {
+            color: #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h2 class="text-center mb-4">
+            <i class="fas fa-vial me-2 text-primary"></i>
+            Test Recommendation Button Function
+        </h2>
+
+        <div class="test-form">
+            <h4><i class="fas fa-play-circle me-2"></i>Quick API Test</h4>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label class="form-label">Customer ID</label>
+                    <select class="form-select" id="testUserId">
+                        <option value="1">Customer 1</option>
+                        <option value="2">Customer 2</option>
+                        <option value="50">Customer 50</option>
+                        <option value="100">Customer 100</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Recommendation Type</label>
+                    <select class="form-select" id="testType">
+                        <option value="upsell_combos">Combo món ăn</option>
+                        <option value="upsell_sides">Món phụ</option>
+                        <option value="family_combos">Combo gia đình</option>
+                        <option value="age_based">Theo độ tuổi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="text-center">
+                <button class="btn btn-primary btn-lg" onclick="testRecommendationAPI()">
+                    <i class="fas fa-rocket me-2"></i>
+                    Test API Call
+                </button>
+                <button class="btn btn-outline-secondary ms-2" onclick="clearResults()">
+                    <i class="fas fa-trash me-2"></i>
+                    Clear Results
+                </button>
+            </div>
+        </div>
+
+        <div class="test-result" id="testResults">
+            Ready to test...
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function testRecommendationAPI() {
+            const userId = document.getElementById('testUserId').value;
+            const type = document.getElementById('testType').value;
+            const resultsDiv = document.getElementById('testResults');
+
+            // Clear previous results
+            resultsDiv.textContent = '';
+
+            logResult('🚀 Starting API test...', 'info');
+            logResult(`User ID: ${userId}`, 'info');
+            logResult(`Type: ${type}`, 'info');
+            logResult('='.repeat(50), 'info');
+
+            try {
+                // Prepare API URL and parameters
+                let apiUrl = '/api/';
+                let params = new URLSearchParams();
+                params.append('user_id', userId);
+
+                switch (type) {
+                    case 'upsell_combos':
+                        apiUrl += 'upsell_combos';
+                        params.append('item_id', '54');
+                        break;
+                    case 'upsell_sides':
+                        apiUrl += 'upsell_sides';
+                        params.append('main_dish_id', '54');
+                        break;
+                    case 'family_combos':
+                        apiUrl += 'family_combos';
+                        params.append('family_size', '4');
+                        break;
+                    case 'age_based':
+                        apiUrl += 'age_based_recommendations';
+                        params.append('age_group', 'adults');
+                        break;
+                }
+
+                const fullUrl = `${apiUrl}?${params.toString()}`;
+                logResult(`📡 Sending request to: ${fullUrl}`, 'info');
+
+                const startTime = Date.now();
+                const response = await fetch(fullUrl);
+                const endTime = Date.now();
+
+                logResult(`⏱️ Response time: ${endTime - startTime}ms`, 'info');
+                logResult(`📊 Status: ${response.status} ${response.statusText}`, 'info');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+
+                logResult('✅ SUCCESS! API response received:', 'success');
+                logResult(JSON.stringify(data, null, 2), 'success');
+
+                // Test if we have recommendations
+                if (data.recommendations && data.recommendations.length > 0) {
+                    logResult(`🍽️ Found ${data.recommendations.length} recommendations`, 'success');
+                    logResult('First recommendation:', 'success');
+                    logResult(JSON.stringify(data.recommendations[0], null, 2), 'success');
+                } else if (data.combo_recommendations && data.combo_recommendations.length > 0) {
+                    logResult(`🍱 Found ${data.combo_recommendations.length} combo recommendations`, 'success');
+                } else {
+                    logResult('⚠️ No recommendations found in response', 'error');
+                }
+
+            } catch (error) {
+                logResult(`❌ ERROR: ${error.message}`, 'error');
+                console.error('API Test Error:', error);
+            }
+
+            logResult('='.repeat(50), 'info');
+            logResult('🏁 Test completed!', 'info');
+        }
+
+        function logResult(message, type = 'info') {
+            const resultsDiv = document.getElementById('testResults');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = `status-${type}`;
+
+            resultsDiv.innerHTML += `<span class="${className}">[${timestamp}] ${message}</span>\n`;
+            resultsDiv.scrollTop = resultsDiv.scrollHeight;
+        }
+
+        function clearResults() {
+            document.getElementById('testResults').textContent = 'Results cleared...\n';
+        }
+
+        // Auto-run test on page load
+        document.addEventListener('DOMContentLoaded', function () {
+            logResult('🎯 Test page loaded successfully!', 'success');
+            logResult('Click "Test API Call" to start testing the recommendation system.', 'info');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Customer Selection Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            line-height: 1.6;
+        }
+
+        .test-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background: #f9f9f9;
+        }
+
+        button {
+            padding: 10px 15px;
+            margin: 5px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            background: #007bff;
+            color: white;
+        }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+        select {
+            padding: 8px;
+            margin: 10px 0;
+            width: 200px;
+        }
+
+        .results {
+            margin: 10px 0;
+            padding: 10px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            min-height: 200px;
+        }
+
+        .log {
+            background: #2d3748;
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            height: 150px;
+            overflow-y: auto;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🧪 Simple Customer Selection Test</h1>
+
+    <div class="test-section">
+        <h3>Customer Selection</h3>
+        <select id="userId">
+            <option value="">-- Chọn khách hàng --</option>
+            <option value="1">Customer 1</option>
+            <option value="2">Customer 2</option>
+            <option value="5">Customer 5</option>
+            <option value="10">Customer 10</option>
+            <option value="50">Customer 50</option>
+            <option value="100">Customer 100</option>
+        </select>
+
+        <br><br>
+
+        <button onclick="testNutritionAPI()">Test Nutrition API</button>
+        <button onclick="testMealPlansAPI()">Test Meal Plans API</button>
+        <button onclick="testBothAPIs()">Test Both APIs</button>
+        <button onclick="clearResults()">Clear Results</button>
+    </div>
+
+    <div class="test-section">
+        <h3>🥗 Nutrition Recommendations</h3>
+        <div id="nutrition-recommendations" class="results">
+            <div>Chọn khách hàng và nhấn "Test Nutrition API" để xem kết quả...</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>🍽️ Meal Plans</h3>
+        <div id="meal-plans-content" class="results">
+            <div>Chọn khách hàng và nhấn "Test Meal Plans API" để xem kết quả...</div>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h3>📝 Console Log</h3>
+        <div id="consoleLog" class="log"></div>
+        <button onclick="clearLog()">Clear Log</button>
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('consoleLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                info: '#81C784',
+                error: '#E57373',
+                success: '#66BB6A',
+                warning: '#FFB74D'
+            };
+
+            logDiv.innerHTML += `<div style="color: ${colors[type] || colors.info}; margin: 2px 0;">
+                [${timestamp}] ${message}
+            </div>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('consoleLog').innerHTML = '';
+        }
+
+        function clearResults() {
+            document.getElementById('nutrition-recommendations').innerHTML = '<div>Cleared...</div>';
+            document.getElementById('meal-plans-content').innerHTML = '<div>Cleared...</div>';
+        }
+
+        async function testNutritionAPI() {
+            const userId = document.getElementById('userId').value;
+            const container = document.getElementById('nutrition-recommendations');
+
+            if (!userId) {
+                log('❌ Vui lòng chọn Customer ID trước', 'error');
+                container.innerHTML = '<div style="color: red;">❌ Vui lòng chọn Customer ID trước</div>';
+                return;
+            }
+
+            log(`🥗 Testing Nutrition API for Customer ${userId}...`, 'info');
+            container.innerHTML = '<div>⏳ Đang tải nutrition recommendations...</div>';
+
+            try {
+                const nutritionTypes = ['weight-loss', 'balanced', 'blood-boost', 'brain-boost', 'digestive-support'];
+                let results = {};
+
+                for (const type of nutritionTypes) {
+                    const url = `/api/nutrition_recommendations?user_id=${userId}&nutrition_type=${type}&count=6`;
+                    log(`📡 API Call: ${url}`, 'info');
+
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        results[type] = data.recommendations?.length || 0;
+                        log(`✅ ${type}: ${data.recommendations?.length || 0} recommendations`, 'success');
+                    } else {
+                        results[type] = `Error: ${data.error}`;
+                        log(`❌ ${type}: ${data.error}`, 'error');
+                    }
+                }
+
+                // Display results
+                let html = '<h4>✅ Nutrition API Results:</h4>';
+                for (const [type, result] of Object.entries(results)) {
+                    if (typeof result === 'number') {
+                        html += `<div><strong>${type}:</strong> ${result} recommendations</div>`;
+                    } else {
+                        html += `<div><strong>${type}:</strong> <span style="color: red;">${result}</span></div>`;
+                    }
+                }
+                container.innerHTML = html;
+
+            } catch (error) {
+                log(`❌ Nutrition API Error: ${error.message}`, 'error');
+                container.innerHTML = `<div style="color: red;">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testMealPlansAPI() {
+            const userId = document.getElementById('userId').value;
+            const container = document.getElementById('meal-plans-content');
+
+            if (!userId) {
+                log('❌ Vui lòng chọn Customer ID trước', 'error');
+                container.innerHTML = '<div style="color: red;">❌ Vui lòng chọn Customer ID trước</div>';
+                return;
+            }
+
+            log(`🍽️ Testing Meal Plans API for Customer ${userId}...`, 'info');
+            container.innerHTML = '<div>⏳ Đang tải meal plans...</div>';
+
+            try {
+                const url = `/api/meal_plans?user_id=${userId}&days=3`;
+                log(`📡 API Call: ${url}`, 'info');
+
+                const response = await fetch(url);
+                const data = await response.json();
+
+                if (response.ok) {
+                    const planCount = data.meal_plans?.length || 0;
+                    log(`✅ Meal Plans: ${planCount} plans received`, 'success');
+
+                    let html = `<h4>✅ Meal Plans API Results: ${planCount} plans</h4>`;
+
+                    if (data.meal_plans && data.meal_plans.length > 0) {
+                        html += '<div><strong>Sample Plans:</strong></div>';
+                        data.meal_plans.slice(0, 3).forEach((plan, index) => {
+                            html += `<div style="margin: 10px 0; padding: 10px; background: #f8f9fa; border-radius: 3px; border-left: 3px solid #007bff;">
+                                <strong>📅 Plan ${index + 1}:</strong><br>
+                                ${plan.breakfast ? `<div>🌅 <strong>Sáng:</strong> ${plan.breakfast.recipe_name}</div>` : ''}
+                                ${plan.lunch ? `<div>☀️ <strong>Trưa:</strong> ${plan.lunch.recipe_name}</div>` : ''}
+                                ${plan.dinner ? `<div>🌙 <strong>Tối:</strong> ${plan.dinner.recipe_name}</div>` : ''}
+                            </div>`;
+                        });
+                    } else {
+                        html += '<div style="color: orange;">⚠️ No meal plans found</div>';
+                    }
+
+                    container.innerHTML = html;
+                } else {
+                    log(`❌ Meal Plans Error: ${data.error}`, 'error');
+                    container.innerHTML = `<div style="color: red;">❌ Error: ${data.error}</div>`;
+                }
+
+            } catch (error) {
+                log(`❌ Meal Plans API Error: ${error.message}`, 'error');
+                container.innerHTML = `<div style="color: red;">❌ Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testBothAPIs() {
+            await testNutritionAPI();
+            await testMealPlansAPI();
+        }
+
+        // Auto-select customer 50 for testing
+        document.addEventListener('DOMContentLoaded', function () {
+            log('🚀 Simple test page loaded', 'success');
+            document.getElementById('userId').value = '50';
+            log('✅ Pre-selected Customer 50 for testing', 'success');
+        });
+
+        // Add change listener to customer selection
+        document.getElementById('userId').addEventListener('change', function () {
+            const customerId = this.value;
+            if (customerId) {
+                log(`👤 Customer selected: ${customerId}`, 'info');
+            } else {
+                log('👤 Customer selection cleared', 'warning');
+            }
+        });
+    </script>
+</body>
+
+</html>

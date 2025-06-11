@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Fix Test - Load Functions</title>
+    <style>
+        body {
+            padding: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        .result {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .info {
+            background: #d1ecf1;
+            color: #0c5460;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>🔧 Quick Fix Test</h1>
+    <p>Testing if the JavaScript loading issue has been resolved.</p>
+
+    <button onclick="runQuickTest()">🚀 Run Quick Test</button>
+    <button onclick="checkMainApp()">🔍 Check Main App</button>
+    <button onclick="location.reload()">🔄 Refresh</button>
+
+    <div id="results"></div>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            results.innerHTML += `<div class="result ${type}">${message}</div>`;
+        }
+
+        function runQuickTest() {
+            document.getElementById('results').innerHTML = '';
+            log('🚀 Starting quick test...', 'info');
+
+            // Test 1: Basic API calls
+            testAPI();
+        }
+
+        async function testAPI() {
+            try {
+                log('📡 Testing nutrition API...', 'info');
+                const response1 = await fetch('/api/nutrition_recommendations?user_id=50&nutrition_type=weight-loss&count=3');
+                if (response1.ok) {
+                    const data1 = await response1.json();
+                    log(`✅ Nutrition API: OK (${data1.recommendations?.length || 0} items)`, 'success');
+                } else {
+                    throw new Error(`Nutrition API failed: ${response1.status}`);
+                }
+
+                log('📡 Testing meal plans API...', 'info');
+                const response2 = await fetch('/api/meal_plans?user_id=50&days=3');
+                if (response2.ok) {
+                    const data2 = await response2.json();
+                    log(`✅ Meal Plans API: OK (${data2.meal_plans?.length || 0} plans)`, 'success');
+                } else {
+                    throw new Error(`Meal Plans API failed: ${response2.status}`);
+                }
+
+                log('🎉 All APIs working correctly!', 'success');
+                log('💡 The loading issue should now be fixed in the main app.', 'info');
+
+            } catch (error) {
+                log(`❌ API Error: ${error.message}`, 'error');
+            }
+        }
+
+        function checkMainApp() {
+            log('🌐 Checking main app...', 'info');
+
+            // Open main app in new tab
+            const mainWindow = window.open('/', '_blank');
+
+            setTimeout(() => {
+                if (mainWindow && !mainWindow.closed) {
+                    log('✅ Main app opened. Please check if nutrition and meal plans load properly.', 'success');
+                    log('🔍 Select a customer and see if the sections load without infinite loading.', 'info');
+                } else {
+                    log('❌ Could not open main app', 'error');
+                }
+            }, 1000);
+        }
+
+        // Auto-run on load
+        setTimeout(runQuickTest, 500);
+    </script>
+</body>
+
+</html>

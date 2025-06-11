@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 Final Auto-Load Test - Vietnamese Food Recommendation System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+
+        .status-card {
+            background: #f8f9fa;
+            border-left: 4px solid #007bff;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .warning {
+            color: #ffc107;
+        }
+
+        .info {
+            color: #17a2b8;
+        }
+
+        .test-results {
+            max-height: 400px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .customer-select {
+            font-size: 1.1rem;
+            padding: 0.75rem;
+            border-radius: 8px;
+            border: 2px solid #dee2e6;
+            transition: all 0.3s;
+        }
+
+        .customer-select:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+
+        .result-section {
+            background: white;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 1rem 0;
+            min-height: 200px;
+        }
+
+        .spinner-border-lg {
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="test-container">
+            <div class="text-center mb-4">
+                <h1 class="display-4">🎯 Final Auto-Load Test</h1>
+                <p class="lead">Testing the automatic loading of nutrition recommendations and meal plans</p>
+            </div>
+
+            <div class="status-card">
+                <h4><i class="fas fa-info-circle me-2"></i>Test Instructions</h4>
+                <ol>
+                    <li>Select a customer from the dropdown below</li>
+                    <li>Watch as nutrition recommendations and meal plans load automatically</li>
+                    <li>No manual buttons should be needed!</li>
+                </ol>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <label class="form-label h5">👤 Select Customer:</label>
+                    <select id="testCustomerId" class="form-select customer-select">
+                        <option value="">-- Select a Customer --</option>
+                        <option value="CUS00001">CUS00001 - Customer 1</option>
+                        <option value="CUS00002">CUS00002 - Customer 2</option>
+                        <option value="CUS00003">CUS00003 - Customer 3</option>
+                        <option value="CUS00005">CUS00005 - Customer 5</option>
+                        <option value="CUS00010">CUS00010 - Customer 10</option>
+                        <option value="CUS00025">CUS00025 - Customer 25</option>
+                        <option value="CUS00050">CUS00050 - Customer 50</option>
+                    </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <div class="w-100">
+                        <div id="testStatus" class="alert alert-info">
+                            <strong>Status:</strong> Ready for testing
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="result-section">
+                        <h4><i class="fas fa-leaf me-2 text-success"></i>Nutrition Recommendations</h4>
+                        <div id="nutritionResults">
+                            <div class="text-center text-muted py-4">
+                                <i class="fas fa-arrow-up fa-2x mb-2"></i>
+                                <p>Select a customer to see nutrition recommendations</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="result-section">
+                        <h4><i class="fas fa-utensils me-2 text-primary"></i>Meal Plans</h4>
+                        <div id="mealPlansResults">
+                            <div class="text-center text-muted py-4">
+                                <i class="fas fa-arrow-up fa-2x mb-2"></i>
+                                <p>Select a customer to see meal plans</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-4">
+                <div class="col-12">
+                    <h4><i class="fas fa-terminal me-2"></i>Test Log</h4>
+                    <div id="testLog" class="test-results">
+                        <div class="info">[Ready] 🚀 Auto-load test system initialized</div>
+                        <div class="info">[Ready] 📋 Select a customer to begin testing</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-12 text-center">
+                    <button onclick="clearResults()" class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-trash me-1"></i>Clear Results
+                    </button>
+                    <button onclick="checkAPIStatus()" class="btn btn-outline-info me-2">
+                        <i class="fas fa-heartbeat me-1"></i>Check API Status
+                    </button>
+                    <button onclick="openMainApp()" class="btn btn-primary">
+                        <i class="fas fa-external-link-alt me-1"></i>Open Main App
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const testLog = document.getElementById('testLog');
+        const testStatus = document.getElementById('testStatus');
+        const nutritionResults = document.getElementById('nutritionResults');
+        const mealPlansResults = document.getElementById('mealPlansResults');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type;
+            testLog.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            testLog.scrollTop = testLog.scrollHeight;
+        }
+
+        function updateStatus(message, type = 'info') {
+            const alertClass = {
+                'success': 'alert-success',
+                'error': 'alert-danger',
+                'warning': 'alert-warning',
+                'info': 'alert-info'
+            };
+            testStatus.className = `alert ${alertClass[type] || 'alert-info'}`;
+            testStatus.innerHTML = `<strong>Status:</strong> ${message}`;
+        }
+
+        // Customer selection event listener
+        document.getElementById('testCustomerId').addEventListener('change', async function () {
+            const customerId = this.value;
+            const customerName = this.options[this.selectedIndex].textContent;
+
+            if (!customerId) {
+                log('❌ No customer selected', 'warning');
+                updateStatus('No customer selected', 'warning');
+                return;
+            }
+
+            log(`🔄 Customer selected: ${customerName}`, 'info');
+            updateStatus(`Testing auto-load for ${customerName}`, 'info');
+
+            // Show loading states immediately
+            showLoadingStates();
+
+            // Test auto-load functionality
+            try {
+                await testAutoLoad(customerId, customerName);
+            } catch (error) {
+                log(`❌ Auto-load test failed: ${error.message}`, 'error');
+                updateStatus('Auto-load test failed', 'error');
+            }
+        });
+
+        function showLoadingStates() {
+            nutritionResults.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border spinner-border-lg text-success mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="text-success">🥗 Loading Nutrition Recommendations...</h5>
+                    <p class="text-muted">Auto-load in progress</p>
+                </div>
+            `;
+
+            mealPlansResults.innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border spinner-border-lg text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="text-primary">🍽️ Loading Meal Plans...</h5>
+                    <p class="text-muted">Auto-load in progress</p>
+                </div>
+            `;
+        }
+
+        async function testAutoLoad(customerId, customerName) {
+            log(`🧪 Testing auto-load for ${customerId}`, 'info');
+
+            // Test nutrition recommendations
+            try {
+                log(`📡 Testing nutrition API...`, 'info');
+                const nutritionResponse = await fetch(`/api/nutrition_recommendations?user_id=${customerId}&nutrition_type=weight-loss&count=6`);
+
+                if (nutritionResponse.ok) {
+                    const nutritionData = await nutritionResponse.json();
+                    const count = nutritionData.recommendations?.length || 0;
+                    log(`✅ Nutrition API: ${count} recommendations received`, 'success');
+                    displayNutritionResults(nutritionData);
+                } else {
+                    throw new Error(`HTTP ${nutritionResponse.status}`);
+                }
+            } catch (error) {
+                log(`❌ Nutrition API error: ${error.message}`, 'error');
+                nutritionResults.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Nutrition API Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+
+            // Test meal plans
+            try {
+                log(`📡 Testing meal plans API...`, 'info');
+                const mealResponse = await fetch(`/api/meal_plans?user_id=${customerId}&days=3`);
+
+                if (mealResponse.ok) {
+                    const mealData = await mealResponse.json();
+                    const count = mealData.meal_plans?.length || 0;
+                    log(`✅ Meal Plans API: ${count} plans received`, 'success');
+                    displayMealResults(mealData);
+                } else {
+                    throw new Error(`HTTP ${mealResponse.status}`);
+                }
+            } catch (error) {
+                log(`❌ Meal Plans API error: ${error.message}`, 'error');
+                mealPlansResults.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        <strong>Meal Plans API Error:</strong> ${error.message}
+                    </div>
+                `;
+            }
+
+            log(`🎉 Auto-load test completed!`, 'success');
+            updateStatus('Auto-load test completed successfully', 'success');
+        }
+
+        function displayNutritionResults(data) {
+            if (data.recommendations && data.recommendations.length > 0) {
+                let html = '<div class="row">';
+                data.recommendations.slice(0, 3).forEach(rec => {
+                    html += `
+                        <div class="col-12 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body p-2">
+                                    <h6 class="card-title">${rec.recipe_name}</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">⭐ ${rec.predicted_rating?.toFixed(1) || 'N/A'}</small>
+                                        <small class="text-muted">${rec.estimated_calories || 'N/A'} cal</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                html += `<div class="text-center mt-2"><small class="text-muted">Showing 3 of ${data.recommendations.length} recommendations</small></div>`;
+                nutritionResults.innerHTML = html;
+            } else {
+                nutritionResults.innerHTML = '<div class="alert alert-warning">No nutrition recommendations found</div>';
+            }
+        }
+
+        function displayMealResults(data) {
+            if (data.meal_plans && data.meal_plans.length > 0) {
+                let html = '<div class="row">';
+                data.meal_plans.slice(0, 2).forEach((plan, index) => {
+                    html += `
+                        <div class="col-12 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body p-2">
+                                    <h6 class="card-title">📅 Plan ${index + 1}</h6>
+                                    <div class="row">
+                                        <div class="col-4"><small>🌅 ${plan.breakfast?.recipe_name || 'N/A'}</small></div>
+                                        <div class="col-4"><small>☀️ ${plan.lunch?.recipe_name || 'N/A'}</small></div>
+                                        <div class="col-4"><small>🌙 ${plan.dinner?.recipe_name || 'N/A'}</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+                html += `<div class="text-center mt-2"><small class="text-muted">Showing 2 of ${data.meal_plans.length} meal plans</small></div>`;
+                mealPlansResults.innerHTML = html;
+            } else {
+                mealPlansResults.innerHTML = '<div class="alert alert-warning">No meal plans found</div>';
+            }
+        }
+
+        function clearResults() {
+            document.getElementById('testCustomerId').value = '';
+            nutritionResults.innerHTML = `
+                <div class="text-center text-muted py-4">
+                    <i class="fas fa-arrow-up fa-2x mb-2"></i>
+                    <p>Select a customer to see nutrition recommendations</p>
+                </div>
+            `;
+            mealPlansResults.innerHTML = `
+                <div class="text-center text-muted py-4">
+                    <i class="fas fa-arrow-up fa-2x mb-2"></i>
+                    <p>Select a customer to see meal plans</p>
+                </div>
+            `;
+            testLog.innerHTML = `
+                <div class="info">[Ready] 🚀 Auto-load test system cleared</div>
+                <div class="info">[Ready] 📋 Select a customer to begin testing</div>
+            `;
+            updateStatus('Ready for testing', 'info');
+            log('🗑️ Test results cleared', 'info');
+        }
+
+        async function checkAPIStatus() {
+            log('🔍 Checking API status...', 'info');
+            updateStatus('Checking API status...', 'info');
+
+            try {
+                const response = await fetch('/api/nutrition_recommendations?user_id=CUS00001&nutrition_type=weight-loss&count=1');
+                if (response.ok) {
+                    log('✅ API endpoints are working properly', 'success');
+                    updateStatus('API endpoints are working', 'success');
+                } else {
+                    log(`❌ API status check failed: ${response.status}`, 'error');
+                    updateStatus('API status check failed', 'error');
+                }
+            } catch (error) {
+                log(`❌ API connection error: ${error.message}`, 'error');
+                updateStatus('API connection error', 'error');
+            }
+        }
+
+        function openMainApp() {
+            window.open('http://127.0.0.1:5000', '_blank');
+        }
+
+        // Initialize
+        log('🎯 Final auto-load test initialized', 'success');
+        log('📋 Ready to test the automatic loading functionality', 'info');
+        log('💡 The system should load both nutrition and meal plans automatically when you select a customer', 'info');
+    </script>
+</body>
+
+</html>

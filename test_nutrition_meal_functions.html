@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quick Test - Nutrition & Meal Plans</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f8f9fa;
+        }
+
+        .test-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .console-log {
+            background: #2d3748;
+            color: white;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: monospace;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .info {
+            color: #17a2b8;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🧪 Quick Test - Nutrition & Meal Plans Functions</h1>
+
+        <div class="test-card">
+            <h3>🎯 Test Controls</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <select id="testUserId" class="form-select">
+                        <option value="CUS00001">CUS00001</option>
+                        <option value="CUS00002">CUS00002</option>
+                        <option value="CUS00003">CUS00003</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="nutritionType" class="form-select">
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="balanced">Balanced</option>
+                        <option value="blood-boost">Blood Boost</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <button onclick="testAll()" class="btn btn-primary me-2">🚀 Test All</button>
+                    <button onclick="testNutritionOnly()" class="btn btn-success me-2">🥗 Test Nutrition</button>
+                    <button onclick="testMealPlansOnly()" class="btn btn-info me-2">🍽️ Test Meal Plans</button>
+                    <button onclick="clearLog()" class="btn btn-secondary">🗑️ Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="test-card">
+                    <h4>🥗 Nutrition Test Results</h4>
+                    <div id="nutritionResults">
+                        <div id="nutrition-recommendations"
+                            style="min-height: 200px; border: 1px dashed #ccc; padding: 1rem;">
+                            Nutrition content will appear here...
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="test-card">
+                    <h4>🍽️ Meal Plans Test Results</h4>
+                    <div id="mealPlansResults">
+                        <div id="meal-plans-content" style="min-height: 200px; border: 1px dashed #ccc; padding: 1rem;">
+                            Meal plans content will appear here...
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-card">
+            <h4>📊 Console Log</h4>
+            <div id="consoleLog" class="console-log">
+                Ready for testing...\n
+            </div>
+        </div>
+
+        <!-- Hidden elements to mimic main page structure -->
+        <div style="display: none;">
+            <select id="userId">
+                <option value="CUS00001">CUS00001</option>
+                <option value="CUS00002">CUS00002</option>
+                <option value="CUS00003">CUS00003</option>
+            </select>
+            <div class="nutrition-nav-item active" data-nutrition="weight-loss"></div>
+        </div>
+    </div>
+
+    <!-- Include the main script -->
+    <script src="/static/script.js"></script>
+
+    <script>
+        const consoleLog = document.getElementById('consoleLog');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = { success: '#4CAF50', error: '#F44336', info: '#2196F3', warning: '#FF9800' };
+            consoleLog.innerHTML += `<span style="color: ${colors[type] || colors.info};">[${timestamp}] ${message}</span>\n`;
+            consoleLog.scrollTop = consoleLog.scrollHeight;
+        }
+
+        function clearLog() {
+            consoleLog.innerHTML = 'Log cleared...\n';
+            document.getElementById('nutrition-recommendations').innerHTML = 'Cleared...';
+            document.getElementById('meal-plans-content').innerHTML = 'Cleared...';
+        }
+
+        async function testNutritionOnly() {
+            const userId = document.getElementById('testUserId').value;
+            const nutritionType = document.getElementById('nutritionType').value;
+
+            log(`🥗 Testing Nutrition API for ${userId} with ${nutritionType}`, 'info');
+
+            // Set the hidden userId select to match our test
+            const hiddenUserSelect = document.getElementById('userId');
+            if (hiddenUserSelect) {
+                hiddenUserSelect.value = userId;
+                log(`✅ Set hidden userId to ${userId}`, 'success');
+            }
+
+            // Set active nutrition type
+            const nutritionNavItem = document.querySelector('.nutrition-nav-item');
+            if (nutritionNavItem) {
+                nutritionNavItem.setAttribute('data-nutrition', nutritionType);
+                log(`✅ Set nutrition type to ${nutritionType}`, 'success');
+            }
+
+            try {
+                if (typeof loadNutritionRecommendations === 'function') {
+                    log('🚀 Calling loadNutritionRecommendations...', 'info');
+                    await loadNutritionRecommendations(nutritionType);
+                    log('✅ loadNutritionRecommendations completed', 'success');
+                } else {
+                    log('❌ loadNutritionRecommendations function not found', 'error');
+                }
+            } catch (error) {
+                log(`❌ Error in nutrition test: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMealPlansOnly() {
+            const userId = document.getElementById('testUserId').value;
+
+            log(`🍽️ Testing Meal Plans API for ${userId}`, 'info');
+
+            // Set the hidden userId select to match our test
+            const hiddenUserSelect = document.getElementById('userId');
+            if (hiddenUserSelect) {
+                hiddenUserSelect.value = userId;
+                log(`✅ Set hidden userId to ${userId}`, 'success');
+            }
+
+            try {
+                if (typeof loadMealPlans === 'function') {
+                    log('🚀 Calling loadMealPlans...', 'info');
+                    await loadMealPlans();
+                    log('✅ loadMealPlans completed', 'success');
+                } else {
+                    log('❌ loadMealPlans function not found', 'error');
+                }
+            } catch (error) {
+                log(`❌ Error in meal plans test: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAll() {
+            log('🎯 Starting comprehensive test...', 'info');
+
+            // Test functions availability first
+            const functions = ['loadNutritionRecommendations', 'loadMealPlans', 'displayNutritionRecommendations', 'displayMealPlans'];
+            functions.forEach(funcName => {
+                const exists = typeof window[funcName] === 'function';
+                log(`${exists ? '✅' : '❌'} Function ${funcName}: ${exists ? 'Available' : 'Missing'}`, exists ? 'success' : 'error');
+            });
+
+            // Test DOM elements
+            const elements = ['userId', 'nutrition-recommendations', 'meal-plans-content'];
+            elements.forEach(elementId => {
+                const exists = !!document.getElementById(elementId);
+                log(`${exists ? '✅' : '❌'} Element #${elementId}: ${exists ? 'Found' : 'Missing'}`, exists ? 'success' : 'error');
+            });
+
+            // Run actual tests
+            await testNutritionOnly();
+            await new Promise(resolve => setTimeout(resolve, 2000)); // Wait 2 seconds
+            await testMealPlansOnly();
+
+            log('🎉 Comprehensive test completed!', 'success');
+        }
+
+        // Auto-run test when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            log('🚀 Test page loaded', 'success');
+            log('💡 Click "Test All" to start comprehensive testing', 'info');
+
+            // Auto-set userId
+            setTimeout(() => {
+                document.getElementById('testUserId').value = 'CUS00003';
+                log('🎯 Auto-selected CUS00003 for testing', 'info');
+            }, 500);
+        });
+    </script>
+</body>
+
+</html>

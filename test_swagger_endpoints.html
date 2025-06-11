@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Swagger API Endpoints</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .test-card {
+            border: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .test-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .method-badge {
+            border-radius: 20px;
+            padding: 0.25rem 0.75rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            background: #28a745;
+            color: white;
+        }
+
+        .response-area {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .loading {
+            display: none;
+            color: #007bff;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 3rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4 fw-bold mb-3">
+                    <i class="fas fa-flask me-3"></i>
+                    API Endpoint Tester
+                </h1>
+                <p class="lead">
+                    Test các API endpoints của Vietnamese Food Recommendation System
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <!-- Quick Settings -->
+        <div class="row mb-4">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5><i class="fas fa-cog me-2"></i>Cài đặt chung</h5>
+                        <div class="mb-3">
+                            <label class="form-label">User ID mặc định:</label>
+                            <select class="form-select" id="defaultUserId">
+                                <option value="12345">12345</option>
+                                <option value="67890">67890</option>
+                                <option value="11111">11111</option>
+                                <option value="99999">99999</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Base URL:</label>
+                            <input type="text" class="form-control" id="baseUrl" value="http://localhost:5000/api">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5><i class="fas fa-link me-2"></i>Liên kết nhanh</h5>
+                        <div class="d-grid gap-2">
+                            <a href="http://localhost:5000/swagger/" target="_blank" class="btn btn-primary">
+                                <i class="fas fa-external-link-alt me-2"></i>Swagger UI
+                            </a>
+                            <a href="http://localhost:5000/api-docs" target="_blank" class="btn btn-info">
+                                <i class="fas fa-book me-2"></i>API Documentation
+                            </a>
+                            <a href="http://localhost:5000/" target="_blank" class="btn btn-success">
+                                <i class="fas fa-home me-2"></i>Main App
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- API Tests -->
+        <div class="row">
+            <!-- Upsell Combos Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-utensils me-2"></i>Upsell Combos
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Item ID:</label>
+                            <input type="text" class="form-control" id="itemId" value="54">
+                        </div>
+                        <button class="btn btn-primary" onclick="testUpsellCombos()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading1">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response1">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Upsell Sides Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-hamburger me-2"></i>Upsell Sides
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Main Dish ID:</label>
+                            <input type="text" class="form-control" id="mainDishId" value="54">
+                        </div>
+                        <button class="btn btn-primary" onclick="testUpsellSides()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading2">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response2">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Family Combos Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-users me-2"></i>Family Combos
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Family Size:</label>
+                            <select class="form-select" id="familySize">
+                                <option value="2">2 người</option>
+                                <option value="4" selected>4 người</option>
+                                <option value="6">6 người</option>
+                                <option value="8">8 người</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="testFamilyCombos()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading3">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response3">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Age-based Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-birthday-cake me-2"></i>Age-based
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Age Group:</label>
+                            <select class="form-select" id="ageGroup">
+                                <option value="children">Trẻ em</option>
+                                <option value="teenagers">Thanh thiếu niên</option>
+                                <option value="adults" selected>Người lớn</option>
+                                <option value="elderly">Người cao tuổi</option>
+                            </select>
+                        </div>
+                        <button class="btn btn-primary" onclick="testAgeBasedRecommendations()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading4">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response4">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meal Recommendations Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-clock me-2"></i>Meal Recommendations
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Meal Type:</label>
+                            <select class="form-select" id="mealType">
+                                <option value="breakfast">Bữa sáng</option>
+                                <option value="lunch" selected>Bữa trưa</option>
+                                <option value="dinner">Bữa tối</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Count:</label>
+                            <input type="number" class="form-control" id="mealCount" value="6" min="1" max="20">
+                        </div>
+                        <button class="btn btn-primary" onclick="testMealRecommendations()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading5">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response5">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Meal Plans Test -->
+            <div class="col-lg-6 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-calendar-alt me-2"></i>Meal Plans
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-muted">Lấy 6 thực đơn hoàn chỉnh cho khách hàng</p>
+                        <button class="btn btn-primary" onclick="testMealPlans()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading6">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response6">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nutrition Recommendations Test -->
+            <div class="col-lg-12 mb-4">
+                <div class="card test-card">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <h5 class="mb-0">
+                            <i class="fas fa-heart me-2"></i>Nutrition Recommendations
+                        </h5>
+                        <span class="method-badge">GET</span>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Nutrition Type:</label>
+                                <select class="form-select" id="nutritionType">
+                                    <option value="weight-loss">Giảm cân</option>
+                                    <option value="balanced" selected>Cân bằng dinh dưỡng</option>
+                                    <option value="blood-boost">Bổ máu</option>
+                                    <option value="brain-boost">Tăng cường trí não</option>
+                                    <option value="digestive-support">Hỗ trợ tiêu hóa</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Count:</label>
+                                <input type="number" class="form-control" id="nutritionCount" value="6" min="1"
+                                    max="20">
+                            </div>
+                        </div>
+                        <button class="btn btn-primary" onclick="testNutritionRecommendations()">
+                            <i class="fas fa-play me-2"></i>Test API
+                            <span class="loading" id="loading7">
+                                <i class="fas fa-spinner fa-spin ms-2"></i>
+                            </span>
+                        </button>
+                        <div class="mt-3">
+                            <h6>Response:</h6>
+                            <pre class="response-area" id="response7">Chưa có dữ liệu...</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test All Button -->
+        <div class="text-center mb-4">
+            <button class="btn btn-success btn-lg" onclick="testAllEndpoints()">
+                <i class="fas fa-rocket me-2"></i>Test All Endpoints
+                <span class="loading" id="loadingAll">
+                    <i class="fas fa-spinner fa-spin ms-2"></i>
+                </span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">
+                <i class="fas fa-flask me-2"></i>
+                API Endpoint Tester - Vietnamese Food Recommendation System
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Utility functions
+        function getBaseUrl() {
+            return document.getElementById('baseUrl').value;
+        }
+
+        function getDefaultUserId() {
+            return document.getElementById('defaultUserId').value;
+        }
+
+        function showLoading(loadingId) {
+            document.getElementById(loadingId).style.display = 'inline';
+        }
+
+        function hideLoading(loadingId) {
+            document.getElementById(loadingId).style.display = 'none';
+        }
+
+        function displayResponse(responseId, data, isError = false) {
+            const responseElement = document.getElementById(responseId);
+            responseElement.textContent = JSON.stringify(data, null, 2);
+            responseElement.className = `response-area ${isError ? 'error' : 'success'}`;
+        }
+
+        // API Test Functions
+        async function testUpsellCombos() {
+            showLoading('loading1');
+            try {
+                const userId = getDefaultUserId();
+                const itemId = document.getElementById('itemId').value;
+                const url = `${getBaseUrl()}/upsell_combos?user_id=${userId}&item_id=${itemId}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response1', data, !response.ok);
+            } catch (error) {
+                displayResponse('response1', { error: error.message }, true);
+            }
+            hideLoading('loading1');
+        }
+
+        async function testUpsellSides() {
+            showLoading('loading2');
+            try {
+                const userId = getDefaultUserId();
+                const mainDishId = document.getElementById('mainDishId').value;
+                const url = `${getBaseUrl()}/upsell_sides?user_id=${userId}&main_dish_id=${mainDishId}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response2', data, !response.ok);
+            } catch (error) {
+                displayResponse('response2', { error: error.message }, true);
+            }
+            hideLoading('loading2');
+        }
+
+        async function testFamilyCombos() {
+            showLoading('loading3');
+            try {
+                const userId = getDefaultUserId();
+                const familySize = document.getElementById('familySize').value;
+                const url = `${getBaseUrl()}/family_combos?user_id=${userId}&family_size=${familySize}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response3', data, !response.ok);
+            } catch (error) {
+                displayResponse('response3', { error: error.message }, true);
+            }
+            hideLoading('loading3');
+        }
+
+        async function testAgeBasedRecommendations() {
+            showLoading('loading4');
+            try {
+                const userId = getDefaultUserId();
+                const ageGroup = document.getElementById('ageGroup').value;
+                const url = `${getBaseUrl()}/age_based_recommendations?user_id=${userId}&age_group=${ageGroup}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response4', data, !response.ok);
+            } catch (error) {
+                displayResponse('response4', { error: error.message }, true);
+            }
+            hideLoading('loading4');
+        }
+
+        async function testMealRecommendations() {
+            showLoading('loading5');
+            try {
+                const userId = getDefaultUserId();
+                const mealType = document.getElementById('mealType').value;
+                const count = document.getElementById('mealCount').value;
+                const url = `${getBaseUrl()}/meal_recommendations?user_id=${userId}&meal_type=${mealType}&count=${count}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response5', data, !response.ok);
+            } catch (error) {
+                displayResponse('response5', { error: error.message }, true);
+            }
+            hideLoading('loading5');
+        }
+
+        async function testMealPlans() {
+            showLoading('loading6');
+            try {
+                const userId = getDefaultUserId();
+                const url = `${getBaseUrl()}/meal_plans?user_id=${userId}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response6', data, !response.ok);
+            } catch (error) {
+                displayResponse('response6', { error: error.message }, true);
+            }
+            hideLoading('loading6');
+        }
+
+        async function testNutritionRecommendations() {
+            showLoading('loading7');
+            try {
+                const userId = getDefaultUserId();
+                const nutritionType = document.getElementById('nutritionType').value;
+                const count = document.getElementById('nutritionCount').value;
+                const url = `${getBaseUrl()}/nutrition_recommendations?user_id=${userId}&nutrition_type=${nutritionType}&count=${count}`;
+
+                const response = await fetch(url);
+                const data = await response.json();
+                displayResponse('response7', data, !response.ok);
+            } catch (error) {
+                displayResponse('response7', { error: error.message }, true);
+            }
+            hideLoading('loading7');
+        }
+
+        async function testAllEndpoints() {
+            showLoading('loadingAll');
+
+            // Test all endpoints sequentially
+            await testUpsellCombos();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testUpsellSides();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testFamilyCombos();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testAgeBasedRecommendations();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testMealRecommendations();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testMealPlans();
+            await new Promise(resolve => setTimeout(resolve, 500));
+
+            await testNutritionRecommendations();
+
+            hideLoading('loadingAll');
+
+            // Show success notification
+            alert('✅ Đã test xong tất cả API endpoints! Kiểm tra kết quả ở các card phía trên.');
+        }
+
+        // Initialize page
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🚀 API Endpoint Tester loaded successfully!');
+            console.log('📚 Swagger UI: http://localhost:5000/swagger/');
+            console.log('📄 API Docs: http://localhost:5000/api-docs');
+        });
+    </script>
+</body>
+
+</html>

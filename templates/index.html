@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hệ thống gợi ý món ăn thông minh</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="static/style.css">
+</head>
+
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg fixed-top" id="mainNavbar">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-utensils me-2"></i>
+                <span>Hệ thống gợi ý món ăn</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#home">
+                            <i class="fas fa-home me-1"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#recommendations">
+                            <i class="fas fa-utensils me-1"></i>Gợi ý món ăn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#nutrition">
+                            <i class="fas fa-leaf me-1"></i>Dinh dưỡng
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#meal-plans">
+                            <i class="fas fa-calendar-alt me-1"></i>Thực đơn
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#results">
+                            <i class="fas fa-chart-bar me-1"></i>Kết quả
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="home">
+        <div class="hero-background">
+            <div class="hero-overlay"></div>
+        </div>
+        <div class="container">
+            <div class="row align-items-center min-vh-100">
+                <div class="col-lg-6">
+                    <div class="hero-content">
+                        <h1 class="hero-title">
+                            Khám phá món ăn <span class="text-gradient">hoàn hảo</span> cho bạn
+                        </h1>
+                        <p class="hero-subtitle">
+                            Hệ thống AI thông minh giúp bạn tìm kiếm những món ăn phù hợp nhất
+                            dựa trên sở thích và nhu cầu dinh dưỡng của bạn
+                        </p>
+                        <div class="hero-buttons">
+                            <a href="#recommendations" class="btn btn-primary btn-lg me-3">
+                                <i class="fas fa-rocket me-2"></i>Bắt đầu ngay
+                            </a>
+                            <a href="#nutrition" class="btn btn-outline-light btn-lg">
+                                <i class="fas fa-play me-2"></i>Tìm hiểu thêm
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="hero-image">
+                        <div class="floating-card">
+                            <i class="fas fa-utensils"></i>
+                            <h4>1000+ Món ăn</h4>
+                            <p>Đa dạng và phong phú</p>
+                        </div>
+                        <div class="floating-card delay-1">
+                            <i class="fas fa-brain"></i>
+                            <h4>AI Thông minh</h4>
+                            <p>Gợi ý chính xác 95%</p>
+                        </div>
+                        <div class="floating-card delay-2">
+                            <i class="fas fa-users"></i>
+                            <h4>10k+ Người dùng</h4>
+                            <p>Tin tưởng sử dụng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <a href="#recommendations">
+                <i class="fas fa-chevron-down"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Recommendations Section -->
+    <section class="recommendations-section py-5" id="recommendations">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h2 class="section-title">
+                        <i class="fas fa-magic me-3"></i>Tìm món ăn hoàn hảo
+                    </h2>
+                    <p class="section-subtitle">
+                        Hãy để AI giúp bạn khám phá những món ăn tuyệt vời
+                    </p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="recommendation-card">
+                        <div class="card-header">
+                            <h3><i class="fas fa-robot me-2"></i>Tùy chọn gợi ý thông minh</h3>
+                        </div>
+                        <div class="card-body">
+                            <form id="recommendationForm">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="userId" class="form-label">
+                                            <i class="fas fa-user me-2"></i>Chọn khách hàng
+                                        </label>
+                                        <div class="customer-select-wrapper"> <select class="form-select modern-select"
+                                                id="userId" required>
+                                                <option value="">-- Chọn ID khách hàng --</option>
+                                                {% for customer_id in customer_ids %}
+                                                <option value="{{ customer_id }}">{{ customer_id }} - Khách hàng {{
+                                                    customer_id }}</option>
+                                                {% endfor %}
+                                            </select>
+
+                                            <!-- Enhanced Search Box -->
+                                            <div class="customer-search-box" id="customerSearchBox">
+                                                <input type="text" class="form-control" id="customerSearch"
+                                                    placeholder="Tìm kiếm theo ID hoặc tên khách hàng...">
+                                                <i class="fas fa-search search-icon"></i>
+                                                <div class="search-results" id="searchResults"></div>
+                                            </div>
+
+                                            <!-- Quick Selection Buttons -->
+                                            <div class="quick-customer-selection">
+                                                <button type="button" class="quick-customer-btn" id="randomCustomer">
+                                                    <i class="fas fa-random me-1"></i>Ngẫu nhiên
+                                                </button>
+                                                <button type="button" class="quick-customer-btn" id="firstCustomer">
+                                                    <i class="fas fa-user me-1"></i>Khách đầu tiên
+                                                </button>
+                                                <button type="button" class="quick-customer-btn" id="vipCustomer">
+                                                    <i class="fas fa-crown me-1"></i>VIP
+                                                </button>
+                                                <button type="button" class="quick-customer-btn" id="toggleSearch">
+                                                    <i class="fas fa-search me-1"></i>Tìm kiếm
+                                                </button>
+                                            </div>
+
+                                            <!-- Customer Info Display -->
+                                            <div class="customer-info" id="customerInfo">
+                                                <i class="fas fa-info-circle me-2"></i>
+                                                <span class="info-text">Chọn khách hàng để xem thông tin</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="recommendationType" class="form-label">
+                                            <i class="fas fa-list me-2"></i>Loại gợi ý
+                                        </label>
+                                        <select class="form-select modern-select" id="recommendationType" required>
+                                            <option value="">-- Chọn loại gợi ý --</option>
+                                            <option value="upsell_combos">🍱 Combo món ăn</option>
+                                            <option value="upsell_sides">🥗 Món phụ</option>
+                                            <option value="family_combos">👨‍👩‍👧‍👦 Combo gia đình</option>
+                                            <option value="age_based">🎂 Theo độ tuổi</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- Additional Options -->
+                                <div class="additional-options">
+                                    <div class="mb-3 d-none fade-in" id="itemIdOption">
+                                        <label for="itemId" class="form-label">
+                                            <i class="fas fa-hamburger me-2"></i>ID món chính
+                                        </label>
+                                        <input type="text" class="form-control modern-input" id="itemId" value="54"
+                                            placeholder="Nhập ID món chính">
+                                    </div>
+                                    <div class="mb-3 d-none fade-in" id="mainDishIdOption">
+                                        <label for="mainDishId" class="form-label">
+                                            <i class="fas fa-drumstick-bite me-2"></i>ID món chính
+                                        </label>
+                                        <input type="text" class="form-control modern-input" id="mainDishId" value="54"
+                                            placeholder="Nhập ID món chính">
+                                    </div>
+                                    <div class="mb-3 d-none fade-in" id="familySizeOption">
+                                        <label for="familySize" class="form-label">
+                                            <i class="fas fa-users me-2"></i>Số người trong gia đình
+                                        </label>
+                                        <div class="input-group">
+                                            <input type="number" class="form-control modern-input" id="familySize"
+                                                value="4" min="1" max="10">
+                                            <span class="input-group-text">người</span>
+                                        </div>
+                                    </div>
+                                    <div class="mb-3 d-none fade-in" id="ageGroupOption">
+                                        <label for="ageGroup" class="form-label">
+                                            <i class="fas fa-birthday-cake me-2"></i>Nhóm tuổi
+                                        </label>
+                                        <select class="form-select modern-select" id="ageGroup">
+                                            <option value="children">👶 Trẻ em (3-12 tuổi)</option>
+                                            <option value="teenagers">🧒 Thanh thiếu niên (13-19 tuổi)</option>
+                                            <option value="adults">👨 Người lớn (20-59 tuổi)</option>
+                                            <option value="elderly">👴 Người cao tuổi (60+ tuổi)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="text-center mt-4">
+                                    <button type="submit" class="btn btn-primary btn-lg modern-btn">
+                                        <i class="fas fa-search me-2"></i>
+                                        <span>Tìm món ăn phù hợp</span>
+                                        <div class="btn-shimmer"></div>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div class="container">
+            <div class="row" id="recommendationResults">
+                <!-- Kết quả sẽ được hiển thị ở đây -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Thanh điều hướng nhu cầu dinh dưỡng -->
+    <div class="nutrition-nav-section mb-4" id="nutrition">
+        <div class="col-12 mb-3">
+            <h2 class="text-center">🥗 Gợi ý theo nhu cầu dinh dưỡng</h2>
+        </div>
+        <div class="nutrition-nav-container">
+            <div class="nutrition-brand">
+                <span class="brand-icon">▼</span>
+                <span class="brand-text">Nhu Cầu Dinh Dưỡng:</span>
+            </div>
+            <div class="nutrition-nav-items">
+                <button class="nutrition-nav-item active" data-nutrition="weight-loss">
+                    Giảm khối mỡ thừa của cơ thể
+                </button>
+                <button class="nutrition-nav-item" data-nutrition="balanced">
+                    Thực đơn cân bằng dinh dưỡng
+                </button>
+                <button class="nutrition-nav-item" data-nutrition="blood-boost">
+                    Bổ máu
+                </button>
+                <button class="nutrition-nav-item" data-nutrition="brain-boost">
+                    Giúp làm việc trí não hiệu quả
+                </button>
+                <button class="nutrition-nav-item" data-nutrition="digestive-support">
+                    Hỗ trợ hệ tiêu hóa - thận - tim mạch
+                </button>
+            </div>
+            <div class="nutrition-nav-arrow">
+                <button class="nav-arrow">›</button>
+            </div>
+        </div>
+    </div> <!-- Phần hiển thị gợi ý dinh dưỡng -->
+    <div class="nutrition-recommendations-section" id="nutrition-recommendations">
+        <div class="text-center py-4">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Đang tải...</span>
+            </div>
+            <p>Đang tải gợi ý dinh dưỡng...</p>
+        </div>
+    </div> <!-- Debug Panel for Testing (Remove in production) -->
+    <div class="debug-panel"
+        style="position: fixed; top: 10px; right: 10px; background: white; padding: 10px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); z-index: 1050; display: none;"
+        id="debugPanel">
+        <h6>🧪 Debug Panel</h6>
+        <button onclick="debugCustomerSelection()" class="btn btn-sm btn-info mb-1">Debug Customer</button><br>
+        <button onclick="forceReloadNutritionAndMealPlans()" class="btn btn-sm btn-success mb-1">Force
+            Reload</button><br>
+        <button onclick="testAPICalls()" class="btn btn-sm btn-warning mb-1">Test APIs</button><br>
+        <button onclick="document.getElementById('debugPanel').style.display='none'"
+            class="btn btn-sm btn-secondary">Hide</button>
+    </div>
+
+    <!-- Debug Toggle Button - Hidden by default -->
+    <button onclick="document.getElementById('debugPanel').style.display='block'"
+        style="position: fixed; top: 10px; right: 10px; z-index: 1049; background: #007bff; color: white; border: none; padding: 5px 8px; border-radius: 4px; font-size: 12px; display: none;"
+        id="debugToggle" title="Show Debug Panel">🐛</button>
+
+    <!-- Show debug button on triple-click anywhere -->
+    <script>
+        let clickCount = 0;
+        document.addEventListener('click', function () {
+            clickCount++;
+            if (clickCount === 3) {
+                document.getElementById('debugToggle').style.display = 'block';
+                setTimeout(() => clickCount = 0, 2000);
+            }
+            setTimeout(() => clickCount = 0, 1000);
+        });
+    </script><!-- Phần gợi ý thực đơn theo bữa -->
+    <div class="meal-plan-section my-5" id="meal-plans">
+        <h2 class="text-center mb-4">📅 Gợi ý thực đơn theo bữa</h2>
+        <div class="meal-plans-row" id="meal-plans-container">
+            <!-- Cột thời gian bữa ăn -->
+            <div class="meal-times">
+                <div class="meal-time-label">Sáng</div>
+                <div class="meal-time-label">Trưa</div>
+                <div class="meal-time-label">Tối</div>
+            </div>
+
+            <!-- Các cột thực đơn sẽ được load bằng JavaScript -->
+            <div id="meal-plans-content">
+                <div class="text-center py-4">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Đang tải...</span>
+                    </div>
+                    <p>Đang tải thực đơn gợi ý...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Modern Footer -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-brand">
+                        <i class="fas fa-utensils me-2"></i>
+                        <span>Hệ thống gợi ý món ăn</span>
+                    </div>
+                    <p class="footer-description">
+                        Khám phá hương vị mới mỗi ngày với sự hỗ trợ của AI thông minh.
+                        Chúng tôi giúp bạn tìm kiếm những món ăn hoàn hảo nhất.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Tính năng</h5>
+                    <ul class="footer-links">
+                        <li><a href="#recommendations">Gợi ý món ăn</a></li>
+                        <li><a href="#nutrition">Dinh dưỡng</a></li>
+                        <li><a href="#meal-plans">Thực đơn</a></li>
+                        <li><a href="#results">Kết quả</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-title">Hỗ trợ</h5>
+                    <ul class="footer-links">
+                        <li><a href="#" onclick="showKeyboardShortcuts()">Phím tắt</a></li>
+                        <li><a href="#">Hướng dẫn</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Liên hệ</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <h5 class="footer-title">Thống kê hệ thống</h5>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <div class="stat-number">1000+</div>
+                            <div class="stat-label">Món ăn</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">10k+</div>
+                            <div class="stat-label">Người dùng</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-label">Độ chính xác</div>
+                        </div>
+                        <div class="stat-item">
+                            <div class="stat-number">24/7</div>
+                            <div class="stat-label">Hoạt động</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr class="footer-divider">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <p class="copyright">
+                        © 2025 Hệ thống gợi ý món ăn.
+                    </p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="footer-actions">
+                        <button onclick="scrollToTop()" class="footer-btn">
+                            <i class="fas fa-arrow-up me-1"></i>Lên đầu trang
+                        </button>
+                        <span class="footer-version">v2.0</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="static/script.js"></script>
+</body>
+
+</html>

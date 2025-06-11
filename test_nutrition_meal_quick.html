@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Nutrition & Meal Plans Quick</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-area {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #dee2e6;
+        }
+
+        .success {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .error {
+            color: #dc3545;
+            font-weight: bold;
+        }
+
+        .info {
+            color: #17a2b8;
+        }
+
+        .warning {
+            color: #ffc107;
+            font-weight: bold;
+        }
+
+        .test-sections {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .test-section {
+            border: 2px solid #dee2e6;
+            border-radius: 10px;
+            padding: 1rem;
+        }
+
+        .test-section h5 {
+            margin-bottom: 1rem;
+            color: #495057;
+        }
+
+        .result-container {
+            min-height: 200px;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 1rem;
+            background: #f8f9fa;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h2><i class="fas fa-vial"></i> Test Nutrition & Meal Plans - Quick Check</h2>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <label for="testUserId" class="form-label">User ID để test</label>
+                <select class="form-select" id="testUserId">
+                    <option value="">-- Chọn User ID --</option>
+                    <option value="1">User ID: 1</option>
+                    <option value="2">User ID: 2</option>
+                    <option value="50">User ID: 50</option>
+                    <option value="100">User ID: 100</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="nutritionType" class="form-label">Nutrition Type</label>
+                <select class="form-select" id="nutritionType">
+                    <option value="weight-loss">Weight Loss</option>
+                    <option value="balanced">Balanced</option>
+                    <option value="blood-boost">Blood Boost</option>
+                    <option value="brain-boost">Brain Boost</option>
+                </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button class="btn btn-primary w-100" onclick="runQuickTest()">
+                    <i class="fas fa-play"></i> Run Quick Test
+                </button>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <button class="btn btn-success w-100" onclick="testNutritionAPI()">
+                    <i class="fas fa-leaf"></i> Test Nutrition API
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-info w-100" onclick="testMealPlansAPI()">
+                    <i class="fas fa-utensils"></i> Test Meal Plans API
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-warning w-100" onclick="checkContainersExist()">
+                    <i class="fas fa-search"></i> Check Containers
+                </button>
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-danger w-100" onclick="clearLog()">
+                    <i class="fas fa-trash"></i> Clear Log
+                </button>
+            </div>
+        </div>
+
+        <div class="test-sections">
+            <div class="test-section">
+                <h5><i class="fas fa-leaf me-2"></i>Nutrition Results</h5>
+                <div id="nutritionResults" class="result-container">
+                    Waiting for test...
+                </div>
+            </div>
+
+            <div class="test-section">
+                <h5><i class="fas fa-utensils me-2"></i>Meal Plans Results</h5>
+                <div id="mealPlansResults" class="result-container">
+                    Waiting for test...
+                </div>
+            </div>
+        </div>
+
+        <div id="logArea" class="log-area">
+            Test log ready...\n
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let logArea = document.getElementById('logArea');
+        let nutritionResults = document.getElementById('nutritionResults');
+        let mealPlansResults = document.getElementById('mealPlansResults');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            logArea.innerHTML += `<span class="${type}">[${timestamp}] ${message}</span>\n`;
+            logArea.scrollTop = logArea.scrollHeight;
+        }
+
+        function clearLog() {
+            logArea.innerHTML = 'Log cleared...\n';
+            nutritionResults.innerHTML = 'Cleared...';
+            mealPlansResults.innerHTML = 'Cleared...';
+        }
+
+        async function testNutritionAPI() {
+            const userId = document.getElementById('testUserId').value;
+            const nutritionType = document.getElementById('nutritionType').value;
+
+            if (!userId) {
+                log('❌ Please select a User ID first', 'error');
+                return;
+            }
+
+            log(`🥗 Testing Nutrition API - User: ${userId}, Type: ${nutritionType}`, 'info');
+            nutritionResults.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+
+            try {
+                const apiUrl = `/api/nutrition_recommendations?user_id=${userId}&nutrition_type=${nutritionType}&count=6`;
+                log(`📡 API URL: ${apiUrl}`, 'info');
+
+                const response = await fetch(apiUrl);
+                log(`📡 Response status: ${response.status}`, response.ok ? 'success' : 'error');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                log(`✅ Nutrition data received: ${data.recommendations?.length || 0} items`, 'success');
+
+                // Display results
+                if (data.recommendations && data.recommendations.length > 0) {
+                    nutritionResults.innerHTML = data.recommendations.map(rec => `
+                        <div style="border: 1px solid #dee2e6; border-radius: 5px; padding: 0.5rem; margin-bottom: 0.5rem;">
+                            <strong>${rec.recipe_name}</strong><br>
+                            <small>Rating: ${rec.predicted_rating?.toFixed(1) || 'N/A'}</small><br>
+                            <small>Difficulty: ${rec.difficulty || 'N/A'}</small>
+                        </div>
+                    `).join('');
+                } else {
+                    nutritionResults.innerHTML = '<div class="text-muted">No recommendations found</div>';
+                }
+
+            } catch (error) {
+                log(`❌ Nutrition API Error: ${error.message}`, 'error');
+                nutritionResults.innerHTML = `<div class="text-danger">Error: ${error.message}</div>`;
+            }
+        }
+
+        async function testMealPlansAPI() {
+            const userId = document.getElementById('testUserId').value;
+
+            if (!userId) {
+                log('❌ Please select a User ID first', 'error');
+                return;
+            }
+
+            log(`🍽️ Testing Meal Plans API - User: ${userId}`, 'info');
+            mealPlansResults.innerHTML = '<div class="text-center"><i class="fas fa-spinner fa-spin"></i> Loading...</div>';
+
+            try {
+                const apiUrl = `/api/meal_plans?user_id=${userId}&days=3`;
+                log(`📡 API URL: ${apiUrl}`, 'info');
+
+                const response = await fetch(apiUrl);
+                log(`📡 Response status: ${response.status}`, response.ok ? 'success' : 'error');
+
+                if (!response.ok) {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+
+                const data = await response.json();
+                log(`✅ Meal plans data received: ${data.meal_plans?.length || 0} plans`, 'success');
+
+                // Display results
+                if (data.meal_plans && data.meal_plans.length > 0) {
+                    mealPlansResults.innerHTML = data.meal_plans.map((plan, index) => `
+                        <div style="border: 1px solid #dee2e6; border-radius: 5px; padding: 0.5rem; margin-bottom: 0.5rem;">
+                            <strong>Plan ${index + 1}</strong><br>
+                            ${plan.breakfast ? `<small>🌅 ${plan.breakfast.recipe_name}</small><br>` : ''}
+                            ${plan.lunch ? `<small>☀️ ${plan.lunch.recipe_name}</small><br>` : ''}
+                            ${plan.dinner ? `<small>🌙 ${plan.dinner.recipe_name}</small><br>` : ''}
+                        </div>
+                    `).join('');
+                } else {
+                    mealPlansResults.innerHTML = '<div class="text-muted">No meal plans found</div>';
+                }
+
+            } catch (error) {
+                log(`❌ Meal Plans API Error: ${error.message}`, 'error');
+                mealPlansResults.innerHTML = `<div class="text-danger">Error: ${error.message}</div>`;
+            }
+        }
+
+        function checkContainersExist() {
+            log('🔍 Checking if containers exist on main page...', 'info');
+
+            // Try to access parent window or open new window to check
+            try {
+                // Method 1: Check if we can access main page elements
+                if (window.opener && !window.opener.closed) {
+                    const nutritionContainer = window.opener.document.getElementById('nutrition-recommendations');
+                    const mealPlansContainer = window.opener.document.getElementById('meal-plans-content');
+
+                    log(`Nutrition container exists: ${!!nutritionContainer}`, nutritionContainer ? 'success' : 'error');
+                    log(`Meal plans container exists: ${!!mealPlansContainer}`, mealPlansContainer ? 'success' : 'error');
+
+                    if (nutritionContainer) {
+                        log(`Nutrition container HTML length: ${nutritionContainer.innerHTML.length}`, 'info');
+                    }
+                    if (mealPlansContainer) {
+                        log(`Meal plans container HTML length: ${mealPlansContainer.innerHTML.length}`, 'info');
+                    }
+                } else {
+                    log('❌ Cannot access main page - open this in a popup from main page', 'warning');
+                }
+            } catch (error) {
+                log(`❌ Error checking containers: ${error.message}`, 'error');
+            }
+        }
+
+        async function runQuickTest() {
+            log('🚀 Running quick test for both APIs...', 'info');
+            await testNutritionAPI();
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Wait 1 second
+            await testMealPlansAPI();
+            log('✅ Quick test completed!', 'success');
+        }
+
+        // Auto-select user ID 50 for quick testing
+        document.addEventListener('DOMContentLoaded', function () {
+            document.getElementById('testUserId').value = '50';
+            log('✅ Test page loaded - User ID 50 pre-selected', 'success');
+        });
+    </script>
+</body>
+
+</html>

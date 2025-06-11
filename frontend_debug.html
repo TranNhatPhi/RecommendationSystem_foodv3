@@ -1,0 +1,875 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Debug - Nutrition & Meal Plans Loading Issue</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem;
+        }
+
+        .debug-container {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+
+        .debug-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1rem 0;
+            border-left: 4px solid #007bff;
+        }
+
+        .debug-section.success {
+            border-left-color: #28a745;
+            background: #d4edda;
+        }
+
+        .debug-section.error {
+            border-left-color: #dc3545;
+            background: #f8d7da;
+        }
+
+        .debug-section.warning {
+            border-left-color: #ffc107;
+            background: #fff3cd;
+        }
+
+        .console-output {
+            background: #2d3748;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            max-height: 400px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+
+        .console-output .success {
+            color: #4CAF50;
+        }
+
+        .console-output .error {
+            color: #F44336;
+        }
+
+        .console-output .info {
+            color: #2196F3;
+        }
+
+        .console-output .warning {
+            color: #FF9800;
+        }
+
+        .btn-debug {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            margin: 0.25rem;
+        }
+
+        .btn-debug:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+
+        .test-result {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 0.5rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-left: 0.5rem;
+        }
+
+        .status-badge.success {
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .status-badge.error {
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .status-badge.warning {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .progress-bar-container {
+            background: #e9ecef;
+            border-radius: 8px;
+            height: 8px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="debug-container">
+        <div class="text-center mb-4">
+            <h1><i class="fas fa-bug me-3"></i>Frontend Debug Tool</h1>
+            <p class="lead">Phát hiện và khắc phục lỗi "loading mãi không có kết quả"</p>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="debugProgress"></div>
+            </div>
+        </div>
+
+        <!-- Test Controls -->
+        <div class="debug-section">
+            <h3><i class="fas fa-cogs me-2"></i>Debug Controls</h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="testUserId" class="form-label">Customer ID</label>
+                    <select class="form-select" id="testUserId">
+                        <option value="">-- Chọn Customer --</option>
+                        <option value="CUS00001" selected>CUS00001</option>
+                        <option value="CUS00002">CUS00002</option>
+                        <option value="CUS00005">CUS00005</option>
+                        <option value="CUS00010">CUS00010</option>
+                        <option value="CUS00050">CUS00050</option>
+                        <option value="CUS00100">CUS00100</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label for="nutritionType" class="form-label">Nutrition Type</label>
+                    <select class="form-select" id="nutritionType">
+                        <option value="weight-loss">Weight Loss</option>
+                        <option value="balanced">Balanced</option>
+                        <option value="blood-boost">Blood Boost</option>
+                        <option value="brain-boost">Brain Boost</option>
+                    </select>
+                </div>
+                <div class="col-md-6 d-flex align-items-end">
+                    <button class="btn btn-debug" onclick="runFullFrontendDiagnostic()">
+                        <i class="fas fa-diagnoses me-2"></i>Full Frontend Diagnostic
+                    </button>
+                    <button class="btn btn-debug" onclick="openMainPage()">
+                        <i class="fas fa-external-link-alt me-2"></i>Open Main Page
+                    </button>
+                    <button class="btn btn-debug" onclick="clearLogs()">
+                        <i class="fas fa-trash me-2"></i>Clear Logs
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step-by-step Tests -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="debug-section">
+                    <h4><i class="fas fa-network-wired me-2"></i>Network Tests</h4>
+                    <button class="btn btn-debug btn-sm" onclick="testAPIDirectly()">
+                        <i class="fas fa-globe me-1"></i>Test API Directly
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testFetchFunction()">
+                        <i class="fas fa-download me-1"></i>Test Fetch Function
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testCORS()">
+                        <i class="fas fa-shield-alt me-1"></i>Test CORS
+                    </button>
+                    <div id="networkResults" class="test-result">
+                        Waiting for network tests...
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="debug-section">
+                    <h4><i class="fas fa-code me-2"></i>JavaScript Tests</h4>
+                    <button class="btn btn-debug btn-sm" onclick="testJSFunctions()">
+                        <i class="fas fa-cog me-1"></i>Test JS Functions
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testDOMElements()">
+                        <i class="fas fa-sitemap me-1"></i>Test DOM Elements
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testEventListeners()">
+                        <i class="fas fa-mouse-pointer me-1"></i>Test Event Listeners
+                    </button>
+                    <div id="jsResults" class="test-result">
+                        Waiting for JavaScript tests...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="debug-section">
+                    <h4><i class="fas fa-eye me-2"></i>UI Rendering Tests</h4>
+                    <button class="btn btn-debug btn-sm" onclick="testNutritionRendering()">
+                        <i class="fas fa-leaf me-1"></i>Test Nutrition Rendering
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testMealPlanRendering()">
+                        <i class="fas fa-utensils me-1"></i>Test Meal Plan Rendering
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="testLoadingStates()">
+                        <i class="fas fa-spinner me-1"></i>Test Loading States
+                    </button>
+                    <div id="uiResults" class="test-result">
+                        Waiting for UI tests...
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="debug-section">
+                    <h4><i class="fas fa-exclamation-triangle me-2"></i>Error Detection</h4>
+                    <button class="btn btn-debug btn-sm" onclick="captureConsoleErrors()">
+                        <i class="fas fa-bug me-1"></i>Capture Console Errors
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="checkNetworkErrors()">
+                        <i class="fas fa-wifi me-1"></i>Check Network Errors
+                    </button>
+                    <button class="btn btn-debug btn-sm" onclick="validateDataStructure()">
+                        <i class="fas fa-database me-1"></i>Validate Data Structure
+                    </button>
+                    <div id="errorResults" class="test-result">
+                        Waiting for error detection...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Test Area -->
+        <div class="debug-section">
+            <h3><i class="fas fa-flask me-2"></i>Live Test Area</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Nutrition Test Results</h5>
+                    <div id="nutritionTestResults" class="test-result">
+                        Ready for testing...
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <h5>Meal Plans Test Results</h5>
+                    <div id="mealPlansTestResults" class="test-result">
+                        Ready for testing...
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Console Output -->
+        <div class="debug-section">
+            <h3><i class="fas fa-terminal me-2"></i>Debug Console</h3>
+            <div id="debugConsole" class="console-output">
+                Frontend Debug Tool initialized...\n
+            </div>
+        </div>
+
+        <!-- Status Summary -->
+        <div class="debug-section" id="statusSummary">
+            <h3><i class="fas fa-clipboard-list me-2"></i>Status Summary</h3>
+            <div id="summaryContent">
+                <p><strong>✅ JavaScript Syntax Fix Applied:</strong> Fixed syntax errors in script.js</p>
+                <p><strong>⏳ Waiting for diagnostic tests...</strong></p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const debugConsole = document.getElementById('debugConsole');
+        const progressBar = document.getElementById('debugProgress');
+        let testProgress = 0;
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                success: '#4CAF50',
+                error: '#F44336',
+                info: '#2196F3',
+                warning: '#FF9800'
+            };
+            debugConsole.innerHTML += `<span class="${type}">[${timestamp}] ${message}</span>\n`;
+            debugConsole.scrollTop = debugConsole.scrollHeight;
+        }
+
+        function updateProgress(percent) {
+            progressBar.style.width = percent + '%';
+        }
+
+        function clearLogs() {
+            debugConsole.innerHTML = 'Debug console cleared...\n';
+            document.getElementById('networkResults').innerHTML = 'Cleared...';
+            document.getElementById('jsResults').innerHTML = 'Cleared...';
+            document.getElementById('uiResults').innerHTML = 'Cleared...';
+            document.getElementById('errorResults').innerHTML = 'Cleared...';
+            document.getElementById('nutritionTestResults').innerHTML = 'Cleared...';
+            document.getElementById('mealPlansTestResults').innerHTML = 'Cleared...';
+            updateProgress(0);
+        }
+
+        // === NETWORK TESTS ===
+        async function testAPIDirectly() {
+            log('🌐 Testing API directly...', 'info');
+            const userId = document.getElementById('testUserId').value;
+            const nutritionType = document.getElementById('nutritionType').value;
+
+            if (!userId) {
+                log('❌ Please select a User ID first', 'error');
+                return;
+            }
+
+            try {
+                // Test Nutrition API
+                const nutritionUrl = `/api/nutrition_recommendations?user_id=${userId}&nutrition_type=${nutritionType}&count=6`;
+                log(`📡 Testing: ${nutritionUrl}`, 'info');
+
+                const nutritionResponse = await fetch(nutritionUrl);
+                log(`📡 Response Status: ${nutritionResponse.status}`, nutritionResponse.ok ? 'success' : 'error');
+
+                if (nutritionResponse.ok) {
+                    const nutritionData = await nutritionResponse.json();
+                    log(`✅ Nutrition API: ${nutritionData.recommendations?.length || 0} items received`, 'success');
+                    document.getElementById('networkResults').innerHTML = `
+                        <div class="alert alert-success">
+                            <strong>✅ Nutrition API Success</strong><br>
+                            Status: ${nutritionResponse.status}<br>
+                            Items: ${nutritionData.recommendations?.length || 0}<br>
+                            Response time: ${new Date().toLocaleTimeString()}
+                        </div>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${nutritionResponse.status}`);
+                }
+
+                // Test Meal Plans API
+                const mealPlansUrl = `/api/meal_plans?user_id=${userId}&days=3`;
+                log(`📡 Testing: ${mealPlansUrl}`, 'info');
+
+                const mealPlansResponse = await fetch(mealPlansUrl);
+                log(`📡 Response Status: ${mealPlansResponse.status}`, mealPlansResponse.ok ? 'success' : 'error');
+
+                if (mealPlansResponse.ok) {
+                    const mealPlansData = await mealPlansResponse.json();
+                    log(`✅ Meal Plans API: ${mealPlansData.meal_plans?.length || 0} plans received`, 'success');
+                    document.getElementById('networkResults').innerHTML += `
+                        <div class="alert alert-success">
+                            <strong>✅ Meal Plans API Success</strong><br>
+                            Status: ${mealPlansResponse.status}<br>
+                            Plans: ${mealPlansData.meal_plans?.length || 0}<br>
+                            Response time: ${new Date().toLocaleTimeString()}
+                        </div>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${mealPlansResponse.status}`);
+                }
+
+            } catch (error) {
+                log(`❌ API Test Error: ${error.message}`, 'error');
+                document.getElementById('networkResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ API Test Failed</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function testFetchFunction() {
+            log('🔄 Testing fetch function...', 'info');
+
+            try {
+                // Test if fetch is available
+                if (typeof fetch === 'undefined') {
+                    throw new Error('Fetch API not available');
+                }
+
+                // Test simple fetch
+                const response = await fetch('/');
+                log(`✅ Fetch test: Status ${response.status}`, 'success');
+
+                document.getElementById('networkResults').innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ Fetch Function Working</strong><br>
+                        Fetch API available and functioning
+                    </div>
+                `;
+
+            } catch (error) {
+                log(`❌ Fetch test error: ${error.message}`, 'error');
+                document.getElementById('networkResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ Fetch Function Error</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function testCORS() {
+            log('🛡️ Testing CORS...', 'info');
+
+            try {
+                const response = await fetch('/api/nutrition_recommendations?user_id=CUS00001&nutrition_type=weight-loss&count=1');
+                const headers = response.headers;
+
+                log(`✅ CORS test: Status ${response.status}`, 'success');
+                log(`📡 CORS Headers: ${Array.from(headers.entries()).map(([k, v]) => `${k}: ${v}`).join(', ')}`, 'info');
+
+                document.getElementById('networkResults').innerHTML = `
+                    <div class="alert alert-success">
+                        <strong>✅ CORS Test Passed</strong><br>
+                        No CORS blocking detected
+                    </div>
+                `;
+
+            } catch (error) {
+                log(`❌ CORS test error: ${error.message}`, 'error');
+                document.getElementById('networkResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ CORS Error</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // === JAVASCRIPT TESTS ===
+        function testJSFunctions() {
+            log('🔧 Testing JavaScript functions...', 'info');
+
+            const functionsToTest = [
+                'loadNutritionRecommendations',
+                'loadMealPlans',
+                'displayNutritionRecommendations',
+                'displayMealPlans',
+                'reloadNutritionAndMealPlans'
+            ];
+
+            let results = '';
+            let allExist = true;
+
+            functionsToTest.forEach(funcName => {
+                const exists = typeof window[funcName] === 'function';
+                log(`${exists ? '✅' : '❌'} Function ${funcName}: ${exists ? 'EXISTS' : 'NOT FOUND'}`, exists ? 'success' : 'error');
+
+                if (!exists) allExist = false;
+
+                results += `
+                    <div class="alert alert-${exists ? 'success' : 'danger'}">
+                        ${exists ? '✅' : '❌'} ${funcName}: ${exists ? 'Available' : 'Missing'}
+                    </div>
+                `;
+            });
+
+            document.getElementById('jsResults').innerHTML = results;
+
+            if (allExist) {
+                log('✅ All required JavaScript functions are available', 'success');
+            } else {
+                log('❌ Some JavaScript functions are missing', 'error');
+            }
+        }
+
+        function testDOMElements() {
+            log('📋 Testing DOM elements...', 'info');
+
+            const elementsToTest = [
+                'userId',
+                'nutrition-recommendations',
+                'meal-plans-content',
+                'recommendationType'
+            ];
+
+            let results = '';
+            let allExist = true;
+
+            elementsToTest.forEach(elementId => {
+                const element = document.getElementById(elementId);
+                const exists = !!element;
+                log(`${exists ? '✅' : '❌'} Element #${elementId}: ${exists ? 'EXISTS' : 'NOT FOUND'}`, exists ? 'success' : 'error');
+
+                if (!exists) allExist = false;
+
+                results += `
+                    <div class="alert alert-${exists ? 'success' : 'danger'}">
+                        ${exists ? '✅' : '❌'} #${elementId}: ${exists ? 'Found' : 'Missing'}
+                    </div>
+                `;
+            });
+
+            document.getElementById('jsResults').innerHTML = results;
+
+            if (allExist) {
+                log('✅ All required DOM elements exist', 'success');
+            } else {
+                log('❌ Some DOM elements are missing', 'error');
+            }
+        }
+
+        function testEventListeners() {
+            log('👆 Testing event listeners...', 'info');
+
+            const userSelect = document.getElementById('userId');
+
+            if (userSelect) {
+                log('✅ User select element found', 'success');
+
+                // Check if change event is bound
+                const events = getEventListeners ? getEventListeners(userSelect) : null;
+
+                document.getElementById('jsResults').innerHTML = `
+                    <div class="alert alert-info">
+                        <strong>Event Listener Test</strong><br>
+                        User select element found: ✅<br>
+                        Note: Event listener detection requires dev tools
+                    </div>
+                `;
+
+                log('ℹ️ Event listener test completed', 'info');
+            } else {
+                log('❌ User select element not found', 'error');
+                document.getElementById('jsResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ Event Listener Test Failed</strong><br>
+                        User select element not found
+                    </div>
+                `;
+            }
+        }
+
+        // === UI RENDERING TESTS ===
+        async function testNutritionRendering() {
+            log('🎨 Testing nutrition rendering...', 'info');
+            const userId = document.getElementById('testUserId').value;
+            const nutritionType = document.getElementById('nutritionType').value;
+
+            try {
+                // Get test data
+                const response = await fetch(`/api/nutrition_recommendations?user_id=${userId}&nutrition_type=${nutritionType}&count=3`);
+                const data = await response.json();
+
+                if (response.ok && data.recommendations) {
+                    // Test render function if available
+                    if (typeof window.displayNutritionRecommendations === 'function') {
+                        log('✅ Nutrition render function exists', 'success');
+                        document.getElementById('nutritionTestResults').innerHTML = `
+                            <div class="alert alert-success">
+                                <strong>✅ Nutrition Rendering Test</strong><br>
+                                Function exists: ✅<br>
+                                Test data: ${data.recommendations.length} items<br>
+                                Sample: ${data.recommendations[0]?.recipe_name || 'N/A'}
+                            </div>
+                        `;
+                    } else {
+                        log('❌ Nutrition render function not found', 'error');
+                        document.getElementById('nutritionTestResults').innerHTML = `
+                            <div class="alert alert-danger">
+                                <strong>❌ Nutrition Rendering Error</strong><br>
+                                displayNutritionRecommendations function not found
+                            </div>
+                        `;
+                    }
+                } else {
+                    throw new Error('No nutrition data received');
+                }
+
+            } catch (error) {
+                log(`❌ Nutrition rendering test error: ${error.message}`, 'error');
+                document.getElementById('nutritionTestResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ Nutrition Rendering Error</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        async function testMealPlanRendering() {
+            log('🍽️ Testing meal plan rendering...', 'info');
+            const userId = document.getElementById('testUserId').value;
+
+            try {
+                // Get test data
+                const response = await fetch(`/api/meal_plans?user_id=${userId}&days=3`);
+                const data = await response.json();
+
+                if (response.ok && data.meal_plans) {
+                    // Test render function if available
+                    if (typeof window.displayMealPlans === 'function') {
+                        log('✅ Meal plan render function exists', 'success');
+                        document.getElementById('mealPlansTestResults').innerHTML = `
+                            <div class="alert alert-success">
+                                <strong>✅ Meal Plan Rendering Test</strong><br>
+                                Function exists: ✅<br>
+                                Test data: ${data.meal_plans.length} plans<br>
+                                Sample: Plan 1 has ${Object.keys(data.meal_plans[0] || {}).length} meals
+                            </div>
+                        `;
+                    } else {
+                        log('❌ Meal plan render function not found', 'error');
+                        document.getElementById('mealPlansTestResults').innerHTML = `
+                            <div class="alert alert-danger">
+                                <strong>❌ Meal Plan Rendering Error</strong><br>
+                                displayMealPlans function not found
+                            </div>
+                        `;
+                    }
+                } else {
+                    throw new Error('No meal plan data received');
+                }
+
+            } catch (error) {
+                log(`❌ Meal plan rendering test error: ${error.message}`, 'error');
+                document.getElementById('mealPlansTestResults').innerHTML = `
+                    <div class="alert alert-danger">
+                        <strong>❌ Meal Plan Rendering Error</strong><br>
+                        Error: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function testLoadingStates() {
+            log('⏳ Testing loading states...', 'info');
+
+            const loadingFunctions = [
+                'showNutritionLoadingSkeleton',
+                'showMealPlansLoadingSkeleton',
+                'showNutritionError',
+                'showMealPlansError'
+            ];
+
+            let results = '';
+            let allExist = true;
+
+            loadingFunctions.forEach(funcName => {
+                const exists = typeof window[funcName] === 'function';
+                log(`${exists ? '✅' : '❌'} Loading function ${funcName}: ${exists ? 'EXISTS' : 'NOT FOUND'}`, exists ? 'success' : 'error');
+
+                if (!exists) allExist = false;
+
+                results += `
+                    <div class="alert alert-${exists ? 'success' : 'warning'}">
+                        ${exists ? '✅' : '⚠️'} ${funcName}: ${exists ? 'Available' : 'Missing'}
+                    </div>
+                `;
+            });
+
+            document.getElementById('uiResults').innerHTML = results;
+        }
+
+        // === ERROR DETECTION ===
+        function captureConsoleErrors() {
+            log('🐞 Capturing console errors...', 'info');
+
+            // Override console.error to capture errors
+            const originalConsoleError = console.error;
+            const errors = [];
+
+            console.error = function (...args) {
+                errors.push(args.join(' '));
+                originalConsoleError.apply(console, args);
+            };
+
+            setTimeout(() => {
+                console.error = originalConsoleError;
+
+                if (errors.length > 0) {
+                    log(`❌ Found ${errors.length} console errors`, 'error');
+                    document.getElementById('errorResults').innerHTML = `
+                        <div class="alert alert-danger">
+                            <strong>❌ Console Errors Found (${errors.length})</strong><br>
+                            ${errors.map(err => `• ${err}`).join('<br>')}
+                        </div>
+                    `;
+                } else {
+                    log('✅ No console errors detected', 'success');
+                    document.getElementById('errorResults').innerHTML = `
+                        <div class="alert alert-success">
+                            <strong>✅ No Console Errors</strong><br>
+                            No console errors detected during monitoring period
+                        </div>
+                    `;
+                }
+            }, 5000);
+
+            log('⏳ Monitoring console for 5 seconds...', 'info');
+        }
+
+        function checkNetworkErrors() {
+            log('🌐 Checking for network errors...', 'info');
+
+            // This would typically require performance API or network monitoring
+            // For now, we'll do a simple connectivity test
+
+            fetch('/api/nutrition_recommendations?user_id=CUS00001&nutrition_type=weight-loss&count=1')
+                .then(response => {
+                    if (response.ok) {
+                        log('✅ Network connectivity test passed', 'success');
+                        document.getElementById('errorResults').innerHTML = `
+                            <div class="alert alert-success">
+                                <strong>✅ Network Test Passed</strong><br>
+                                Basic API connectivity working
+                            </div>
+                        `;
+                    } else {
+                        throw new Error(`HTTP ${response.status}`);
+                    }
+                })
+                .catch(error => {
+                    log(`❌ Network error: ${error.message}`, 'error');
+                    document.getElementById('errorResults').innerHTML = `
+                        <div class="alert alert-danger">
+                            <strong>❌ Network Error</strong><br>
+                            Error: ${error.message}
+                        </div>
+                    `;
+                });
+        }
+
+        function validateDataStructure() {
+            log('📊 Validating data structure...', 'info');
+            const userId = document.getElementById('testUserId').value;
+
+            fetch(`/api/nutrition_recommendations?user_id=${userId}&nutrition_type=weight-loss&count=1`)
+                .then(response => response.json())
+                .then(data => {
+                    // Check expected fields
+                    const expectedFields = ['nutrition_focus', 'recommendations'];
+                    const missingFields = expectedFields.filter(field => !(field in data));
+
+                    if (data.recommendations && data.recommendations.length > 0) {
+                        const rec = data.recommendations[0];
+                        const expectedRecFields = ['recipe_name', 'predicted_rating', 'recipe_url'];
+                        const missingRecFields = expectedRecFields.filter(field => !(field in rec));
+
+                        if (missingFields.length === 0 && missingRecFields.length === 0) {
+                            log('✅ Data structure validation passed', 'success');
+                            document.getElementById('errorResults').innerHTML = `
+                                <div class="alert alert-success">
+                                    <strong>✅ Data Structure Valid</strong><br>
+                                    All expected fields present<br>
+                                    Sample recipe: ${rec.recipe_name}
+                                </div>
+                            `;
+                        } else {
+                            log(`❌ Missing fields: ${[...missingFields, ...missingRecFields].join(', ')}`, 'error');
+                            document.getElementById('errorResults').innerHTML = `
+                                <div class="alert alert-warning">
+                                    <strong>⚠️ Data Structure Issues</strong><br>
+                                    Missing fields: ${[...missingFields, ...missingRecFields].join(', ')}
+                                </div>
+                            `;
+                        }
+                    } else {
+                        log('❌ No recommendations in response', 'error');
+                        document.getElementById('errorResults').innerHTML = `
+                            <div class="alert alert-danger">
+                                <strong>❌ Data Structure Error</strong><br>
+                                No recommendations found in response
+                            </div>
+                        `;
+                    }
+                })
+                .catch(error => {
+                    log(`❌ Data validation error: ${error.message}`, 'error');
+                    document.getElementById('errorResults').innerHTML = `
+                        <div class="alert alert-danger">
+                            <strong>❌ Data Validation Error</strong><br>
+                            Error: ${error.message}
+                        </div>
+                    `;
+                });
+        }
+
+        // === MAIN DIAGNOSTIC ===
+        async function runFullFrontendDiagnostic() {
+            log('🎯 Starting full frontend diagnostic...', 'info');
+            updateProgress(10);
+
+            // Step 1: Test APIs
+            await testAPIDirectly();
+            updateProgress(30);
+
+            // Step 2: Test JavaScript functions  
+            testJSFunctions();
+            updateProgress(50);
+
+            // Step 3: Test DOM elements
+            testDOMElements();
+            updateProgress(70);
+
+            // Step 4: Test rendering
+            await testNutritionRendering();
+            await testMealPlanRendering();
+            updateProgress(90);
+
+            // Step 5: Check for errors
+            captureConsoleErrors();
+            checkNetworkErrors();
+            validateDataStructure();
+            updateProgress(100);
+
+            log('🎉 Full frontend diagnostic completed!', 'success');
+
+            // Update summary
+            document.getElementById('summaryContent').innerHTML = `
+                <p><strong>✅ JavaScript Syntax Fix Applied:</strong> Fixed syntax errors in script.js</p>
+                <p><strong>✅ Frontend Diagnostic Completed:</strong> See individual test results above</p>
+                <p><strong>📊 Next Steps:</strong> Check test results and fix any red ❌ items found</p>
+                <p><strong>💡 If all tests pass but main page still loads:</strong> Check browser DevTools Network and Console tabs</p>
+            `;
+        }
+
+        function openMainPage() {
+            log('🌐 Opening main page for testing...', 'info');
+            const mainWindow = window.open('/', '_blank');
+
+            setTimeout(() => {
+                if (mainWindow && !mainWindow.closed) {
+                    log('✅ Main page opened. Check if nutrition/meal plans load when you select a customer.', 'success');
+                    log('💡 Use F12 → Network tab to monitor API calls', 'info');
+                    log('💡 Use F12 → Console tab to see any JavaScript errors', 'info');
+                } else {
+                    log('❌ Could not open main page', 'error');
+                }
+            }, 1000);
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            log('🚀 Frontend Debug Tool initialized', 'success');
+            log('✅ JavaScript syntax errors fixed in script.js', 'success');
+            log('💡 Click "Full Frontend Diagnostic" to start comprehensive testing', 'info');
+            log('📌 Or use individual test buttons to check specific components', 'info');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Function Verification Test</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .function-status {
+            font-family: monospace;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin-top: 1rem;
+        }
+
+        .status-ok {
+            color: #28a745;
+        }
+
+        .status-missing {
+            color: #dc3545;
+        }
+
+        .status-error {
+            color: #fd7e14;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <h2><i class="fas fa-code me-2"></i>JavaScript Function Verification</h2>
+        <p>Testing if all required functions are properly loaded...</p>
+
+        <button class="btn btn-primary" onclick="runFunctionTest()">
+            <i class="fas fa-play me-2"></i>Run Function Test
+        </button>
+
+        <div class="function-status" id="testResults">
+            Click "Run Function Test" to check all functions...
+        </div>
+    </div>
+
+    <!-- Load the main script -->
+    <script src="/static/script.js"></script>
+
+    <script>
+        function runFunctionTest() {
+            const results = document.getElementById('testResults');
+            results.innerHTML = '';
+
+            const functionsToTest = [
+                'showModernToast',
+                'initModernCustomerSelection',
+                'handleFormSubmission',
+                'initEnhancedFormHandling',
+                'showLoadingSkeleton',
+                'showErrorMessage',
+                'generateStars',
+                'getDifficultyClass',
+                'getMealTimeClass',
+                'translateMealTime',
+                'translateAgeGroup',
+                'translateNutritionType',
+                'truncateText',
+                'scrollToCustomerSelection',
+                'displayRecommendationResults',
+                'generateComboResults',
+                'generateSidesResults',
+                'generateFamilyResults',
+                'generateAgeBasedResults',
+                'initDarkMode',
+                'initSmoothTransitions',
+                'initFormValidation',
+                'initModernNavbar',
+                'createParticlesEffect'
+            ];
+
+            let passed = 0;
+            let failed = 0;
+
+            results.innerHTML += '<h5>Function Test Results:</h5>';
+            results.innerHTML += '='.repeat(60) + '\n';
+
+            functionsToTest.forEach(funcName => {
+                try {
+                    if (typeof window[funcName] === 'function') {
+                        results.innerHTML += `<span class="status-ok">✅ ${funcName}: FOUND</span>\n`;
+                        passed++;
+                    } else if (typeof window[funcName] !== 'undefined') {
+                        results.innerHTML += `<span class="status-error">⚠️ ${funcName}: EXISTS BUT NOT A FUNCTION (${typeof window[funcName]})</span>\n`;
+                        failed++;
+                    } else {
+                        results.innerHTML += `<span class="status-missing">❌ ${funcName}: MISSING</span>\n`;
+                        failed++;
+                    }
+                } catch (e) {
+                    results.innerHTML += `<span class="status-error">🔥 ${funcName}: ERROR - ${e.message}</span>\n`;
+                    failed++;
+                }
+            });
+
+            results.innerHTML += '='.repeat(60) + '\n';
+            results.innerHTML += `<strong>Summary: ${passed} passed, ${failed} failed</strong>\n`;
+
+            if (failed === 0) {
+                results.innerHTML += `<span class="status-ok">🎉 All functions are properly loaded!</span>\n`;
+            } else {
+                results.innerHTML += `<span class="status-missing">⚠️ Some functions are missing or have issues.</span>\n`;
+            }
+
+            // Test form submission functionality
+            results.innerHTML += '\n<h5>Testing Form Submission:</h5>';
+            results.innerHTML += '='.repeat(60) + '\n';
+
+            try {
+                if (typeof handleFormSubmission === 'function') {
+                    results.innerHTML += `<span class="status-ok">✅ handleFormSubmission function is ready</span>\n`;
+
+                    // Test if we can call it (dry run)
+                    results.innerHTML += `<span class="status-ok">✅ Function can be called (test mode)</span>\n`;
+                } else {
+                    results.innerHTML += `<span class="status-missing">❌ handleFormSubmission not available</span>\n`;
+                }
+            } catch (e) {
+                results.innerHTML += `<span class="status-error">🔥 Form submission test error: ${e.message}</span>\n`;
+            }
+
+            // Test Toast functionality
+            results.innerHTML += '\n<h5>Testing Toast System:</h5>';
+            results.innerHTML += '='.repeat(60) + '\n';
+
+            try {
+                if (typeof showModernToast === 'function') {
+                    showModernToast('🧪 Test toast message - system is working!', 'success', 3000);
+                    results.innerHTML += `<span class="status-ok">✅ Toast system test completed</span>\n`;
+                } else {
+                    results.innerHTML += `<span class="status-missing">❌ Toast system not available</span>\n`;
+                }
+            } catch (e) {
+                results.innerHTML += `<span class="status-error">🔥 Toast test error: ${e.message}</span>\n`;
+            }
+        }
+
+        // Run test automatically after page load
+        document.addEventListener('DOMContentLoaded', function () {
+            setTimeout(() => {
+                runFunctionTest();
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>

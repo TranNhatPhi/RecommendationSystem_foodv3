@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-Load Test - Customer Selection</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .test-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .test-section {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-container {
+            background: #1e1e1e;
+            color: #00ff00;
+            padding: 1rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            height: 300px;
+            overflow-y: auto;
+            margin-top: 1rem;
+        }
+
+        .result-box {
+            border: 2px solid #dee2e6;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            min-height: 200px;
+        }
+
+        .success {
+            color: #28a745;
+        }
+
+        .error {
+            color: #dc3545;
+        }
+
+        .info {
+            color: #17a2b8;
+        }
+
+        .warning {
+            color: #ffc107;
+            color: #000;
+        }
+
+        .spinner-border-lg {
+            width: 3rem;
+            height: 3rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container my-4">
+        <div class="test-header text-center">
+            <h1><i class="fas fa-test-tube me-3"></i>Auto-Load Test</h1>
+            <p class="lead">Test tính năng tự động tải gợi ý dinh dưỡng và thực đơn khi chọn khách hàng</p>
+        </div>
+
+        <!-- Customer Selection Test -->
+        <div class="test-section">
+            <h3><i class="fas fa-user-check me-2"></i>Customer Selection Test</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="testUserId" class="form-label">Chọn khách hàng:</label>
+                    <select id="testUserId" class="form-select form-select-lg">
+                        <option value="">-- Chọn ID khách hàng --</option>
+                        <option value="CUS00001">CUS00001 - Nguyễn Văn An</option>
+                        <option value="CUS00002">CUS00002 - Trần Thị Bình</option>
+                        <option value="CUS00003">CUS00003 - Lê Văn Cường</option>
+                        <option value="CUS00004">CUS00004 - Phạm Thị Dung</option>
+                        <option value="CUS00005">CUS00005 - Hoàng Văn Em</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Test Actions:</label><br>
+                    <button onclick="testAutoLoad()" class="btn btn-primary me-2">
+                        <i class="fas fa-play me-1"></i>Test Auto Load
+                    </button>
+                    <button onclick="clearLogs()" class="btn btn-secondary">
+                        <i class="fas fa-broom me-1"></i>Clear Logs
+                    </button>
+                </div>
+            </div>
+
+            <div class="log-container" id="testLogs">
+                <div class="success">🔥 Auto-Load Test Console Ready...</div>
+                <div class="info">📌 Chọn khách hàng từ dropdown để test auto-load</div>
+            </div>
+        </div>
+
+        <!-- Results Display -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h4><i class="fas fa-heart me-2 text-danger"></i>Gợi ý Dinh dưỡng</h4>
+                    <div id="nutritionResults" class="result-box">
+                        <div class="text-center text-muted">
+                            <i class="fas fa-user-plus fa-3x mb-3"></i>
+                            <p>Chọn khách hàng để xem gợi ý dinh dưỡng</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="test-section">
+                    <h4><i class="fas fa-utensils me-2 text-success"></i>Thực đơn theo bữa</h4>
+                    <div id="mealResults" class="result-box">
+                        <div class="text-center text-muted">
+                            <i class="fas fa-user-plus fa-3x mb-3"></i>
+                            <p>Chọn khách hàng để xem thực đơn gợi ý</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Debug Information -->
+        <div class="test-section">
+            <h4><i class="fas fa-bug me-2"></i>Debug Information</h4>
+            <div class="row">
+                <div class="col-md-4">
+                    <button onclick="checkAPIEndpoints()" class="btn btn-info w-100 mb-2">
+                        <i class="fas fa-link me-1"></i>Check API Endpoints
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button onclick="testNutritionAPI()" class="btn btn-warning w-100 mb-2">
+                        <i class="fas fa-flask me-1"></i>Test Nutrition API
+                    </button>
+                </div>
+                <div class="col-md-4">
+                    <button onclick="testMealPlansAPI()" class="btn btn-success w-100 mb-2">
+                        <i class="fas fa-calendar me-1"></i>Test Meal Plans API
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const logs = document.getElementById('testLogs');
+
+        function log(message, type = 'info') {
+            const now = new Date().toLocaleTimeString();
+            const className = type;
+            logs.innerHTML += `<div class="${className}">[${now}] ${message}</div>`;
+            logs.scrollTop = logs.scrollHeight;
+        }
+
+        function clearLogs() {
+            logs.innerHTML = '<div class="success">🔥 Logs cleared...</div>';
+        }
+
+        // Setup customer selection event listener
+        document.getElementById('testUserId').addEventListener('change', function () {
+            const userId = this.value;
+            const customerName = this.options[this.selectedIndex].textContent;
+
+            if (userId) {
+                log(`🔄 Customer selected: ${customerName}`, 'info');
+                log(`👤 User ID: ${userId}`, 'info');
+
+                // Show loading immediately
+                showLoading();
+
+                // Test auto-load functionality
+                setTimeout(() => {
+                    testAutoLoadFunctionality(userId, customerName);
+                }, 100);
+            } else {
+                log(`❌ No customer selected`, 'warning');
+                clearResults();
+            }
+        });
+
+        function showLoading() {
+            document.getElementById('nutritionResults').innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border spinner-border-lg text-primary mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="text-primary">🥗 Đang tải gợi ý dinh dưỡng...</h5>
+                    <p class="text-muted">Vui lòng chờ trong giây lát</p>
+                </div>
+            `;
+
+            document.getElementById('mealResults').innerHTML = `
+                <div class="text-center py-4">
+                    <div class="spinner-border spinner-border-lg text-success mb-3" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h5 class="text-success">🍽️ Đang tải thực đơn theo bữa...</h5>
+                    <p class="text-muted">Vui lòng chờ trong giây lát</p>
+                </div>
+            `;
+
+            log(`⏳ Loading indicators displayed`, 'info');
+        }
+
+        function clearResults() {
+            document.getElementById('nutritionResults').innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-user-plus fa-3x mb-3"></i>
+                    <p>Chọn khách hàng để xem gợi ý dinh dưỡng</p>
+                </div>
+            `;
+
+            document.getElementById('mealResults').innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-user-plus fa-3x mb-3"></i>
+                    <p>Chọn khách hàng để xem thực đơn gợi ý</p>
+                </div>
+            `;
+        }
+
+        async function testAutoLoadFunctionality(userId, customerName) {
+            log(`🚀 Starting auto-load test for ${customerName}`, 'info');
+
+            try {
+                // Test Nutrition API
+                log(`📡 Testing nutrition API...`, 'info');
+                const nutritionResponse = await fetch(`/api/nutrition_recommendations?user_id=${userId}&nutrition_type=weight-loss&count=6`);
+
+                if (nutritionResponse.ok) {
+                    const nutritionData = await nutritionResponse.json();
+                    log(`✅ Nutrition API: ${nutritionData.recommendations?.length || 0} recommendations`, 'success');
+                    displayNutritionResults(nutritionData);
+                } else {
+                    throw new Error(`Nutrition API error: ${nutritionResponse.status}`);
+                }
+
+                // Test Meal Plans API
+                log(`📡 Testing meal plans API...`, 'info');
+                const mealResponse = await fetch(`/api/meal_plans?user_id=${userId}&days=3`);
+
+                if (mealResponse.ok) {
+                    const mealData = await mealResponse.json();
+                    log(`✅ Meal Plans API: ${mealData.meal_plans?.length || 0} plans`, 'success');
+                    displayMealResults(mealData);
+                } else {
+                    throw new Error(`Meal Plans API error: ${mealResponse.status}`);
+                }
+
+                log(`🎉 Auto-load test completed successfully!`, 'success');
+
+            } catch (error) {
+                log(`❌ Auto-load test failed: ${error.message}`, 'error');
+                showError();
+            }
+        }
+
+        function displayNutritionResults(data) {
+            let html = '<h6>🥗 Gợi ý Dinh dưỡng</h6>';
+
+            if (data.recommendations && data.recommendations.length > 0) {
+                html += '<div class="row">';
+                data.recommendations.slice(0, 4).forEach(rec => {
+                    html += `
+                        <div class="col-6 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body p-2">
+                                    <h6 class="card-title text-truncate" title="${rec.recipe_name}">${rec.recipe_name}</h6>
+                                    <small class="text-muted">Rating: ${rec.predicted_rating.toFixed(1)} ⭐</small>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else {
+                html += '<p class="text-muted">Không có gợi ý dinh dưỡng</p>';
+            }
+
+            document.getElementById('nutritionResults').innerHTML = html;
+        }
+
+        function displayMealResults(data) {
+            let html = '<h6>🍽️ Thực đơn theo bữa</h6>';
+
+            if (data.meal_plans && data.meal_plans.length > 0) {
+                html += '<div class="row">';
+                data.meal_plans.forEach((plan, index) => {
+                    html += `
+                        <div class="col-12 mb-2">
+                            <div class="card card-sm">
+                                <div class="card-body p-2">
+                                    <h6 class="card-title">📅 Ngày ${index + 1}</h6>
+                                    <div class="row">
+                                        <div class="col-4"><small>🌅 ${plan.breakfast?.recipe_name || 'N/A'}</small></div>
+                                        <div class="col-4"><small>☀️ ${plan.lunch?.recipe_name || 'N/A'}</small></div>
+                                        <div class="col-4"><small>🌙 ${plan.dinner?.recipe_name || 'N/A'}</small></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            } else {
+                html += '<p class="text-muted">Không có thực đơn gợi ý</p>';
+            }
+
+            document.getElementById('mealResults').innerHTML = html;
+        }
+
+        function showError() {
+            document.getElementById('nutritionResults').innerHTML = `
+                <div class="text-center text-danger">
+                    <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+                    <p>Có lỗi xảy ra khi tải gợi ý dinh dưỡng</p>
+                </div>
+            `;
+
+            document.getElementById('mealResults').innerHTML = `
+                <div class="text-center text-danger">
+                    <i class="fas fa-exclamation-triangle fa-2x mb-3"></i>
+                    <p>Có lỗi xảy ra khi tải thực đơn</p>
+                </div>
+            `;
+        }
+
+        // Manual test functions
+        function testAutoLoad() {
+            const userId = document.getElementById('testUserId').value;
+            if (userId) {
+                const customerName = document.getElementById('testUserId').options[document.getElementById('testUserId').selectedIndex].textContent;
+                log(`🧪 Manual test triggered for ${customerName}`, 'warning');
+                showLoading();
+                setTimeout(() => testAutoLoadFunctionality(userId, customerName), 100);
+            } else {
+                log(`❌ Please select a customer first`, 'error');
+            }
+        }
+
+        async function checkAPIEndpoints() {
+            log(`🔍 Checking API endpoints...`, 'info');
+
+            try {
+                const response = await fetch('/api/nutrition_recommendations?user_id=CUS00001&nutrition_type=weight-loss&count=1');
+                if (response.ok) {
+                    log(`✅ API endpoints are working`, 'success');
+                } else {
+                    log(`❌ API endpoints error: ${response.status}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ API endpoints error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testNutritionAPI() {
+            log(`🧪 Testing nutrition API directly...`, 'warning');
+            const userId = document.getElementById('testUserId').value || 'CUS00001';
+
+            try {
+                const response = await fetch(`/api/nutrition_recommendations?user_id=${userId}&nutrition_type=weight-loss&count=6`);
+                const data = await response.json();
+                log(`✅ Nutrition API returned ${data.recommendations?.length || 0} recommendations`, 'success');
+            } catch (error) {
+                log(`❌ Nutrition API error: ${error.message}`, 'error');
+            }
+        }
+
+        async function testMealPlansAPI() {
+            log(`🧪 Testing meal plans API directly...`, 'warning');
+            const userId = document.getElementById('testUserId').value || 'CUS00001';
+
+            try {
+                const response = await fetch(`/api/meal_plans?user_id=${userId}&days=3`);
+                const data = await response.json();
+                log(`✅ Meal Plans API returned ${data.meal_plans?.length || 0} plans`, 'success');
+            } catch (error) {
+                log(`❌ Meal Plans API error: ${error.message}`, 'error');
+            }
+        }
+
+        // Initialize
+        log(`🎯 Auto-Load Test initialized`, 'success');
+        log(`📋 Select a customer from dropdown to test auto-load functionality`, 'info');
+    </script>
+</body>
+
+</html>
