@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Age-Based Fix</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .result-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 10px 0;
+        }
+
+        .customer-info {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="text-center mb-4">🧪 Test Age-Based Recommendation Fix</h2>
+
+                <div class="customer-info">
+                    <h4>Test khách hàng CUS00004 (78 tuổi)</h4>
+                    <p>Trước khi sửa: Hiển thị món ăn cho trẻ em (3-12 tuổi)</p>
+                    <p>Sau khi sửa: Phải hiển thị món ăn cho người cao tuổi (elderly)</p>
+                </div>
+
+                <div class="card">
+                    <div class="card-body">
+                        <h5>Chọn khách hàng để test:</h5>
+                        <select class="form-select mb-3" id="customerSelect">
+                            <option value="">-- Chọn khách hàng --</option>
+                            <option value="CUS00004">CUS00004 (78 tuổi - Elderly)</option>
+                            <option value="CUS00001">CUS00001 (22 tuổi - Adult)</option>
+                            <option value="CUS00002">CUS00002 (Teenager)</option>
+                        </select>
+
+                        <button class="btn btn-primary" onclick="testAgeBasedRecommendation()">
+                            🧪 Test Age-Based Recommendation
+                        </button>
+                    </div>
+                </div>
+
+                <div id="results" class="mt-4"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function testAgeBasedRecommendation() {
+            const userId = document.getElementById('customerSelect').value;
+            if (!userId) {
+                alert('Vui lòng chọn khách hàng!');
+                return;
+            }
+
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = `
+                <div class="alert alert-info">
+                    <i class="fas fa-spinner fa-spin"></i> Đang test khách hàng ${userId}...
+                </div>
+            `;
+
+            try {
+                // Call age-based API without specifying age_group - let it auto-determine
+                const response = await fetch(`/api/age_based_recommendations?user_id=${userId}`);
+                const data = await response.json();
+
+                if (data.error) {
+                    throw new Error(data.error);
+                }
+
+                // Display results
+                let html = `
+                    <div class="result-card">
+                        <h4>🎯 Kết quả Test cho ${userId}</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p><strong>Tuổi khách hàng:</strong> ${data.customer_age} tuổi</p>
+                                <p><strong>Nhóm tuổi được phân loại:</strong> ${data.age_group}</p>
+                                <p><strong>Tổng số gợi ý:</strong> ${data.total_recommendations}</p>
+                            </div>
+                            <div class="col-md-6">
+                                <p><strong>Trọng tâm dinh dưỡng:</strong></p>
+                                <small>${data.nutrition_focus}</small>
+                            </div>
+                        </div>
+                    </div>
+                `;
+
+                // Display recommendations
+                if (data.recommendations && data.recommendations.length > 0) {
+                    html += '<div class="row">';
+                    data.recommendations.forEach((rec, index) => {
+                        html += `
+                            <div class="col-md-6 mb-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h6 class="card-title">${rec.recipe_name}</h6>
+                                        <p class="card-text">
+                                            <small class="text-muted">
+                                                Độ khó: ${rec.difficulty} | 
+                                                Bữa: ${rec.meal_time} | 
+                                                Rating: ${rec.predicted_rating.toFixed(2)}
+                                            </small>
+                                        </p>
+                                        ${rec.estimated_calories ? `<p><small>🔥 ${rec.estimated_calories} calories</small></p>` : ''}
+                                    </div>
+                                </div>
+                            </div>
+                        `;
+                    });
+                    html += '</div>';
+                } else {
+                    html += '<div class="alert alert-warning">Không có gợi ý món ăn!</div>';
+                }
+
+                resultsDiv.innerHTML = html;
+
+                // Check if the result is correct
+                if (userId === 'CUS00004' && data.age_group === 'elderly') {
+                    resultsDiv.innerHTML = `
+                        <div class="alert alert-success">
+                            <h4>✅ TEST THÀNH CÔNG!</h4>
+                            <p>Khách hàng CUS00004 (78 tuổi) đã được phân loại đúng vào nhóm "elderly" và nhận được gợi ý món ăn phù hợp.</p>
+                        </div>
+                    ` + html;
+                } else if (userId === 'CUS00004' && data.age_group !== 'elderly') {
+                    resultsDiv.innerHTML = `
+                        <div class="alert alert-danger">
+                            <h4>❌ TEST THẤT BẠI!</h4>
+                            <p>Khách hàng CUS00004 (78 tuổi) vẫn được phân loại sai vào nhóm "${data.age_group}" thay vì "elderly".</p>
+                        </div>
+                    ` + html;
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                resultsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h4>❌ Lỗi khi test:</h4>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+    </script>
+</body>
+
+</html>

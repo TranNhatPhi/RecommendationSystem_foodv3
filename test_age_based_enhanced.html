@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Age-Based Recommendations Enhanced</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 2rem 0;
+        }
+
+        .test-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin: 0 auto;
+            max-width: 1200px;
+        }
+
+        .test-header {
+            background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+            color: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .customer-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #007bff;
+        }
+
+        .age-group-card {
+            background: linear-gradient(135deg, #74b9ff, #0984e3);
+            color: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .age-group-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-card {
+            background: white;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .recipe-item {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            border-left: 3px solid #28a745;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 2rem;
+            color: #6c757d;
+        }
+
+        .nutrition-focus {
+            background: linear-gradient(135deg, #00b894, #00a085);
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+        }
+
+        .stats-row {
+            background: #e3f2fd;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+
+        .btn-test {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            border: none;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(232, 67, 147, 0.3);
+        }
+
+        .log-area {
+            background: #2d3436;
+            color: #00b894;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="test-container">
+            <div class="test-header">
+                <h1><i class="fas fa-birthday-cake me-3"></i>Test Age-Based Recommendations Enhanced</h1>
+                <p class="mb-0">Kiểm tra hệ thống gợi ý món ăn theo độ tuổi với dữ liệu khách hàng thực tế</p>
+            </div>
+
+            <div class="row">
+                <!-- Control Panel -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-cogs me-2"></i>Control Panel</h5>
+                        </div>
+                        <div class="card-body">
+                            <!-- Customer Selection -->
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Chọn khách hàng:</strong></label>
+                                <select class="form-select" id="customerSelect">
+                                    <option value="CUS00001">CUS00001 - Khách hàng mẫu 1</option>
+                                    <option value="CUS00002">CUS00002 - Khách hàng mẫu 2</option>
+                                    <option value="CUS00005">CUS00005 - Khách hàng mẫu 5</option>
+                                    <option value="CUS00010">CUS00010 - Khách hàng mẫu 10</option>
+                                    <option value="CUS00025">CUS00025 - Khách hàng mẫu 25</option>
+                                    <option value="CUS00050">CUS00050 - Khách hàng mẫu 50</option>
+                                    <option value="CUS00100">CUS00100 - Khách hàng mẫu 100</option>
+                                </select>
+                            </div>
+
+                            <!-- Age Groups -->
+                            <div class="mb-3">
+                                <label class="form-label"><strong>Chọn nhóm tuổi để test:</strong></label>
+                                <div class="age-group-card" data-age="children">
+                                    <i class="fas fa-child me-2"></i>
+                                    <strong>Trẻ em (3-12 tuổi)</strong>
+                                    <br><small>Món ăn dễ làm, bổ dưỡng, thích hợp trẻ em</small>
+                                </div>
+                                <div class="age-group-card" data-age="teenagers">
+                                    <i class="fas fa-user-graduate me-2"></i>
+                                    <strong>Thanh thiếu niên (13-19 tuổi)</strong>
+                                    <br><small>Món ăn năng lượng cao, hấp dẫn</small>
+                                </div>
+                                <div class="age-group-card" data-age="adults">
+                                    <i class="fas fa-user me-2"></i>
+                                    <strong>Người lớn (20-59 tuổi)</strong>
+                                    <br><small>Món ăn đa dạng, cân bằng dinh dưỡng</small>
+                                </div>
+                                <div class="age-group-card" data-age="elderly">
+                                    <i class="fas fa-user-plus me-2"></i>
+                                    <strong>Người cao tuổi (60+ tuổi)</strong>
+                                    <br><small>Món ăn dễ tiêu hóa, bổ dưỡng</small>
+                                </div>
+                            </div>
+
+                            <!-- Test All Button -->
+                            <button class="btn btn-test w-100 mb-3" onclick="testAllAgeGroups()">
+                                <i class="fas fa-rocket me-2"></i>Test Tất Cả Nhóm Tuổi
+                            </button>
+
+                            <!-- Customer Info -->
+                            <div id="customerInfo" class="customer-card">
+                                <h6><i class="fas fa-user me-2"></i>Thông tin khách hàng</h6>
+                                <div id="customerDetails">Chọn khách hàng để xem thông tin...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results Panel -->
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-chart-bar me-2"></i>Kết quả Test</h5>
+                        </div>
+                        <div class="card-body">
+                            <div id="testResults">
+                                <div class="text-center text-muted py-5">
+                                    <i class="fas fa-utensils fa-3x mb-3"></i>
+                                    <p>Chọn một nhóm tuổi để bắt đầu test...</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Log Area -->
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5><i class="fas fa-terminal me-2"></i>Test Log</h5>
+                            <button class="btn btn-sm btn-outline-secondary float-end" onclick="clearLog()">
+                                <i class="fas fa-trash me-1"></i>Xóa Log
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="testLog" class="log-area">
+                                [LOG] Test age-based recommendations - Sẵn sàng kiểm tra...<br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentCustomer = 'CUS00001';
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            log('✅ Trang test đã tải thành công', 'success');
+            loadCustomerInfo();
+            setupEventListeners();
+        });
+
+        function setupEventListeners() {
+            // Customer selection change
+            document.getElementById('customerSelect').addEventListener('change', function () {
+                currentCustomer = this.value;
+                loadCustomerInfo();
+                log(`🔄 Đổi khách hàng: ${currentCustomer}`, 'info');
+            });
+
+            // Age group cards click
+            document.querySelectorAll('.age-group-card').forEach(card => {
+                card.addEventListener('click', function () {
+                    const ageGroup = this.dataset.age;
+                    testAgeGroup(ageGroup);
+                });
+            });
+        }
+
+        async function loadCustomerInfo() {
+            try {
+                // Get customer info from main page API or simulate it
+                const customerDetails = document.getElementById('customerDetails');
+                customerDetails.innerHTML = `
+                    <div class="spinner-border spinner-border-sm me-2"></div>
+                    Đang tải thông tin khách hàng...
+                `;
+
+                // Simulate customer info loading (you can replace with actual API call)
+                setTimeout(() => {
+                    customerDetails.innerHTML = `
+                        <strong>ID:</strong> ${currentCustomer}<br>
+                        <strong>Trạng thái:</strong> <span class="badge bg-success">Đã chọn</span><br>
+                        <small class="text-muted">Sẵn sàng để test gợi ý theo độ tuổi</small>
+                    `;
+                }, 500);
+            } catch (error) {
+                log(`❌ Lỗi tải thông tin khách hàng: ${error.message}`, 'error');
+            }
+        }
+
+        async function testAgeGroup(ageGroup) {
+            log(`🎯 Bắt đầu test nhóm tuổi: ${getAgeGroupName(ageGroup)}`, 'info');
+
+            const resultsDiv = document.getElementById('testResults');
+            resultsDiv.innerHTML = `
+                <div class="loading">
+                    <div class="spinner-border text-primary mb-3"></div>
+                    <p>Đang test gợi ý cho ${getAgeGroupName(ageGroup)}...</p>
+                </div>
+            `;
+
+            try {
+                const startTime = Date.now();
+                const url = `/api/age_based_recommendations?user_id=${currentCustomer}&age_group=${ageGroup}`;
+
+                log(`📡 API Call: ${url}`, 'info');
+
+                const response = await fetch(url);
+                const data = await response.json();
+                const endTime = Date.now();
+
+                log(`⏱️ Thời gian phản hồi: ${endTime - startTime}ms`, 'info');
+
+                if (response.ok) {
+                    displayResults(data, ageGroup);
+                    log(`✅ Thành công! Nhận được ${data.recommendations?.length || 0} gợi ý`, 'success');
+                } else {
+                    throw new Error(data.error || 'Unknown error');
+                }
+            } catch (error) {
+                log(`❌ Lỗi test nhóm tuổi ${ageGroup}: ${error.message}`, 'error');
+                resultsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <h5><i class="fas fa-exclamation-triangle me-2"></i>Lỗi!</h5>
+                        <p>${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        function displayResults(data, ageGroup) {
+            const resultsDiv = document.getElementById('testResults');
+
+            let html = `
+                <div class="result-card">
+                    <h4><i class="fas fa-birthday-cake me-2"></i>${getAgeGroupName(ageGroup)}</h4>
+                    <div class="nutrition-focus">
+                        <h6><i class="fas fa-heart me-2"></i>Trọng tâm dinh dưỡng:</h6>
+                        <p class="mb-0">${data.nutrition_focus || 'Không có thông tin'}</p>
+                    </div>
+                    
+                    <div class="stats-row">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <strong>Khách hàng:</strong><br>
+                                <span class="text-primary">${data.user_id}</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Tuổi thực tế:</strong><br>
+                                <span class="text-success">${data.customer_age ? data.customer_age + ' tuổi' : 'Không xác định'}</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Số gợi ý:</strong><br>
+                                <span class="text-info">${data.total_recommendations || 0} món</span>
+                            </div>
+                            <div class="col-md-3">
+                                <strong>Nhóm tuổi:</strong><br>
+                                <span class="text-warning">${getAgeGroupName(ageGroup)}</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h6><i class="fas fa-utensils me-2"></i>Danh sách gợi ý:</h6>
+                    <div class="row">
+            `;
+
+            if (data.recommendations && data.recommendations.length > 0) {
+                data.recommendations.forEach((rec, index) => {
+                    html += `
+                        <div class="col-md-6 mb-3">
+                            <div class="recipe-item">
+                                <h6>${rec.recipe_name}</h6>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <small><strong>Độ khó:</strong> ${rec.difficulty}</small>
+                                    <small><strong>Đánh giá:</strong> ⭐ ${rec.predicted_rating?.toFixed(1)}</small>
+                                </div>
+                                <div class="d-flex justify-content-between align-items-center mt-1">
+                                    <small><strong>Bữa:</strong> ${translateMealTime(rec.meal_time)}</small>
+                                    ${rec.estimated_calories ? `<small><strong>Calo:</strong> ${rec.estimated_calories}</small>` : ''}
+                                </div>
+                                ${rec.estimated_price_vnd ? `<small><strong>Giá:</strong> ${formatPrice(rec.estimated_price_vnd)} VND</small>` : ''}
+                            </div>
+                        </div>
+                    `;
+                });
+            } else {
+                html += `
+                    <div class="col-12">
+                        <div class="alert alert-warning">
+                            <i class="fas fa-exclamation-triangle me-2"></i>
+                            Không tìm thấy gợi ý nào cho nhóm tuổi này.
+                        </div>
+                    </div>
+                `;
+            }
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+        }
+
+        async function testAllAgeGroups() {
+            log('🚀 Bắt đầu test tất cả nhóm tuổi...', 'info');
+
+            const ageGroups = ['children', 'teenagers', 'adults', 'elderly'];
+            let results = {};
+
+            for (const ageGroup of ageGroups) {
+                try {
+                    log(`🔄 Test ${getAgeGroupName(ageGroup)}...`, 'info');
+
+                    const url = `/api/age_based_recommendations?user_id=${currentCustomer}&age_group=${ageGroup}`;
+                    const response = await fetch(url);
+                    const data = await response.json();
+
+                    if (response.ok) {
+                        results[ageGroup] = {
+                            success: true,
+                            count: data.recommendations?.length || 0,
+                            nutrition_focus: data.nutrition_focus,
+                            customer_age: data.customer_age
+                        };
+                        log(`✅ ${getAgeGroupName(ageGroup)}: ${results[ageGroup].count} gợi ý`, 'success');
+                    } else {
+                        results[ageGroup] = { success: false, error: data.error };
+                        log(`❌ ${getAgeGroupName(ageGroup)}: ${data.error}`, 'error');
+                    }
+                } catch (error) {
+                    results[ageGroup] = { success: false, error: error.message };
+                    log(`❌ ${getAgeGroupName(ageGroup)}: ${error.message}`, 'error');
+                }
+            }
+
+            displayAllResults(results);
+            log('🎯 Hoàn thành test tất cả nhóm tuổi', 'info');
+        }
+
+        function displayAllResults(results) {
+            const resultsDiv = document.getElementById('testResults');
+
+            let html = `
+                <div class="result-card">
+                    <h4><i class="fas fa-chart-bar me-2"></i>Tổng kết Test All Age Groups</h4>
+                    <div class="row">
+            `;
+
+            Object.entries(results).forEach(([ageGroup, result]) => {
+                const statusClass = result.success ? 'success' : 'danger';
+                const icon = result.success ? 'check-circle' : 'times-circle';
+
+                html += `
+                    <div class="col-md-6 mb-3">
+                        <div class="card border-${statusClass}">
+                            <div class="card-body">
+                                <h6 class="card-title">
+                                    <i class="fas fa-${icon} text-${statusClass} me-2"></i>
+                                    ${getAgeGroupName(ageGroup)}
+                                </h6>
+                                ${result.success ? `
+                                    <p class="card-text">
+                                        <strong>Gợi ý:</strong> ${result.count} món<br>
+                                        <strong>Tuổi khách hàng:</strong> ${result.customer_age || 'N/A'}<br>
+                                        <small class="text-muted">${result.nutrition_focus}</small>
+                                    </p>
+                                ` : `
+                                    <p class="card-text text-danger">
+                                        <strong>Lỗi:</strong> ${result.error}
+                                    </p>
+                                `}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+
+            html += `
+                    </div>
+                </div>
+            `;
+
+            resultsDiv.innerHTML = html;
+        }
+
+        // Utility functions
+        function getAgeGroupName(ageGroup) {
+            const names = {
+                'children': 'Trẻ em (3-12)',
+                'teenagers': 'Thanh thiếu niên (13-19)',
+                'adults': 'Người lớn (20-59)',
+                'elderly': 'Người cao tuổi (60+)'
+            };
+            return names[ageGroup] || ageGroup;
+        }
+
+        function translateMealTime(mealTime) {
+            const translations = {
+                'breakfast': 'Sáng',
+                'lunch': 'Trưa',
+                'dinner': 'Tối'
+            };
+            return translations[mealTime] || mealTime;
+        }
+
+        function formatPrice(price) {
+            return new Intl.NumberFormat('vi-VN').format(price);
+        }
+
+        function log(message, type = 'info') {
+            const logDiv = document.getElementById('testLog');
+            const timestamp = new Date().toLocaleTimeString();
+            const colors = {
+                success: '#00b894',
+                error: '#e17055',
+                info: '#74b9ff',
+                warning: '#fdcb6e'
+            };
+
+            logDiv.innerHTML += `<span style="color: ${colors[type]}">[${timestamp}] ${message}</span><br>`;
+            logDiv.scrollTop = logDiv.scrollHeight;
+        }
+
+        function clearLog() {
+            document.getElementById('testLog').innerHTML = '[LOG] Log đã được xóa...<br>';
+        }
+    </script>
+</body>
+
+</html>

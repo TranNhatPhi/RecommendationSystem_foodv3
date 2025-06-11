@@ -4,6 +4,7 @@ import numpy as np
 from catboost import CatBoostRegressor
 import os
 import time
+import random
 
 app = Flask(__name__)
 
@@ -28,16 +29,46 @@ except Exception as e:
         print(f"❌ Could not load any interactions data: {str(e2)}")
         interactions_df = pd.DataFrame()
 
+# Load customer data for enhanced display
+try:
+    customers_df = pd.read_csv('customers_data.csv')
+    print(f"✅ Loaded customer data with {len(customers_df)} customers")
+except Exception as e:
+    print(f"❌ Could not load customer data: {str(e)}")
+    customers_df = pd.DataFrame()
+
+# Function to generate random age within age group
+
+
+def generate_random_age(age_group):
+    """Generate a random age within the specified age group"""
+    age_ranges = {
+        "18-24": (18, 24),
+        "25-34": (25, 34),
+        "35-44": (35, 44),
+        "45-54": (45, 54),
+        "55-64": (55, 64),
+        "65+": (65, 80)  # Assuming max age of 80 for 65+
+    }
+
+    if age_group in age_ranges:
+        min_age, max_age = age_ranges[age_group]
+        return random.randint(min_age, max_age)
+    else:
+        return random.randint(25, 35)  # Default fallback
+
+
 # Create helper dictionaries for quick lookups
 user_items = {}
 item_features = {}
 customer_ids = []  # List to store all customer IDs
+customers_info = {}  # Dictionary to store enhanced customer information
 
 # Preprocess data for recommendations
 
 
 def preprocess_data():
-    global user_items, item_features, customer_ids
+    global user_items, item_features, customer_ids, customers_info
 
     if interactions_df.empty:
         print("No interaction data available.")
@@ -50,6 +81,20 @@ def preprocess_data():
     if len(customer_ids) > 1300:
         customer_ids = customer_ids[:1300]
     print(f"Extracted {len(customer_ids)} unique customer IDs")
+
+    # Process customer information for enhanced display
+    if not customers_df.empty:
+        for _, customer in customers_df.iterrows():
+            customer_id = customer['customer_id']
+            if customer_id in customer_ids:  # Only process customers that have interactions
+                age = generate_random_age(customer['age_group'])
+                customers_info[customer_id] = {
+                    'name': customer['full_name'],
+                    'age': age,
+                    'display_name': f"{customer_id}-{customer['full_name']}-{age} tuổi"
+                }
+        print(
+            f"Processed enhanced information for {len(customers_info)} customers")
 
     # Group interactions by user
     for _, row in interactions_df.iterrows():
@@ -90,7 +135,7 @@ with app.app_context():
 
 @app.route('/')
 def index():
-    return render_template('index.html', customer_ids=customer_ids)
+    return render_template('index.html', customer_ids=customer_ids, customers_info=customers_info)
 
 # Test page route
 
@@ -285,67 +330,185 @@ def family_combos():
 @app.route('/api/age_based_recommendations', methods=['GET'])
 def age_based_recommendations():
     user_id = request.args.get('user_id')
-    # children, teenagers, adults, elderly
+    # children, teenagers, adults, elderly (optional)
     age_group = request.args.get('age_group')
 
-    if not user_id or not age_group:
-        return jsonify({"error": "Missing user_id or age_group parameter"}), 400
-
-    if age_group not in ['children', 'teenagers', 'adults', 'elderly']:
-        return jsonify({"error": "Invalid age_group. Choose from: children, teenagers, adults, elderly"}), 400
+    if not user_id:
+        return jsonify({"error": "Missing user_id parameter"}), 400
 
     try:
         # Get base recommendations
-        recommendations = get_recommendations(user_id, count=10)
+        recommendations = get_recommendations(user_id, count=20)
 
-        # Filter and sort based on age group preferences
+        # Get customer's actual age if available
+        customer_age = None
+        if user_id in customers_info:
+            customer_age = customers_info[user_id]['age']
+
+        # Auto-determine age_group based on actual customer age
+        if customer_age:
+            if customer_age <= 12:
+                age_group = 'children'
+            elif customer_age <= 19:
+                age_group = 'teenagers'
+            elif customer_age <= 59:
+                age_group = 'adults'
+            else:
+                age_group = 'elderly'
+        elif not age_group:
+            # Default to adults if no age info and no age_group provided
+            age_group = 'adults'
+
+        # Validate age_group
+        if age_group not in ['children', 'teenagers', 'adults', 'elderly']:
+            age_group = 'adults'  # Default fallback
+
+        # Enhanced age-based filtering with real customer data
+        age_filtered_recommendations = []
+
         if age_group == 'children':
-            # For children: easier recipes, potentially sweeter, nutritious
+            # For children (3-12): Easy, nutritious, colorful dishes
+            children_keywords = ['trứng', 'cháo',
+                                 'soup', 'canh', 'bánh', 'sữa', 'rau củ']
             age_filtered_recommendations = [
-                r for r in recommendations if r['difficulty'] == 'Dễ']
-        elif age_group == 'teenagers':
-            # For teenagers: mix of preferences, potentially more snacks
-            age_filtered_recommendations = recommendations
-        elif age_group == 'adults':
-            # For adults: all types of recipes
-            age_filtered_recommendations = recommendations
-        else:  # elderly
-            # For elderly: potentially softer foods, nutritious, easier to digest
-            age_filtered_recommendations = [
-                r for r in recommendations if r['difficulty'] in ['Dễ', 'Trung bình']]
+                r for r in recommendations
+                if r['difficulty'] == 'Dễ' or
+                any(keyword in r['recipe_name'].lower()
+                    for keyword in children_keywords)
+            ]
 
-        # Format response
+        elif age_group == 'teenagers':
+            # For teenagers (13-19): Energy-rich, trendy, quick meals
+            teen_keywords = ['nướng', 'chiên', 'pizza',
+                             'burger', 'mì', 'bánh mì', 'snack', 'fast']
+            age_filtered_recommendations = [
+                r for r in recommendations
+                if any(keyword in r['recipe_name'].lower() for keyword in teen_keywords) or
+                r['meal_time'] in ['lunch', 'dinner']
+            ]
+            # If not enough matches, include general recommendations
+            if len(age_filtered_recommendations) < 5:
+                age_filtered_recommendations.extend(recommendations[:10])
+
+        elif age_group == 'adults':
+            # For adults (20-59): Balanced, varied, professional meals
+            adult_keywords = ['salad', 'gỏi', 'nướng',
+                              'xào', 'hầm', 'curry', 'thịt', 'cá', 'tôm']
+            age_filtered_recommendations = [
+                r for r in recommendations
+                if any(keyword in r['recipe_name'].lower() for keyword in adult_keywords) or
+                r['difficulty'] in ['Trung bình', 'Khó']
+            ]
+            # Include all if no specific matches
+            if len(age_filtered_recommendations) < 5:
+                age_filtered_recommendations = recommendations
+
+        else:  # elderly (60+)
+            # For elderly: Easy to digest, nutritious, soft foods
+            elderly_keywords = ['canh', 'soup', 'cháo',
+                                'hầm', 'luộc', 'hấp', 'rau', 'cá']
+            age_filtered_recommendations = [
+                r for r in recommendations
+                if r['difficulty'] in ['Dễ', 'Trung bình'] and
+                (any(keyword in r['recipe_name'].lower() for keyword in elderly_keywords) or
+                 r['meal_time'] in ['breakfast', 'lunch'])
+            ]
+
+        # Remove duplicates and sort by rating
+        unique_recommendations = []
+        seen_recipes = set()
+        for rec in age_filtered_recommendations:
+            if rec['recipe_name'] not in seen_recipes:
+                unique_recommendations.append(rec)
+                seen_recipes.add(rec['recipe_name'])
+
+        # Sort by predicted rating
+        unique_recommendations.sort(
+            key=lambda x: x['predicted_rating'], reverse=True)
+
+        # Format response with enhanced information
         result = []
-        for rec in age_filtered_recommendations[:5]:
-            result.append({
+        for rec in unique_recommendations[:8]:  # Return top 8 recommendations
+            recipe_info = {
                 "recipe_name": rec['recipe_name'],
                 "recipe_url": rec['recipe_url'],
                 "difficulty": rec['difficulty'],
                 "meal_time": rec['meal_time'],
-                "predicted_rating": rec['predicted_rating']
-            })
+                "predicted_rating": rec['predicted_rating'],
+                "item_index": rec['item_index']
+            }
+
+            # Add enhanced data from interactions_df if available
+            try:
+                recipe_data = interactions_df[interactions_df['recipe_name'] == rec['recipe_name']].iloc[0] if len(
+                    interactions_df[interactions_df['recipe_name'] == rec['recipe_name']]) > 0 else None
+
+                if recipe_data is not None:
+                    if 'estimated_calories' in recipe_data:
+                        recipe_info['estimated_calories'] = int(
+                            recipe_data['estimated_calories'])
+                    if 'preparation_time_minutes' in recipe_data:
+                        recipe_info['preparation_time_minutes'] = int(
+                            recipe_data['preparation_time_minutes'])
+                    if 'ingredient_count' in recipe_data:
+                        recipe_info['ingredient_count'] = int(
+                            recipe_data['ingredient_count'])
+                    if 'estimated_price_vnd' in recipe_data:
+                        recipe_info['estimated_price_vnd'] = int(
+                            recipe_data['estimated_price_vnd'])
+            except:
+                pass  # Skip if enhanced data not available
+
+            result.append(recipe_info)
 
         return jsonify({
             "age_group": age_group,
             "recommendations": result,
-            "nutrition_focus": get_nutrition_focus(age_group)
+            "nutrition_focus": get_enhanced_nutrition_focus(age_group, customer_age),
+            "customer_age": customer_age,
+            "user_id": user_id,
+            "total_recommendations": len(result)
         })
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-# Helper function for age-based nutrition focus
+# Helper function for enhanced age-based nutrition focus
+
+
+def get_enhanced_nutrition_focus(age_group, customer_age=None):
+    """Enhanced nutrition focus that considers both age group and actual age"""
+    base_focus = {
+        'children': "Phát triển, tăng trưởng não bộ, xương chắc khỏe",
+        'teenagers': "Năng lượng, phát triển cơ bắp, chức năng não bộ",
+        'adults': "Dinh dưỡng cân bằng, năng lượng, sức khỏe tim mạch",
+        'elderly': "Sức khỏe xương khớp, tim mạch, dễ tiêu hóa"
+    }
+
+    focus = base_focus.get(age_group, "Dinh dưỡng cân bằng")
+
+    # Add specific age-based recommendations if actual age is available
+    if customer_age:
+        if customer_age <= 12:
+            focus += " - Thích hợp cho trẻ em, dễ ăn, bổ dưỡng"
+        elif 13 <= customer_age <= 19:
+            focus += " - Năng lượng cao cho tuổi teen, món ăn hấp dẫn"
+        elif 20 <= customer_age <= 35:
+            focus += " - Người trẻ tuổi, đa dạng món ăn, cân bằng dinh dưỡng"
+        elif 36 <= customer_age <= 50:
+            focus += " - Tuổi trung niên, chú trọng sức khỏe tim mạch"
+        elif 51 <= customer_age <= 65:
+            focus += " - Tuổi tiền cao niên, hỗ trợ sức khỏe tổng thể"
+        else:
+            focus += " - Cao tuổi, dễ tiêu hóa, bổ dưỡng"
+
+    return focus
+
+# Legacy function for backward compatibility
 
 
 def get_nutrition_focus(age_group):
-    if age_group == 'children':
-        return "Growth, brain development, bone strength"
-    elif age_group == 'teenagers':
-        return "Energy, muscle development, brain function"
-    elif age_group == 'adults':
-        return "Balanced nutrition, energy, heart health"
-    else:  # elderly
-        return "Bone health, heart health, easy digestion"
+    return get_enhanced_nutrition_focus(age_group)
 
 # API endpoint for meal-specific recommendations (breakfast, lunch, dinner)
 

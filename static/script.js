@@ -1497,10 +1497,17 @@ function translateNutritionType(nutritionType) {
         case 'brain-boost':
             return 'Tăng cường trí não';
         case 'digestive-support':
-            return 'Hỗ trợ tiêu hóa';
-        default:
+            return 'Hỗ trợ tiêu hóa'; default:
             return 'Dinh dưỡng cơ bản';
     }
+}
+
+// Price formatting utility function
+function formatPrice(price) {
+    if (typeof price !== 'number') {
+        price = parseFloat(price) || 0;
+    }
+    return price.toLocaleString('vi-VN');
 }
 
 // Helper functions for loading skeletons
@@ -1778,6 +1785,13 @@ function generateFamilySection(title, dishes, type) {
 
 // Generate age-based results HTML
 function generateAgeBasedResults(data) {
+    // Enhanced header with customer age info
+    const customerAgeInfo = data.customer_age ?
+        `<div class="customer-age-info">
+            <i class="fas fa-user me-2"></i>
+            <span>Khách hàng ${data.user_id} - ${data.customer_age} tuổi</span>
+        </div>` : '';
+
     return `
         <div class="col-12 mb-4">
             <div class="results-header">
@@ -1785,9 +1799,20 @@ function generateAgeBasedResults(data) {
                     <i class="fas fa-birthday-cake me-3"></i>
                     Món ăn cho ${translateAgeGroup(data.age_group)}
                 </h2>
+                ${customerAgeInfo}
                 <div class="nutrition-highlight">
                     <i class="fas fa-heart me-2"></i>
                     <span>${data.nutrition_focus || 'Dinh dưỡng cân bằng'}</span>
+                </div>
+                <div class="results-stats">
+                    <span class="badge bg-primary me-2">
+                        <i class="fas fa-utensils me-1"></i>
+                        ${data.total_recommendations || data.recommendations?.length || 0} món
+                    </span>
+                    <span class="badge bg-success">
+                        <i class="fas fa-thumbs-up me-1"></i>
+                        Phù hợp ${translateAgeGroup(data.age_group)}
+                    </span>
                 </div>
             </div>
         </div>
@@ -1820,6 +1845,20 @@ function generateAgeBasedResults(data) {
                                     ${generateStars(item.predicted_rating)}
                                     <span class="rating-value">${item.predicted_rating.toFixed(1)}</span>
                                 </div>
+                                ${item.estimated_calories || item.estimated_price_vnd ? `
+                                <div class="food-details">
+                                    ${item.estimated_calories ? `
+                                        <small class="text-muted">
+                                            <i class="fas fa-fire me-1"></i>${item.estimated_calories} cal
+                                        </small>
+                                    ` : ''}
+                                    ${item.estimated_price_vnd ? `
+                                        <small class="text-muted">
+                                            <i class="fas fa-coins me-1"></i>${formatPrice(item.estimated_price_vnd)} VND
+                                        </small>
+                                    ` : ''}
+                                </div>
+                                ` : ''}
                                 <div class="food-actions">
                                     <a href="${item.recipe_url}" target="_blank" class="btn btn-outline-primary btn-sm">
                                         <i class="fas fa-book-open me-1"></i>Công thức

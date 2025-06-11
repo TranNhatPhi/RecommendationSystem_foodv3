@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Customer Format - Quick Check</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+        }
+
+        .test-header {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            background: #f8f9fa;
+        }
+
+        .customer-dropdown {
+            max-height: 200px;
+            overflow-y: auto;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 10px;
+            background: white;
+        }
+
+        .customer-item {
+            padding: 8px;
+            border-bottom: 1px solid #eee;
+            font-family: monospace;
+        }
+
+        .format-check {
+            color: #28a745;
+            font-weight: bold;
+        }
+
+        .age-display {
+            color: #007bff;
+            background: #e3f2fd;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h2><i class="fas fa-check-circle text-success"></i> Customer Format Test</h2>
+            <p class="text-muted">Verifying new customer display format: ID-Name-Age</p>
+        </div>
+
+        <div class="test-section">
+            <h5><i class="fas fa-users"></i> Customer Format Check</h5>
+            <div id="customerFormatTest">
+                <div class="d-flex justify-content-center">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h5><i class="fas fa-chart-bar"></i> Statistics</h5>
+            <div id="statisticsDisplay">
+                <div class="row text-center">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 id="totalCustomers" class="text-primary">-</h3>
+                                <p class="mb-0">Total Customers</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 id="formatCorrect" class="text-success">-</h3>
+                                <p class="mb-0">Correct Format</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <h3 id="avgAge" class="text-info">-</h3>
+                                <p class="mb-0">Average Age</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="test-section">
+            <h5><i class="fas fa-vial"></i> Age-Based Recommendation Test</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="testCustomerSelect" class="form-label">Select Customer:</label>
+                    <select class="form-select" id="testCustomerSelect">
+                        <option value="">Loading customers...</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Customer Info:</label>
+                    <div id="selectedCustomerInfo" class="form-control" style="height: auto; min-height: 38px;">
+                        Select a customer to see their info
+                    </div>
+                </div>
+            </div>
+            <div class="mt-3">
+                <button class="btn btn-primary" onclick="testAgeBasedRecommendation()" id="testAgeBtn" disabled>
+                    <i class="fas fa-flask"></i> Test Age-Based Recommendations
+                </button>
+            </div>
+            <div id="ageTestResults" class="mt-3"></div>
+        </div>
+    </div>
+
+    <script>
+        let customersData = {};
+
+        // Load and test customer format
+        async function loadAndTestCustomers() {
+            try {
+                console.log('🔍 Testing customer format...');
+
+                // Fetch customers from the API
+                const response = await fetch('/get_customers');
+                const data = await response.json();
+
+                console.log('📊 Received customer data:', data);
+
+                if (data.customers_info) {
+                    customersData = data.customers_info;
+                    displayCustomerFormatTest(data.customers_info);
+                    populateCustomerSelect(data.customers_info);
+                    updateStatistics(data.customers_info);
+                } else {
+                    throw new Error('No customers_info in response');
+                }
+
+            } catch (error) {
+                console.error('❌ Error loading customers:', error);
+                document.getElementById('customerFormatTest').innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> Error loading customers: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        function displayCustomerFormatTest(customersInfo) {
+            const container = document.getElementById('customerFormatTest');
+            let html = '<div class="customer-dropdown">';
+
+            // Show first 10 customers as examples
+            const customerIds = Object.keys(customersInfo).slice(0, 10);
+            let correctFormatCount = 0;
+
+            customerIds.forEach(customerId => {
+                const customer = customersInfo[customerId];
+                const displayName = customer.display_name || customerId;
+
+                // Check if format matches ID-Name-Age pattern
+                const formatRegex = /^CUS\d+-[^-]+-\d+\s*tuổi$/;
+                const isCorrectFormat = formatRegex.test(displayName);
+
+                if (isCorrectFormat) correctFormatCount++;
+
+                html += `
+                    <div class="customer-item">
+                        <span class="${isCorrectFormat ? 'format-check' : 'text-danger'}">
+                            <i class="fas fa-${isCorrectFormat ? 'check' : 'times'}"></i>
+                        </span>
+                        <strong>${customerId}:</strong> ${displayName}
+                        ${customer.age ? `<span class="age-display">${customer.age} tuổi</span>` : ''}
+                    </div>
+                `;
+            });
+
+            html += '</div>';
+            html += `<p class="mt-3 text-center"><small class="text-muted">Showing first 10 customers out of ${Object.keys(customersInfo).length} total</small></p>`;
+
+            container.innerHTML = html;
+        }
+
+        function populateCustomerSelect(customersInfo) {
+            const select = document.getElementById('testCustomerSelect');
+            select.innerHTML = '<option value="">-- Choose a customer --</option>';
+
+            // Add first 20 customers for testing
+            const customerIds = Object.keys(customersInfo).slice(0, 20);
+            customerIds.forEach(customerId => {
+                const customer = customersInfo[customerId];
+                const option = document.createElement('option');
+                option.value = customerId;
+                option.textContent = customer.display_name || customerId;
+                select.appendChild(option);
+            });
+
+            // Enable the test button
+            document.getElementById('testAgeBtn').disabled = false;
+        }
+
+        function updateStatistics(customersInfo) {
+            const customerIds = Object.keys(customersInfo);
+            const totalCustomers = customerIds.length;
+
+            let correctFormatCount = 0;
+            let totalAge = 0;
+            let ageCount = 0;
+
+            customerIds.forEach(customerId => {
+                const customer = customersInfo[customerId];
+                const displayName = customer.display_name || customerId;
+
+                // Check format
+                const formatRegex = /^CUS\d+-[^-]+-\d+\s*tuổi$/;
+                if (formatRegex.test(displayName)) {
+                    correctFormatCount++;
+                }
+
+                // Calculate average age
+                if (customer.age) {
+                    totalAge += customer.age;
+                    ageCount++;
+                }
+            });
+
+            document.getElementById('totalCustomers').textContent = totalCustomers;
+            document.getElementById('formatCorrect').textContent = correctFormatCount;
+            document.getElementById('avgAge').textContent = ageCount > 0 ? Math.round(totalAge / ageCount) : 'N/A';
+        }
+
+        // Handle customer selection
+        document.getElementById('testCustomerSelect').addEventListener('change', function () {
+            const customerId = this.value;
+            const infoDiv = document.getElementById('selectedCustomerInfo');
+
+            if (customerId && customersData[customerId]) {
+                const customer = customersData[customerId];
+                infoDiv.innerHTML = `
+                    <strong>ID:</strong> ${customerId}<br>
+                    <strong>Display:</strong> ${customer.display_name}<br>
+                    <strong>Name:</strong> ${customer.name}<br>
+                    <strong>Age:</strong> ${customer.age} tuổi<br>
+                    <strong>Age Group:</strong> ${customer.age_group}
+                `;
+            } else {
+                infoDiv.textContent = 'Select a customer to see their info';
+            }
+        });
+
+        // Test age-based recommendations
+        async function testAgeBasedRecommendation() {
+            const customerId = document.getElementById('testCustomerSelect').value;
+            const resultsDiv = document.getElementById('ageTestResults');
+
+            if (!customerId) {
+                resultsDiv.innerHTML = '<div class="alert alert-warning">Please select a customer first</div>';
+                return;
+            }
+
+            resultsDiv.innerHTML = '<div class="text-center"><div class="spinner-border text-primary" role="status"></div></div>';
+
+            try {
+                const response = await fetch('/age_based_recommendations', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        customer_id: customerId,
+                        count: 5
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.status === 'success') {
+                    const customer = customersData[customerId];
+                    resultsDiv.innerHTML = `
+                        <div class="alert alert-success">
+                            <h6><i class="fas fa-check-circle"></i> Age-Based Recommendations Test Success!</h6>
+                            <p><strong>Customer:</strong> ${customer.display_name} (${customer.age} tuổi)</p>
+                            <p><strong>Recommendations:</strong> ${data.recommendations.length} items found</p>
+                            <p><strong>Nutrition Focus:</strong> ${data.nutrition_focus || 'N/A'}</p>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(data.message || 'API returned error status');
+                }
+
+            } catch (error) {
+                resultsDiv.innerHTML = `
+                    <div class="alert alert-danger">
+                        <i class="fas fa-exclamation-triangle"></i> Error testing age-based recommendations: ${error.message}
+                    </div>
+                `;
+            }
+        }
+
+        // Initialize when page loads
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🚀 Starting customer format test...');
+            loadAndTestCustomers();
+        });
+    </script>
+</body>
+
+</html>
