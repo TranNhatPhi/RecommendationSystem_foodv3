@@ -1,0 +1,44 @@
+# Enhanced AI Agent Requirements
+# Core Flask and web framework
+Flask==2.3.3
+Werkzeug==2.3.7
+
+# Data processing
+pandas==2.0.3
+numpy==1.24.3
+
+# Machine Learning
+catboost==1.2
+
+# AI and LLM
+openai==0.28.1
+langchain==0.0.354
+chromadb==0.4.18
+
+# Vector database and embeddings
+sentence-transformers==2.2.2
+faiss-cpu==1.7.4
+
+# HTTP requests and async
+aiohttp==3.9.1
+requests==2.31.0
+
+# Google Maps API
+googlemaps==4.10.0
+
+# Database and storage
+sqlite3  # Built-in Python
+
+# Performance monitoring
+psutil==5.9.6
+
+# Environment and configuration
+python-dotenv==1.0.0
+
+# Utility
+tqdm==4.66.1
+rich==13.7.0
+
+# Development and testing
+pytest==7.4.3
+pytest-asyncio==0.21.1

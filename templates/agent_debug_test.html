@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Debug Test</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .status {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .success {
+            border-left: 5px solid #28a745;
+        }
+
+        .error {
+            border-left: 5px solid #dc3545;
+        }
+
+        .warning {
+            border-left: 5px solid #ffc107;
+        }
+
+        .customer-list {
+            max-height: 200px;
+            overflow-y: auto;
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+        }
+
+        .btn-test {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            padding: 12px 30px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .btn-test:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 AI Agent Debug Test</h1>
+            <p>Kiểm tra tình trạng AI Agent interface</p>
+        </div>
+
+        <div class="status success">
+            <h3>✅ Test Results</h3>
+            <p><strong>Template:</strong> agent_debug_test.html loaded successfully</p>
+            <p><strong>Flask Route:</strong> /agent-debug working</p>
+            <p><strong>Customer IDs:</strong> {{ customer_ids|length if customer_ids else 0 }} customers found</p>
+            <p><strong>Customer Info:</strong> {{ customers_info|length if customers_info else 0 }} profiles loaded</p>
+        </div>
+
+        {% if customer_ids and customer_ids|length > 0 %}
+        <div class="status success">
+            <h3>👥 Customer Data Available</h3>
+            <div class="customer-list">
+                <h4>First 10 Customers:</h4>
+                {% for customer_id in customer_ids[:10] %}
+                <p>
+                    <strong>{{ customer_id }}</strong>:
+                    {% if customers_info.get(customer_id) %}
+                    {{ customers_info[customer_id]['display_name'] }}
+                    {% else %}
+                    Basic customer
+                    {% endif %}
+                </p>
+                {% endfor %}
+            </div>
+        </div>
+        {% else %}
+        <div class="status error">
+            <h3>❌ Customer Data Missing</h3>
+            <p>No customer data found. This could be the reason for the white screen.</p>
+        </div>
+        {% endif %}
+
+        <div class="status warning">
+            <h3>🔧 Debug Actions</h3>
+            <button class="btn-test" onclick="testAPI()">Test API Connection</button>
+            <button class="btn-test" onclick="loadMainAgent()">Load Main Agent</button>
+            <button class="btn-test" onclick="checkConsole()">Check Console</button>
+        </div>
+
+        <div id="api-test-result" class="status" style="display:none;">
+            <h3>📡 API Test Result</h3>
+            <pre id="api-response"></pre>
+        </div>
+    </div>
+
+    <script>
+        function testAPI() {
+            document.getElementById('api-test-result').style.display = 'block';
+            document.getElementById('api-response').textContent = 'Testing...';
+
+            fetch('/api/enhanced-chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    customer_id: '1001',
+                    message: 'Test connection',
+                    location: null
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('api-response').textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    document.getElementById('api-response').textContent = 'Error: ' + error.message;
+                });
+        }
+
+        function loadMainAgent() {
+            window.location.href = '/agent';
+        }
+
+        function checkConsole() {
+            console.log('Console check - look for errors below:');
+            console.log('Customer IDs available:', {{ customer_ids| length if customer_ids else 0
+        }});
+        console.log('Customer Info available:', {{ customers_info| length if customers_info else 0 }});
+        alert('Check browser console (F12) for debug information');
+        }
+
+        // Auto-check console on load
+        console.log('🤖 AI Agent Debug Test Loaded');
+        console.log('Customer IDs:', {{ customer_ids| tojsonfilter | safe if customer_ids else '[]' }});
+        console.log('Template variables loaded successfully');
+    </script>
+</body>
+
+</html>

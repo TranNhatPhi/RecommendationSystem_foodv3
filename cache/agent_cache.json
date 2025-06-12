@@ -1,0 +1,4663 @@
+{
+  "cache": {
+    "cc9378634eab46ad99b1640a15cc42b5": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654040.2725794,
+      "expire_hours": 2
+    },
+    "bd2b0137f8a3edbb021b5ec949975df7": {
+      "value": {
+        "ai_response": "Dựa vào danh sách món ăn bạn đã cung cấp, để chọn một món ăn tốt cho sức khỏe, chúng ta có thể xem xét các yếu tố sau:\n\n1. **Dinh dưỡng cân đối:** Món ăn cung cấp đủ chất dinh dưỡng cần thiết cho cơ thể, bao gồm protein, carbohydrate, chất béo, và nhiều loại vitamin và khoáng chất.\n\n2. **Calo hợp lý:** Lựa chọn món ăn có lượng calo phù hợp với nhu cầu calo hàng ngày của bạn để duy trì cân nặng hoặc giảm cân nếu cần.\n\n3. **Thời gian chuẩn bị:** Món ăn có thời gian chuẩn bị phù hợp với lịch trình của bạn.\n\nVới các lựa chọn bạn đã đưa ra, một số món ăn có thể được coi là tốt cho sức khỏe:\n- **Mì Quảng:** Mì Quảng là một lựa chọn tốt với lượng calo trung bình và thời gian chuẩn bị ngắn.\n- **Tôm rang me:** Tôm là nguồn protein tốt và món này có thể cung cấp dinh dưỡng cân đối.\n- **Thịt nướng BBQ:** Nếu bạn đang tìm kiếm một món ăn giảm cân, thịt nướng BBQ có thể là một sự lựa chọn tốt.\n\nNhớ rằng, việc kết hợp các loại thực phẩm khác nhau trong khẩu phần ăn hàng ngày là quan trọng để đảm bảo cung cấp đủ chất dinh dưỡng cho cơ thể. Đồng thời, luôn kết hợp với việc tập luyện đều đặn để duy trì sức khỏe tốt.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Hà Nội",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Hà Nội",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Hà Nội",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:00:47.598572",
+        "query": "Tôi muốn ăn món gì tốt cho sức khỏe?"
+      },
+      "timestamp": 1749654047.5985723,
+      "expire_hours": 1
+    },
+    "8e2ed956ec9f906dbef7f2fc09c9926d": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654050.6427543,
+      "expire_hours": 2
+    },
+    "6d61ceabfd2e89bee93006af701c2bd6": {
+      "value": {
+        "ai_response": "Nếu bạn đang bị tiểu đường, việc chọn lựa món ăn phù hợp rất quan trọng để duy trì sức khỏe. Dưới đây là một số gợi ý món ăn phù hợp cho người bị tiểu đường:\n\n1. **Salad rau xanh và gà nướng:** Salad rau xanh như rau cải, rau diếp, cà chua kết hợp với gà nướng không chỉ cung cấp chất xơ tốt cho tiểu đường mà còn giàu protein.\n\n2. **Cá hồi nướng hoặc hấp:** Cá hồi giàu axit béo omega-3 có lợi cho sức khỏe tim mạch và hệ thần kinh, thích hợp cho người bị tiểu đường.\n\n3. **Canh chua cá:** Canh chua là một món ăn truyền thống Việt Nam, dùng cá và nhiều loại rau cải, cà chua, giúp cung cấp nước, chất xơ và vitamin.\n\n4. **Rau xào đậu hủ:** Một món ăn nhẹ, giàu chất xơ từ rau xanh và protein từ đậu hủ, giúp kiểm soát đường huyết.\n\n5. **Chè đậu xanh không đường:** Thay vì các loại đồ ngọt có đường, chè đậu xanh không đường là lựa chọn tốt cho người bị tiểu đường.\n\nHãy luôn tham khảo ý kiến của bác sĩ hoặc chuyên gia dinh dưỡng trước khi thay đổi chế độ ăn uống. Đồng thời, hãy kiểm soát lượng carbohydrate và đường trong khẩu phần ăn của mình để duy trì đường huyết ổn định.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, TP.HCM",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, TP.HCM",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, TP.HCM",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:04.228629",
+        "query": "Tôi bị tiểu đường, gợi ý món ăn phù hợp"
+      },
+      "timestamp": 1749654064.2286289,
+      "expire_hours": 1
+    },
+    "e43e9ab8982e16b15d2456f056f172bd": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654067.2692227,
+      "expire_hours": 2
+    },
+    "c1aa2db716e19caa90ff7551df12c747": {
+      "value": {
+        "ai_response": "Đối với người đang có mục tiêu giảm cân, một lựa chọn tốt sẽ là món \"Thịt nướng BBQ\". Món này được đánh giá là phù hợp cho chế độ giảm cân với lượng calo tương đối thấp (506.0 kcal) và thời gian chuẩn bị nhanh chóng (30 phút). \n\nNgoài ra, việc chế biến thịt nướng giúp giảm lượng chất béo trong thực phẩm so với việc chế biến bằng cách chiên hoặc nướng mỡ. Đồng thời, sự dễ dàng trong việc chuẩn bị cũng giúp người giảm cân tiết kiệm thời gian mà vẫn đảm bảo được sự ngon miệng của bữa ăn. \n\nNhớ kết hợp món ăn này với rau xanh và các loại rau củ để bổ sung chất xơ và dinh dưỡng cần thiết, cũng như giữ cho chế độ ăn cân đối và đa dạng. Chúc bạn thành công trong việc giảm cân và duy trì cân nặng lý tưởng!",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Đà Nẵng",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Đà Nẵng",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Đà Nẵng",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:10.485794",
+        "query": "Món ăn nào phù hợp cho người giảm cân?"
+      },
+      "timestamp": 1749654070.4857948,
+      "expire_hours": 1
+    },
+    "1a834772115f09a492c5cd4823189de6": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654073.5205371,
+      "expire_hours": 2
+    },
+    "ea3b234f891ff48b444cf4051c9e66e4": {
+      "value": {
+        "ai_response": "DĨA 1:\nMón chính: Canh chua cá bông lau\n- Lợi ích dinh dưỡng: Canh chua cung cấp chất xơ từ rau cải, vitamin từ cà chua và nguồn protein từ cá bông lau.\n- An toàn thực phẩm: Chọn cá tươi, rửa sạch và chế biến nhanh chóng để đảm bảo an toàn thực phẩm.\n- Lưu ý: Nên thêm rau sống như rau thơm vào canh chua để tăng khả năng hấp thụ dưỡng chất.\n\nDĨA 2:\nMón phụ: Mì Quảng\n- Lợi ích dinh dưỡng: Mì Quảng cung cấp carbohydrate từ bún, protein từ thịt gà hoặc tôm, cùng với rau sống và mỡ hành tạo nên bữa ăn cân đối.\n- An toàn thực phẩm: Chọn nguyên liệu sạch, chuẩn bị thức ăn trong môi trường sạch sẽ để đảm bảo vệ sinh an toàn thực phẩm.\n- Lưu ý: Thêm nhiều rau sống, rau sống để cung cấp thêm chất xơ và dinh dưỡng.\n\nKết hợp hai món này sẽ tạo ra bữa ăn cân đối về dinh dưỡng và đảm bảo an toàn thực phẩm. Đừng quên uống đủ nước và hạn chế gia vị để bữa ăn thêm hấp dẫn và tốt cho sức khỏe. Chúc bạn có bữa ăn ngon miệng và bổ dưỡng!",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Cần Thơ",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Cần Thơ",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Cần Thơ",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:18.334709",
+        "query": "Tôi thích món ăn Việt Nam, bạn gợi ý giúp thực đơn an toàn"
+      },
+      "timestamp": 1749654078.3347092,
+      "expire_hours": 1
+    },
+    "c13271c968daee9b733eb43bde492ce0": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654104.353956,
+      "expire_hours": 2
+    },
+    "4e4859dc28f8372da41a8cafa05e5a5a": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654104.353956,
+      "expire_hours": 2
+    },
+    "2a56db87c57b76bbe377016208b0c174": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654104.353956,
+      "expire_hours": 2
+    },
+    "7d1c40c3ee852cf08dfa1bc4525c0a80": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          },
+          {
+            "name": "Cua rang sốt tắc",
+            "url": "https://monngonmoingay.com/cua-rang-sot-tac/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 471.0,
+            "prep_time": 19.0,
+            "ingredients": 3,
+            "price": 36851.0,
+            "rating": 3.2123893805309733
+          },
+          {
+            "name": "Tôm nướng bánh hỏi",
+            "url": "https://monngonmoingay.com/tom-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 430.0,
+            "prep_time": 23.0,
+            "ingredients": 5,
+            "price": 47945.0,
+            "rating": 3.2009615384615384
+          },
+          {
+            "name": "Cá chiên bông điên điển",
+            "url": "https://monngonmoingay.com/ca-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 452.0,
+            "prep_time": 18.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.1999999999999997
+          },
+          {
+            "name": "Bún riêu cua",
+            "url": "https://monngonmoingay.com/bun-rieu-cua/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 293.0,
+            "prep_time": 24.0,
+            "ingredients": 4,
+            "price": 37280.0,
+            "rating": 3.1724489795918367
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654104.353956,
+      "expire_hours": 2
+    },
+    "cf171bf7feb9b61981912055996d7739": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          },
+          {
+            "name": "Cua rang sốt tắc",
+            "url": "https://monngonmoingay.com/cua-rang-sot-tac/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 471.0,
+            "prep_time": 19.0,
+            "ingredients": 3,
+            "price": 36851.0,
+            "rating": 3.2123893805309733
+          },
+          {
+            "name": "Tôm nướng bánh hỏi",
+            "url": "https://monngonmoingay.com/tom-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 430.0,
+            "prep_time": 23.0,
+            "ingredients": 5,
+            "price": 47945.0,
+            "rating": 3.2009615384615384
+          },
+          {
+            "name": "Cá chiên bông điên điển",
+            "url": "https://monngonmoingay.com/ca-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 452.0,
+            "prep_time": 18.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.1999999999999997
+          },
+          {
+            "name": "Bún riêu cua",
+            "url": "https://monngonmoingay.com/bun-rieu-cua/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 293.0,
+            "prep_time": 24.0,
+            "ingredients": 4,
+            "price": 37280.0,
+            "rating": 3.1724489795918367
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654104.353956,
+      "expire_hours": 2
+    },
+    "3ecf3d29379fcf7d55fa1c9468c83ddc": {
+      "value": {
+        "ai_response": "Dựa vào thông tin bạn cung cấp, để chọn món ăn tốt cho sức khỏe, chúng ta cần xem xét các yếu tố như cân nặng, thời gian chuẩn bị và lợi ích dinh dưỡng. \n\nTrong trường hợp này, mì Quảng có vẻ là lựa chọn tốt nhất cho sức khỏe vì nó được đánh giá là món ăn \"balanced\" (cân đối) và có lượng calo thấp hơn so với các món khác. Thời gian chuẩn bị cũng khá ngắn, chỉ 25 phút. \n\nMì Quảng cung cấp một hỗn hợp cân đối giữa tinh bột từ mì, protein từ thịt và rau cải, cung cấp năng lượng và chất dinh dưỡng cần thiết cho cơ thể. Đồng thời, món ăn này cũng ít calo hơn so với các món chế biến khác như gà nướng mật ong hoặc gà chiên bắp phô mai.\n\nVì vậy, nếu bạn đang tìm kiếm một lựa chọn ngon miệng, dễ chuẩn bị và tốt cho sức khỏe, mì Quảng có thể là một sự chọn lựa lanh mạnh.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:48.105878",
+        "query": "Món ăn nào tốt cho sức khỏe?"
+      },
+      "timestamp": 1749654108.105878,
+      "expire_hours": 1
+    },
+    "c6370db2a7319ddd1137a2738d04ad87": {
+      "value": {
+        "ai_response": "Dựa vào thông tin bạn cung cấp, để chọn món ăn tốt cho sức khỏe, chúng ta cần xem xét các yếu tố như cân nặng, thời gian chuẩn bị, và mức độ cân đối của bữa ăn. Dựa vào đó, một số gợi ý như sau:\n\n1. **Mì Quảng**: Món ăn này có lượng calo thấp, thời gian chuẩn bị nhanh chóng và dễ thực hiện. Nó cung cấp cả tinh bột từ mì và protein từ thịt, tương đối cân đối và phù hợp cho bữa ăn hàng ngày.\n\n2. **Thịt nướng BBQ**: Mặc dù là món giảm cân, nhưng cũng cung cấp một lượng calo khá cao. Tuy nhiên, nếu thời gian chuẩn bị và chế biến không lâu, bạn có thể kết hợp thịt nướng với rau cải xanh hoặc salad để tăng cường dinh dưỡng.\n\n3. **Gà nướng mật ong**: Mặc dù nhiều calo hơn, nhưng gà nướng mật ong cung cấp protein chất lượng cao. Bạn có thể kết hợp món này với các loại rau cải để tạo sự cân đối cho bữa ăn.\n\nNói chung, để chọn món ăn tốt cho sức khỏe, bạn nên cân nhắc các yếu tố trên và kết hợp với chế độ ăn cân đối và lối sống lành mạnh.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:48.264576",
+        "query": "Món ăn nào tốt cho sức khỏe?"
+      },
+      "timestamp": 1749654108.264577,
+      "expire_hours": 1
+    },
+    "c0154d0c440ad295647076ed704e2f72": {
+      "value": {
+        "recipes": [],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654110.1353316,
+      "expire_hours": 2
+    },
+    "5b8c7e505b12423a8a19e665163816dc": {
+      "value": {
+        "recipes": [],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654110.3072085,
+      "expire_hours": 2
+    },
+    "73bc6fa4cf8d11b4e7e50e0e3ff46dbb": {
+      "value": {
+        "ai_response": "Để giúp người giảm cân, việc lựa chọn thực đơn cân đối và ít calo là rất quan trọng. Dưới đây là một số món ăn phù hợp với người đang giảm cân:\n\n1. Canh chua cá bông lau: Món canh chua không chỉ ngon mà còn giàu chất xơ từ rau cải, cung cấp cảm giác no lâu hơn mà không tăng lượng calo quá nhiều.\n\n2. Cá xào cần tỏi: Món cá thơm ngon, giàu protein nhưng calo không cao, phù hợp với chế độ giảm cân.\n\n3. Lẩu nấm: Một món ăn nhẹ nhàng, giàu chất xơ từ nấm và rau cải, giúp bổ sung dinh dưỡng mà không tăng cân.\n\n4. Cua rang sốt tắc: Một món biển giàu protein, thấp calo, có thể được thêm vào thực đơn giảm cân một cách linh hoạt.\n\nĐể thực hiện chế độ giảm cân hiệu quả, bạn cũng cần kết hợp với việc tập luyện đều đặn và duy trì lối sống lành mạnh. Hãy nhớ rằng việc giảm cân cần được thực hiện một cách cân nhắc và không nên giảm quá nhanh để đảm bảo sức khỏe. Chúc bạn thành công trong việc giảm cân!",
+        "recommended_recipes": [
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          },
+          {
+            "name": "Cua rang sốt tắc",
+            "url": "https://monngonmoingay.com/cua-rang-sot-tac/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 471.0,
+            "prep_time": 19.0,
+            "ingredients": 3,
+            "price": 36851.0,
+            "rating": 3.2123893805309733
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:50.527411",
+        "query": "Thực đơn cho người giảm cân"
+      },
+      "timestamp": 1749654110.5274115,
+      "expire_hours": 1
+    },
+    "65e9d2f1d610e23d4d1f31ec0374edf6": {
+      "value": {
+        "ai_response": "Đối với trẻ em, việc cung cấp dinh dưỡng cần thiết để phát triển toàn diện là rất quan trọng. Dưới đây là một số món ăn dinh dưỡng phù hợp cho trẻ em:\n\n1. **Thịt gà hấp:** Thịt gà là nguồn protein chất lượng cao giúp phát triển cơ bắp và hệ thần kinh của trẻ. Hấp giữ nguyên hương vị và dinh dưỡng của thịt một cách tốt.\n\n2. **Cá hồi nướng:** Cá hồi là nguồn axit béo omega-3 rất tốt cho sự phát triển của não bộ và hệ thần kinh trẻ. Cách chế biến nướng giúp giữ nguyên dinh dưỡng trong thực phẩm.\n\n3. **Rau củ quả tươi:** Khuyến khích trẻ ăn rau củ quả đa dạng để cung cấp vitamin, khoáng chất và chất xơ. Cắt nhỏ hoặc trang trí rau củ quả để tạo hình sẽ kích thích trẻ ăn ngon miệng hơn.\n\n4. **Cháo gà:** Cháo gà là một món ăn dễ ăn, dễ tiêu hóa và cung cấp năng lượng cho trẻ. Bạn có thể kết hợp thêm rau củ quả vào cháo để tăng thêm dinh dưỡng.\n\n5. **Sữa chua hoặc sữa tươi:** Đây là nguồn canxi quan trọng giúp phát triển xương và răng cho trẻ.\n\nNhớ rằng việc cân đối các nhóm thực phẩm và đảm bảo các bữa ăn đa dạng sẽ giúp trẻ phát triển toàn diện. Đồng thời, hãy chú ý đến vệ sinh khi chế biến và bảo quản thực phẩm để đảm bảo an toàn cho sức khỏe của trẻ.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:51.549963",
+        "query": "Món ăn dinh dưỡng cho trẻ em"
+      },
+      "timestamp": 1749654111.5499635,
+      "expire_hours": 1
+    },
+    "fbf987afd7c20489d3af01dcb65f5364": {
+      "value": {
+        "ai_response": "Dĩ nhiên, để đưa ra lời khuyên chính xác hơn, bạn có thể cung cấp thêm thông tin về khẩu vị của mình, giới tính, độ tuổi, liệu có bất kỳ yêu cầu dinh dưỡng nào hay không? Điều này sẽ giúp tôi đưa ra gợi ý món ăn phù hợp nhất cho bạn.",
+        "recommended_recipes": [],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:52.343480",
+        "query": "Tôi muốn ăn gì hôm nay?"
+      },
+      "timestamp": 1749654112.3434806,
+      "expire_hours": 1
+    },
+    "48d7fac348c25bd218ae2d963a9ed524": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654112.5551214,
+      "expire_hours": 2
+    },
+    "6e1755eb268dc96d01833e6578876048": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654113.5815606,
+      "expire_hours": 2
+    },
+    "4a3458a7fad410a26f032001502fbc52": {
+      "value": {
+        "ai_response": "Dĩ nhiên, rất vui được hỗ trợ bạn trong việc lựa chọn bữa ăn hôm nay. Để có một bữa ăn ngon miệng và bổ dưỡng, dưới đây là một số gợi ý món ăn phổ biến mà bạn có thể tham khảo:\n\n1. **Thịt Gà Nướng Mật Ong**: Một lựa chọn ngon miệng và dễ chế biến. Thịt gà được nướng chín và thấm gia vị mật ong, thường được phục vụ cùng với cơm trắng và rau sống.\n\n2. **Cá Hồi Nướng Mắc Khén**: Cá hồi giàu axit béo omega-3 tốt cho sức khỏe tim mạch. Nướng cá hồi với mắc khén sẽ tạo ra một bữa ăn hấp dẫn và bổ dưỡng.\n\n3. **Canh Chua**: Một món canh truyền thống của Việt Nam, hấp dẫn và giàu dinh dưỡng. Canh chua thường có hải sản như tôm, cá, hoặc thịt gà, cùng với rau sống và nước dừa thơm ngon.\n\n4. **Cơm Gà Hải Nam**: Một món ăn đặc trưng của vùng Hải Nam, cơm gà thơm ngon, thịt gà mềm và nước dùng đậm đà, thường được phục vụ cùng rau sống và nước mắm.\n\nBạn có thể chọn một trong những gợi ý trên hoặc cho biết thêm sở thích, ăn chay hay dành cho người ăn kiêng để tôi có thể đưa ra lời khuyên phù hợp hơn. Chúc bạn có một bữa ăn ngon miệng!",
+        "recommended_recipes": [],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:53.826390",
+        "query": "Tôi muốn ăn gì hôm nay?"
+      },
+      "timestamp": 1749654113.8263905,
+      "expire_hours": 1
+    },
+    "20e5d55f8099a136bb919070ef3dd62b": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654114.3890808,
+      "expire_hours": 2
+    },
+    "025fb8f222359bc5212cda8764267d2f": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654115.8816113,
+      "expire_hours": 2
+    },
+    "b22837f620a57b097b1cee85fa93eb7f": {
+      "value": {
+        "ai_response": "Để đảm bảo dinh dưỡng cho trẻ em, bạn cần lựa chọn các món ăn cung cấp đầy đủ chất dinh dưỡng cần thiết cho sự phát triển của trẻ. Dưới đây là một số gợi ý món ăn phù hợp cho trẻ em:\n\n1. **Canh chua cá:** Canh chua là một món ăn truyền thống Việt Nam, giàu protein từ cá, cung cấp vitamin C từ dưa chua và rau sống, giúp tăng cường hệ miễn dịch cho trẻ.\n\n2. **Cơm gà xối mỡ:** Một món ăn ngon, dễ ăn và cung cấp năng lượng từ cơm và protein từ thịt gà, có thể kèm theo rau sống để bổ sung chất xơ và vitamin.\n\n3. **Cháo bí đỏ:** Cháo bí đỏ là một lựa chọn tốt cho trẻ em, giàu chất xơ từ bí đỏ, dễ tiêu hóa và cung cấp năng lượng cho cơ thể.\n\n4. **Bánh mì sandwich thịt nguội và rau cải:** Một bữa sáng hoặc bữa ăn nhẹ lý tưởng, cung cấp protein từ thịt và chất xơ từ rau cải.\n\n5. **Súp cà chua và thịt băm:** Súp cà chua giàu vitamin C và lycopene, kết hợp với thịt băm giàu protein, là một món ăn dinh dưỡng và dễ ăn cho trẻ.\n\nNhớ rằng, việc cung cấp đủ chất dinh dưỡng và đa dạng món ăn là rất quan trọng đối với sức khỏe và sự phát triển của trẻ em. Đồng thời, luôn chú ý đến vệ sinh thực phẩm và chế biến an toàn khi chuẩn bị món ăn cho trẻ.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:56.950988",
+        "query": "Món ăn dinh dưỡng cho trẻ em"
+      },
+      "timestamp": 1749654116.950988,
+      "expire_hours": 1
+    },
+    "6c37e6a34896c69c66c097ba7bd7354a": {
+      "value": {
+        "ai_response": "Để giúp bạn giảm cân một cách hiệu quả và an toàn, dưới đây là một vài món ăn phù hợp:\n\n1. **Canh chua cá bông lau**: Món này có thể là một lựa chọn tốt với hàm lượng calo không cao nhưng vẫn cung cấp đủ chất dinh dưỡng.\n\n2. **Cá xào cần tỏi**: Một món ăn nhẹ nhàng và giàu protein, giúp bạn cảm thấy no lâu hơn mà không tăng lượng calo quá nhiều.\n\n3. **Lẩu nấm**: Một món ăn hấp dẫn, ít calo và giàu chất xơ từ nấm, giúp cung cấp dinh dưỡng mà vẫn giữ vững trong chế độ giảm cân.\n\n4. **Danh mục thực đơn**: Đây là một sự kết hợp các món ăn cân đối, cung cấp đủ dinh dưỡng mà vẫn hạn chế calo, phù hợp cho chế độ giảm cân.\n\n5. **Cua rang sốt tắc**: Một món ăn ngon và giàu protein, nhưng hạn chế hơn so với các món khác trong danh sách.\n\nĐể tăng cường hiệu quả giảm cân, bạn nên kết hợp chế độ ăn uống cân đối với lịch tập luyện thể dục thể thao thường xuyên. Hãy tham khảo ý kiến của chuyên gia dinh dưỡng hoặc bác sĩ trước khi thay đổi chế độ ăn uống của mình. Chúc bạn thành công trong việc giảm cân!",
+        "recommended_recipes": [
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          },
+          {
+            "name": "Cua rang sốt tắc",
+            "url": "https://monngonmoingay.com/cua-rang-sot-tac/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 471.0,
+            "prep_time": 19.0,
+            "ingredients": 3,
+            "price": 36851.0,
+            "rating": 3.2123893805309733
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:57.570703",
+        "query": "Thực đơn cho người giảm cân"
+      },
+      "timestamp": 1749654117.570703,
+      "expire_hours": 1
+    },
+    "17b1c82bd2f16d56c5ec0c03129cb91c": {
+      "value": {
+        "ai_response": "Để đảm bảo sự phát triển toàn diện cho trẻ em, các món ăn cần cân đối, đa dạng và giàu dinh dưỡng. Dưới đây là một số gợi ý món ăn dinh dưỡng cho trẻ em:\n\n1. **Cơm gà hầm sả**: Một món cơm trắng kết hợp với thịt gà hầm sả thơm ngon, giàu protein và dưỡng chất cần thiết cho sự phát triển của trẻ.\n\n2. **Canh rau cải thịt bò**: Canh rau cải chứa nhiều chất xơ, vitamin và khoáng chất, kết hợp với thịt bò giàu protein là lựa chọn tốt cho bữa ăn của trẻ.\n\n3. **Bánh mì nướng trứng**: Bánh mì nướng cùng trứng gà chứa nhiều protein và chất béo lành mạnh, cung cấp năng lượng cho trẻ trong suốt ngày.\n\n4. **Cháo hẹ nấm tươi**: Cháo là một món ăn dễ tiêu hóa và giàu dinh dưỡng. Hủ tiếu hoặc bún riêu cũng là lựa chọn tốt.\n\n5. **Salad trái cây và hạt giống**: Một phần salad trái cây tươi ngon kèm theo hạt giống giàu chất dinh dưỡng là sự kết hợp hoàn hảo cho bữa ăn sáng hoặc giữa các bữa chính.\n\nNhớ rằng việc cung cấp một chế độ ăn cân đối và đủ chất dinh dưỡng là rất quan trọng đối với sự phát triển của trẻ em. Hãy kết hợp các loại thực phẩm đa dạng để đảm bảo trẻ nhận đủ các dưỡng chất cần thiết.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:58.260985",
+        "query": "Món ăn dinh dưỡng cho trẻ em"
+      },
+      "timestamp": 1749654118.2609851,
+      "expire_hours": 1
+    },
+    "d3cf652f7e054a224732fc5ce67332d6": {
+      "value": {
+        "ai_response": "Để đảm bảo dinh dưỡng cho trẻ em, bạn cần lựa chọn các món ăn cung cấp đầy đủ chất dinh dưỡng cần thiết cho sự phát triển của trẻ. Dưới đây là một số gợi ý món ăn dinh dưỡng phù hợp cho trẻ em:\n\n1. **Cơm gà hấp:** Cơm trắng hấp kèm theo miếng gà hấp thơm ngon, giàu protein và các dưỡng chất cần thiết cho sự phát triển của trẻ.\n\n2. **Canh cải thảo cuộn thịt:** Canh nước lọc kèm theo cải thảo và cuốn thịt bò hoặc thịt gà, cung cấp vitamin, khoáng chất và protein.\n\n3. **Salad rau cải trộn dầu giấm:** Một món salad phổ biến, kết hợp rau cải xanh, cà rốt, dưa leo, hạt giống và nước sốt dầu giấm. Đây là một cách tuyệt vời để trẻ em tiêu thụ rau cải và rau xanh.\n\n4. **Cháo dinh dưỡng:** Cháo gạo lứt hoặc cháo yến mạch kèm theo thịt gà hoặc cá hồi, cung cấp năng lượng và dinh dưỡng cần thiết cho sự phát triển của trẻ.\n\n5. **Bánh mỳ sandwich:** Bánh mỳ sandwich có thể được làm từ bánh mỳ nguyên cám kết hợp với thịt gà, thịt bò hoặc cá ngừ, kèm rau sống và các loại rau khác. \n\nNhớ rằng việc cung cấp một chế độ ăn cân đối và đa dạng là rất quan trọng để đảm bảo sức khỏe và sự phát triển của trẻ em. Đồng thời, cũng cần chú ý đến việc kiểm soát lượng đường và chất béo trong chế độ ăn của trẻ.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:01:58.799838",
+        "query": "Món ăn dinh dưỡng cho trẻ em"
+      },
+      "timestamp": 1749654118.7998388,
+      "expire_hours": 1
+    },
+    "27996481394cdbf045d668f957f1f3de": {
+      "value": {
+        "recipes": [],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654118.98569,
+      "expire_hours": 2
+    },
+    "36e7fe04b76e40c8c53d1dc22c2b3ddc": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654119.6175587,
+      "expire_hours": 2
+    },
+    "32f0e334223ba677c7bda1c389de886d": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654120.2983356,
+      "expire_hours": 2
+    },
+    "f889c6cfae706e58f49187c8020eb028": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654120.8816192,
+      "expire_hours": 2
+    },
+    "ee9336d3f3c0705c6bd94bb45396a3cd": {
+      "value": {
+        "ai_response": "Chào bạn! Để tôi có thể đưa ra gợi ý chính xác hơn, bạn có thể cho biết một số thông tin sau không? Ví dụ như bạn muốn ăn món nào (món Việt, món ngoại, món chay, món mặn, v.v.), bạn có bất kỳ hạn chế dinh dưỡng nào không (như giảm cân, ăn ít muối, v.v.), hoặc bạn đặc biệt quan tâm đến yếu tố gì (như thời gian chuẩn bị, nguyên liệu dễ kiếm, v.v.)?Thông tin này sẽ giúp tôi đưa ra gợi ý phù hợp hơn.",
+        "recommended_recipes": [],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:02:01.173211",
+        "query": "Tôi muốn ăn gì hôm nay?"
+      },
+      "timestamp": 1749654121.1732118,
+      "expire_hours": 1
+    },
+    "669c22e19b07b4850e486cfa84a58300": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654123.2304704,
+      "expire_hours": 2
+    },
+    "0d5043060aa0d6398ef0cb166bd492d6": {
+      "value": {
+        "ai_response": "Để đảm bảo dinh dưỡng cho trẻ em, bạn cần chú ý đến việc cung cấp đủ các chất cần thiết cho sự phát triển của cơ thể như protein, carbohydrate, chất béo, vitamin và khoáng chất. Dưới đây là một số gợi ý món ăn dinh dưỡng phù hợp cho trẻ em:\n\n1. Cơm gà hấp: Một bữa ăn đơn giản nhưng cung cấp đầy đủ protein từ thịt gà, carbohydrate từ cơm và rau củ, cùng với chất béo từ dầu ăn.\n\n2. Canh cải xanh nấu tôm: Canh rau cải xanh cung cấp nhiều vitamin và khoáng chất, kết hợp với tôm giàu protein sẽ là một bữa ăn dinh dưỡng cho trẻ em.\n\n3. Bánh mì sandwich: Sử dụng bánh mì nguyên cám, kết hợp thịt gà hoặc thịt cá hồi, rau sống và một ít sốt dầu ôliu sẽ cung cấp các chất cần thiết cho trẻ em.\n\n4. Cháo cá hồi: Cháo cá hồi là một lựa chọn tốt với hàm lượng omega-3 tốt cho sự phát triển trí não của trẻ em.\n\n5. Salad trái cây: Kết hợp các loại trái cây tươi ngon như dâu, chuối, táo, lựu với một ít sữa chua sẽ là một món ăn vừa ngon miệng vừa giàu dinh dưỡng.\n\nNhớ rằng việc cung cấp đủ nước uống cũng rất quan trọng cho trẻ em. Hãy đảm bảo rằng các món ăn được chế biến sạch sẽ và an toàn để bảo vệ sức khỏe của bé.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:02:03.582854",
+        "query": "Món ăn dinh dưỡng cho trẻ em"
+      },
+      "timestamp": 1749654123.582854,
+      "expire_hours": 1
+    },
+    "d7345cdb502b9c3e4db7490467df6bec": {
+      "value": {
+        "ai_response": "Dĩa mì Quảng là một lựa chọn tuyệt vời! Mì Quảng là một món ăn truyền thống của miền Trung Việt Nam, có hương vị đặc trưng và phù hợp cho mọi lứa tuổi. Mì Quảng được chế biến từ mì, thịt heo, tôm, thịt gà hoặc các loại hải sản, được trang trí bằng rau sống, hành, rau mùi, đậu phộng và bánh đa. \n\nMì Quảng không chỉ ngon miệng mà còn cung cấp năng lượng cần thiết cho cơ thể. Bạn có thể tùy chỉnh các nguyên liệu trong mì Quảng để phù hợp với khẩu phần dinh dưỡng của mình, chẳng hạn thay thịt heo bằng thịt gà hoặc tôm để giảm lượng chất béo, hoặc thêm rau sống để tăng lượng chất xơ.\n\nHãy thử nấu mì Quảng tại nhà và thưởng thức bữa ăn truyền thống ngon lành, bổ dưỡng nhé!",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:02:03.620322",
+        "query": "Gợi ý món ăn Việt Nam"
+      },
+      "timestamp": 1749654123.6203227,
+      "expire_hours": 1
+    },
+    "1099ad3ba1494c6b4528e8d852adf7c1": {
+      "value": {
+        "ai_response": "Dựa vào thông tin bạn cung cấp, để chọn món ăn tốt cho sức khỏe, chúng ta cần xem xét các yếu tố như cân nặng, thời gian chuẩn bị và lượng calo. Dưới đây là đánh giá của từng món ăn:\n\n1. Tôm rang me: Món này có hàm lượng calo vừa phải, thời gian chuẩn bị trung bình, và được đánh giá là cân đối. Tôm là nguồn protein tốt và me cung cấp hương vị đặc trưng.\n\n2. Gà nướng mật ong: Mặc dù món này có hàm lượng calo cao hơn, nhưng với thời gian chuẩn bị lâu hơn, nó vẫn đánh giá là cân đối. Mật ong có thể cung cấp năng lượng, nhưng cần sử dụng một cách cân nhắc.\n\n3. Mì Quảng: Món này có hàm lượng calo thấp, thời gian chuẩn bị nhanh, và được đánh giá là cân đối. Mì Quảng chứa nhiều rau cải và protein từ thịt, tạo nên một bữa ăn cân đối.\n\n4. Thịt nướng BBQ: Mặc dù được đánh giá là giảm cân, thời gian chuẩn bị nhanh, nhưng hàm lượng calo vẫn khá cao. Cần kiểm soát lượng gia vị và số lượng thịt để đảm bảo không ảnh hưởng đến cân nặng.\n\n5. Gà chiên bắp phô mai: Món này có hàm lượng calo cao, thời gian chuẩn bị nhanh, và được đánh giá là cân đối. Tuy nhiên, lượng phô mai và dầu chiên cần được kiểm soát để tránh tăng cân.\n\nDựa vào đánh giá trên, mì Quảng có thể là lựa chọn tốt cho sức khỏe vì có hàm lượng calo thấp, thời gian chuẩn bị nhanh và cân đối. Đồng thời, cân nhắc các yếu tố khác như khẩu phần ăn cân đối và việc lựa chọn nguyên liệu sạch để đảm bảo sức khỏe tốt nhất.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [
+          {
+            "name": "Quán Cơm Tấm Sài Gòn",
+            "address": "123 Đường ABC, Test Location",
+            "rating": 4.5,
+            "price_range": "50,000 - 100,000 VND",
+            "specialties": [
+              "Cơm tấm",
+              "Sườn nướng",
+              "Chả trứng"
+            ],
+            "distance": "0.5 km",
+            "opening_hours": "7:00 - 22:00"
+          },
+          {
+            "name": "Nhà Hàng Món Huế",
+            "address": "456 Đường XYZ, Test Location",
+            "rating": 4.3,
+            "price_range": "80,000 - 150,000 VND",
+            "specialties": [
+              "Bún bò Huế",
+              "Nem lụi",
+              "Bánh khoái"
+            ],
+            "distance": "0.8 km",
+            "opening_hours": "8:00 - 21:30"
+          },
+          {
+            "name": "Quán Phở Hà Nội",
+            "address": "789 Đường DEF, Test Location",
+            "rating": 4.7,
+            "price_range": "40,000 - 80,000 VND",
+            "specialties": [
+              "Phở bò",
+              "Phở gà",
+              "Bún chả"
+            ],
+            "distance": "1.2 km",
+            "opening_hours": "6:00 - 23:00"
+          }
+        ],
+        "timestamp": "2025-06-11T22:02:04.168234",
+        "query": "Món ăn nào tốt cho sức khỏe?"
+      },
+      "timestamp": 1749654124.1682339,
+      "expire_hours": 1
+    },
+    "9355a0d403c3003b218c9c7c1994e88d": {
+      "value": {
+        "recipes": [],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654125.631434,
+      "expire_hours": 2
+    },
+    "0a1a895d095d6e02eba2fa8da0d78071": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          },
+          {
+            "name": "Cua rang sốt tắc",
+            "url": "https://monngonmoingay.com/cua-rang-sot-tac/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 471.0,
+            "prep_time": 19.0,
+            "ingredients": 3,
+            "price": 36851.0,
+            "rating": 3.2123893805309733
+          },
+          {
+            "name": "Tôm nướng bánh hỏi",
+            "url": "https://monngonmoingay.com/tom-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 430.0,
+            "prep_time": 23.0,
+            "ingredients": 5,
+            "price": 47945.0,
+            "rating": 3.2009615384615384
+          },
+          {
+            "name": "Cá chiên bông điên điển",
+            "url": "https://monngonmoingay.com/ca-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 452.0,
+            "prep_time": 18.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.1999999999999997
+          },
+          {
+            "name": "Bún riêu cua",
+            "url": "https://monngonmoingay.com/bun-rieu-cua/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 293.0,
+            "prep_time": 24.0,
+            "ingredients": 4,
+            "price": 37280.0,
+            "rating": 3.1724489795918367
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749654125.6731527,
+      "expire_hours": 2
+    },
+    "bc1327684ac09d6ae3c2e466e7c64980": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          },
+          {
+            "name": "Bánh mì thịt bò xốt tương (L3)",
+            "url": "https://monngonmoingay.com/banh-mi-thit/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "blood-boost",
+            "calories": 687.0,
+            "prep_time": 20.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.113861386138614
+          },
+          {
+            "name": "Thịt chiên xốt nước tương",
+            "url": "https://monngonmoingay.com/thit-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "blood-boost",
+            "calories": 615.0,
+            "prep_time": 16.0,
+            "ingredients": 3,
+            "price": 41069.0,
+            "rating": 3.0242718446601944
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749681823.4987285,
+      "expire_hours": 2
+    },
+    "eec63ed81a604cf8b796fa55639cfb98": {
+      "value": {
+        "ai_response": "Xin lỗi, thông tin bạn cung cấp không rõ ràng để tôi hiểu hệ thống bạn đề cập đến đang nói về dữ liệu tương tác khách hàng trong lĩnh vực nào. Nếu bạn cung cấp thêm thông tin hoặc làm rõ vấn đề hơn, tôi sẽ cố gắng hỗ trợ bạn tốt hơn.",
+        "recommended_recipes": [
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          },
+          {
+            "name": "Bánh mì thịt bò xốt tương (L3)",
+            "url": "https://monngonmoingay.com/banh-mi-thit/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "blood-boost",
+            "calories": 687.0,
+            "prep_time": 20.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.113861386138614
+          },
+          {
+            "name": "Thịt chiên xốt nước tương",
+            "url": "https://monngonmoingay.com/thit-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "blood-boost",
+            "calories": 615.0,
+            "prep_time": 16.0,
+            "ingredients": 3,
+            "price": 41069.0,
+            "rating": 3.0242718446601944
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [],
+        "timestamp": "2025-06-12T05:43:45.707492",
+        "query": "Hệ thống có bao nhiêu dữ liệu tương tác khách hàng?"
+      },
+      "timestamp": 1749681825.7074926,
+      "expire_hours": 1
+    },
+    "7569d5f8671bc4082582d6a7bbf29f2e": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749682037.3412151,
+      "expire_hours": 2
+    },
+    "2db5668e17840f617067381f0a7d585f": {
+      "value": {
+        "ai_response": "Dành cho người thân của bạn bị tiểu đường, việc chọn lựa thực đơn phù hợp là rất quan trọng để duy trì sức khỏe. Dưới đây là một số gợi ý món ăn phản ánh nguyên tắc chung của chế độ ăn cho người bị tiểu đường:\n\n1. **Canh chua cá bông lau**: Một món canh nhẹ, giàu chất xơ từ rau cải và cá, hỗ trợ hệ tiêu hóa và kiểm soát đường huyết.\n\n2. **Cá xào cần tỏi**: Một món cá ít dầu mỡ, giàu protein và dầu béo omega-3 tốt cho sức khỏe tim mạch của người bị tiểu đường.\n\n3. **Thịt nướng BBQ**: Chế biến thịt nướng để giảm lượng chất béo bão hòa, kết hợp với rau sống và một ít tinh bột giúp kiểm soát đường huyết.\n\n4. **Gà nướng mật ong**: Cần chú ý đến lượng mật ong sử dụng để tránh tăng đường huyết đột ngột, kết hợp với rau cải xanh để cân bằng dinh dưỡng.\n\n5. **Gà chiên bắp phô mai**: Cẩn thận với lượng bắp phô mai và dầu mỡ khi chế biến, nên ăn kèm với salad rau sống để cân bằng.\n\nNhớ rằng, việc kiểm soát lượng carbohydrate và đường trong khẩu phần ăn cũng rất quan trọng đối với người bị tiểu đường. Đề xuất tham khảo ý kiến của bác sĩ hoặc chuyên gia dinh dưỡng để có thêm lời khuyên cụ thể và phù hợp nhất. Chúc người thân của bạn luôn khỏe mạnh!",
+        "recommended_recipes": [
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [],
+        "timestamp": "2025-06-12T05:47:21.174127",
+        "query": "Tôi có người thân bị tiểu đường, có thể gợi ý thực đơn phù hợp không?"
+      },
+      "timestamp": 1749682041.1741276,
+      "expire_hours": 1
+    },
+    "529420c8d7798963a0dde828680d4c5e": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749682201.3510447,
+      "expire_hours": 2
+    },
+    "2c07a20a3269548bf9f538cfdd389004": {
+      "value": {
+        "ai_response": "Dựa vào danh sách món ăn bạn đã cung cấp, mình đề xuất bạn nên thử món \"Mì Quảng\". Mì Quảng là một món ăn truyền thống của Việt Nam, vừa ngon miệng, vừa dễ chế biến. Nó cung cấp một lượng calo vừa phải (344 kcal) và thời gian chế biến khá ngắn (25 phút).\n\nMì Quảng thường có thành phần chính là mì, thịt gà, tôm, rau sống và nước dùng thơm ngon. Đây là một lựa chọn tốt cho bữa ăn của bạn với sự cân đối giữa các chất dinh dưỡng và độ dễ dàng trong việc chuẩn bị.\n\nHãy thử nấu mì Quảng vào bữa ăn hôm nay và cảm nhận hương vị truyền thống của món ăn này nhé! Nếu bạn cần thêm thông tin hoặc gợi ý, đừng ngần ngại để lại câu hỏi. Chúc bạn có bữa ăn ngon miệng và bổ dưỡng!",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [],
+        "timestamp": "2025-06-12T05:50:04.214076",
+        "query": "Hôm nay tôi muốn ăn món gì vừa tốt cho sức khỏe, vừa dễ chế biến?"
+      },
+      "timestamp": 1749682204.214077,
+      "expire_hours": 1
+    },
+    "a2eab7bb62964398eee554ab71b7240b": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Lẩu nấm",
+            "url": "https://monngonmoingay.com/lau-nam/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 399.0,
+            "prep_time": 16.0,
+            "ingredients": 4,
+            "price": 44252.0,
+            "rating": 3.2575221238938057
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Danh mục thực đơn",
+            "url": "https://monngonmoingay.com/tim-kiem-mon-ngon/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 16.0,
+            "ingredients": 5,
+            "price": 50000.0,
+            "rating": 3.2195195195195194
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749682217.2372503,
+      "expire_hours": 2
+    },
+    "5464f535a94ae66e47212762097635a6": {
+      "value": {
+        "ai_response": "DĨNH DƯỠNG CHO NGƯỜI BỆNH TIỂU ĐƯỜNG:\n\nKhi lựa chọn thực đơn cho người thân bị tiểu đường, rất quan trọng phải chú ý đến việc kiểm soát lượng đường trong khẩu phần ăn hàng ngày. Dưới đây là một số gợi ý thực đơn phù hợp cho người bị tiểu đường:\n\n1. **Sáng:**\n- 1 chén cơm nguyên hạt hoặc cơm gạo lứt.\n- 1 lát thịt gà hoặc cá hồi nướng.\n- Rau xanh như cải bắp cải bó xôi luộc.\n\n2. **Trưa:**\n- Canh rau cải, cà chua.\n- 1 phần thịt cá nướng hoặc gà áp chảo.\n- 1 chén cơm gạo lứt.\n\n3. **Tối:**\n- 1 phần salad rau cải, dưa leo, cà chua.\n- 1 ít thịt gà hoặc cá hồi nướng.\n- 1 chén cơm gạo lứt.\n\nNgoài ra, bạn nên hạn chế sử dụng đường, thức ăn chiên, thức ăn chứa nhiều dầu mỡ và tăng cường uống nước. Đồng thời, việc chia nhỏ khẩu phần ăn và thực hiện các bữa ăn nhẹ giúp kiểm soát đường huyết tốt hơn.\n\nĐừng quên tham khảo ý kiến của bác sĩ chuyên khoa dinh dưỡng để có thực đơn phù hợp nhất cho người thân của bạn. Chúc người thân của bạn luôn khỏe mạnh!",
+        "recommended_recipes": [
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Canh chua cá bông lau",
+            "url": "https://monngonmoingay.com/canh-chua-ca/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "digestive-support",
+            "calories": 599.0,
+            "prep_time": 55.0,
+            "ingredients": 6,
+            "price": 51987.0,
+            "rating": 3.3333333333333335
+          },
+          {
+            "name": "Cá xào cần tỏi",
+            "url": "https://monngonmoingay.com/ca-xao/",
+            "difficulty": "Dễ",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 464.0,
+            "prep_time": 17.0,
+            "ingredients": 3,
+            "price": 43337.0,
+            "rating": 3.3058823529411763
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [],
+        "timestamp": "2025-06-12T05:50:22.019628",
+        "query": "Tôi có người thân bị tiểu đường, có thể gợi ý thực đơn phù hợp không?"
+      },
+      "timestamp": 1749682222.0196288,
+      "expire_hours": 1
+    },
+    "494d7bccb492b28232719c4d816e4fd7": {
+      "value": {
+        "recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          },
+          {
+            "name": "Há cảo tam sắc",
+            "url": "https://monngonmoingay.com/ha-cao-tam-sac/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 351.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 38555.0,
+            "rating": 3.2527472527472527
+          },
+          {
+            "name": "Bánh mì sandwich healthy",
+            "url": "https://monngonmoingay.com/banh-mi-healthy/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "weight-loss",
+            "calories": 355.0,
+            "prep_time": 39.0,
+            "ingredients": 11,
+            "price": 64180.0,
+            "rating": 3.216666666666667
+          },
+          {
+            "name": "Chính sách bảo vệdữ liệu cá nhân",
+            "url": "https://monngonmoingay.com/chinh-sach-bao-ve-du-lieu-ca-nhan",
+            "difficulty": "Trung bình",
+            "meal_time": "lunch",
+            "nutrition_category": "weight-loss",
+            "calories": 544.0,
+            "prep_time": 45.0,
+            "ingredients": 8,
+            "price": 80000.0,
+            "rating": 3.1999999999999997
+          }
+        ],
+        "customer_info": {},
+        "recommendations": []
+      },
+      "timestamp": 1749682252.1407485,
+      "expire_hours": 2
+    },
+    "c0475144803014d2f093f2c5b9991d1e": {
+      "value": {
+        "ai_response": "Để đảm bảo dinh dưỡng cho trẻ em, dưới đây là một số gợi ý món ăn phù hợp:\n\n1. **Gà nướng hoặc hầm**: Gà là nguồn protein tốt cho sự phát triển của trẻ. Nấu gà nướng hoặc hầm cung cấp chất dinh dưỡng cần thiết mà trẻ cần.\n\n2. **Cá hồi nướng hoặc hấp**: Cá hồi giàu axit béo omega-3, rất tốt cho sức khỏe não bộ và tăng cường hệ miễn dịch cho trẻ.\n\n3. **Rau cải xanh xào tỏi**: Rau cải xanh giàu chất xơ, vitamin và khoáng chất quan trọng. Hãy kết hợp rau cải xanh với tỏi để tăng hương vị và giúp trẻ thích hơn.\n\n4. **Cháo gà hoặc cháo cá**: Cháo là một món ăn dễ tiêu hóa và giàu chất dinh dưỡng. Bạn có thể thêm gà hoặc cá vào cháo để cung cấp protein cho trẻ.\n\n5. **Hoa quả tươi**: Hoa quả tươi là nguồn vitamin và chất chống oxy hóa quan trọng. Hãy chuẩn bị các loại hoa quả mà trẻ yêu thích như chuối, táo, dâu, cam.\n\nNhớ rằng, việc cân đối dinh dưỡng cho trẻ cần kết hợp giữa nhiều loại thực phẩm khác nhau. Hãy tham khảo ý kiến của bác sĩ hoặc chuyên gia dinh dưỡng để có thêm lời khuyên cụ thể cho trẻ của bạn.",
+        "recommended_recipes": [
+          {
+            "name": "Tôm rang me",
+            "url": "https://monngonmoingay.com/tom-rang-me/",
+            "difficulty": "Trung bình",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 526.0,
+            "prep_time": 57.0,
+            "ingredients": 6,
+            "price": 86614.0,
+            "rating": 4.2
+          },
+          {
+            "name": "Gà nướng mật ong",
+            "url": "https://monngonmoingay.com/ga-nuong-mat-ong/",
+            "difficulty": "Khó",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 617.0,
+            "prep_time": 82.0,
+            "ingredients": 7,
+            "price": 70725.0,
+            "rating": 3.766666666666667
+          },
+          {
+            "name": "Mì Quảng",
+            "url": "https://monngonmoingay.com/mi-quang/",
+            "difficulty": "Dễ",
+            "meal_time": "breakfast",
+            "nutrition_category": "balanced",
+            "calories": 344.0,
+            "prep_time": 25.0,
+            "ingredients": 5,
+            "price": 37570.0,
+            "rating": 3.2666666666666666
+          },
+          {
+            "name": "Thịt nướng BBQ",
+            "url": "https://monngonmoingay.com/thit-nuong/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "weight-loss",
+            "calories": 506.0,
+            "prep_time": 30.0,
+            "ingredients": 5,
+            "price": 40020.0,
+            "rating": 3.2638095238095235
+          },
+          {
+            "name": "Gà chiên bắp phô mai",
+            "url": "https://monngonmoingay.com/ga-chien/",
+            "difficulty": "Dễ",
+            "meal_time": "dinner",
+            "nutrition_category": "balanced",
+            "calories": 571.0,
+            "prep_time": 28.0,
+            "ingredients": 5,
+            "price": 43065.0,
+            "rating": 3.262376237623762
+          }
+        ],
+        "customer_info": {},
+        "nearby_restaurants": [],
+        "timestamp": "2025-06-12T05:50:56.192997",
+        "query": "Gợi ý món ăn cho trẻ em dinh dưỡng"
+      },
+      "timestamp": 1749682256.1929972,
+      "expire_hours": 1
+    }
+  },
+  "access_times": {
+    "cc9378634eab46ad99b1640a15cc42b5": 1749654040.2725794,
+    "bd2b0137f8a3edbb021b5ec949975df7": 1749654047.5985723,
+    "8e2ed956ec9f906dbef7f2fc09c9926d": 1749654050.6427543,
+    "6d61ceabfd2e89bee93006af701c2bd6": 1749654064.2286289,
+    "e43e9ab8982e16b15d2456f056f172bd": 1749654067.2692227,
+    "c1aa2db716e19caa90ff7551df12c747": 1749654070.4857948,
+    "1a834772115f09a492c5cd4823189de6": 1749654073.5205371,
+    "ea3b234f891ff48b444cf4051c9e66e4": 1749654078.3347092,
+    "c13271c968daee9b733eb43bde492ce0": 1749654104.353956,
+    "4e4859dc28f8372da41a8cafa05e5a5a": 1749654104.353956,
+    "2a56db87c57b76bbe377016208b0c174": 1749654104.353956,
+    "7d1c40c3ee852cf08dfa1bc4525c0a80": 1749654104.353956,
+    "cf171bf7feb9b61981912055996d7739": 1749654104.353956,
+    "3ecf3d29379fcf7d55fa1c9468c83ddc": 1749654108.105878,
+    "c6370db2a7319ddd1137a2738d04ad87": 1749654108.264577,
+    "c0154d0c440ad295647076ed704e2f72": 1749654110.1353316,
+    "5b8c7e505b12423a8a19e665163816dc": 1749654110.3072085,
+    "73bc6fa4cf8d11b4e7e50e0e3ff46dbb": 1749654110.5274115,
+    "65e9d2f1d610e23d4d1f31ec0374edf6": 1749654111.5499635,
+    "fbf987afd7c20489d3af01dcb65f5364": 1749654112.3434806,
+    "48d7fac348c25bd218ae2d963a9ed524": 1749654112.5551214,
+    "6e1755eb268dc96d01833e6578876048": 1749654113.5815606,
+    "4a3458a7fad410a26f032001502fbc52": 1749654113.8263905,
+    "20e5d55f8099a136bb919070ef3dd62b": 1749654114.3890808,
+    "025fb8f222359bc5212cda8764267d2f": 1749654115.8816113,
+    "b22837f620a57b097b1cee85fa93eb7f": 1749654116.950988,
+    "6c37e6a34896c69c66c097ba7bd7354a": 1749654117.570703,
+    "17b1c82bd2f16d56c5ec0c03129cb91c": 1749654118.2609851,
+    "d3cf652f7e054a224732fc5ce67332d6": 1749654118.7998388,
+    "27996481394cdbf045d668f957f1f3de": 1749654118.98569,
+    "36e7fe04b76e40c8c53d1dc22c2b3ddc": 1749654119.6175587,
+    "32f0e334223ba677c7bda1c389de886d": 1749654120.2983356,
+    "f889c6cfae706e58f49187c8020eb028": 1749654120.8816192,
+    "ee9336d3f3c0705c6bd94bb45396a3cd": 1749654121.1732118,
+    "669c22e19b07b4850e486cfa84a58300": 1749654123.2304704,
+    "0d5043060aa0d6398ef0cb166bd492d6": 1749654123.582854,
+    "d7345cdb502b9c3e4db7490467df6bec": 1749654123.6203227,
+    "1099ad3ba1494c6b4528e8d852adf7c1": 1749654124.1682339,
+    "9355a0d403c3003b218c9c7c1994e88d": 1749654125.631434,
+    "0a1a895d095d6e02eba2fa8da0d78071": 1749654125.6731527,
+    "bc1327684ac09d6ae3c2e466e7c64980": 1749681823.4987285,
+    "eec63ed81a604cf8b796fa55639cfb98": 1749681825.7074926,
+    "7569d5f8671bc4082582d6a7bbf29f2e": 1749682037.3412151,
+    "2db5668e17840f617067381f0a7d585f": 1749682041.1741276,
+    "529420c8d7798963a0dde828680d4c5e": 1749682201.3510447,
+    "2c07a20a3269548bf9f538cfdd389004": 1749682204.214077,
+    "a2eab7bb62964398eee554ab71b7240b": 1749682217.2372503,
+    "5464f535a94ae66e47212762097635a6": 1749682222.0196288,
+    "494d7bccb492b28232719c4d816e4fd7": 1749682252.1407485,
+    "c0475144803014d2f093f2c5b9991d1e": 1749682256.1929972
+  },
+  "timestamp": 1749682256.1929972
+}

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Expandable Workflow</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .instruction {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .step-item {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            padding: 0;
+            border-left: 4px solid #e9ecef;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+
+        .step-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.2);
+            border-left-color: #667eea;
+        }
+
+        .step-item::before {
+            content: '👆 Click để xem chi tiết';
+            position: absolute;
+            top: -8px;
+            right: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 12px;
+            font-size: 10px;
+            font-weight: 600;
+            opacity: 0;
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .step-item:hover::before {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .step-item.expanded::before {
+            content: '👆 Click để thu gọn';
+            background: linear-gradient(135deg, #28a745, #20c997);
+        }
+
+        .step-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            cursor: pointer;
+            position: relative;
+            border-bottom: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .step-header:hover {
+            background: rgba(102, 126, 234, 0.05);
+            border-bottom-color: rgba(102, 126, 234, 0.2);
+        }
+
+        .step-header::after {
+            content: '▶';
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            color: #667eea;
+            padding: 4px 8px;
+            border-radius: 4px;
+            background: rgba(102, 126, 234, 0.1);
+        }
+
+        .step-item.expanded .step-header::after {
+            transform: rotate(90deg);
+            content: '▼';
+        }
+
+        .step-title {
+            font-weight: 600;
+            font-size: 16px;
+            color: #2c3e50;
+            margin-bottom: 4px;
+        }
+
+        .step-description {
+            font-size: 13px;
+            color: #7f8c8d;
+            margin: 0;
+        }
+
+        .step-details {
+            padding: 0;
+            display: none;
+            border-top: 1px solid #f0f0f0;
+            margin-top: 0;
+            background: rgba(248, 249, 250, 0.8);
+        }
+
+        .step-item.expanded .step-details {
+            display: block;
+            animation: slideDown 0.4s ease-out;
+            padding: 20px;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                max-height: 0;
+                transform: translateY(-10px);
+            }
+
+            to {
+                opacity: 1;
+                max-height: 800px;
+                transform: translateY(0);
+            }
+        }
+
+        .analysis-content {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .technique-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .technique-tag {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            color: #1565c0;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            border: 1px solid rgba(21, 101, 192, 0.2);
+        }
+
+        .demo-success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 20px;
+            text-align: center;
+            color: #155724;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>🚀 Test Expandable Workflow Analysis</h1>
+
+        <div class="instruction">
+            <strong>🎯 Hướng dẫn test:</strong><br>
+            Click vào từng bước workflow bên dưới để xem chi tiết phân tích, kỹ thuật và luồng xử lý dữ liệu
+        </div>
+
+        <div class="step-item collapsed" onclick="toggleStep('step1')">
+            <div class="step-header">
+                <div style="flex: 1;">
+                    <div class="step-title">🔍 Phân tích đầu vào</div>
+                    <div class="step-description">Xử lý và phân tích câu hỏi của người dùng</div>
+                </div>
+            </div>
+            <div class="step-details" id="step1">
+                <div class="analysis-content">
+                    <h6>🎯 Mục đích & Chức năng</h6>
+                    <p>Phân tích câu hỏi người dùng bằng xử lý ngôn ngữ tự nhiên để hiểu ý định và trích xuất thông tin
+                        quan trọng</p>
+
+                    <h6>🔧 Kỹ thuật sử dụng</h6>
+                    <div class="technique-tags">
+                        <span class="technique-tag">Natural Language Processing</span>
+                        <span class="technique-tag">Intent Recognition</span>
+                        <span class="technique-tag">Entity Extraction</span>
+                        <span class="technique-tag">Sentiment Analysis</span>
+                    </div>
+
+                    <h6>📥 Input:</h6>
+                    <div
+                        style="background: #fff3e0; border: 1px solid #ff9800; border-radius: 6px; padding: 10px; margin-top: 8px; color: #e65100; font-family: monospace; font-size: 12px;">
+                        Câu hỏi/yêu cầu từ người dùng
+                    </div>
+
+                    <h6>📤 Output:</h6>
+                    <div
+                        style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 6px; padding: 10px; margin-top: 8px; color: #2e7d32; font-family: monospace; font-size: 12px;">
+                        Intent, entities, sentiment và structured data
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item collapsed" onclick="toggleStep('step2')">
+            <div class="step-header">
+                <div style="flex: 1;">
+                    <div class="step-title">👤 Tải thông tin khách hàng</div>
+                    <div class="step-description">Truy xuất hồ sơ và lịch sử tương tác của khách hàng</div>
+                </div>
+            </div>
+            <div class="step-details" id="step2">
+                <div class="analysis-content">
+                    <h6>🎯 Mục đích & Chức năng</h6>
+                    <p>Lấy thông tin chi tiết về khách hàng để cá nhân hóa recommendations</p>
+
+                    <h6>🔧 Kỹ thuật sử dụng</h6>
+                    <div class="technique-tags">
+                        <span class="technique-tag">Database Query</span>
+                        <span class="technique-tag">Profile Matching</span>
+                        <span class="technique-tag">Preference Analysis</span>
+                        <span class="technique-tag">History Tracking</span>
+                    </div>
+
+                    <h6>📥 Input:</h6>
+                    <div
+                        style="background: #fff3e0; border: 1px solid #ff9800; border-radius: 6px; padding: 10px; margin-top: 8px; color: #e65100; font-family: monospace; font-size: 12px;">
+                        Customer ID và user context
+                    </div>
+
+                    <h6>📤 Output:</h6>
+                    <div
+                        style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 6px; padding: 10px; margin-top: 8px; color: #2e7d32; font-family: monospace; font-size: 12px;">
+                        Customer profile, preferences, restrictions, order history
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="step-item collapsed" onclick="toggleStep('step3')">
+            <div class="step-header">
+                <div style="flex: 1;">
+                    <div class="step-title">🧠 Suy luận AI</div>
+                    <div class="step-description">Xử lý logic và tạo ra câu trả lời thông minh</div>
+                </div>
+            </div>
+            <div class="step-details" id="step3">
+                <div class="analysis-content">
+                    <h6>🎯 Mục đích & Chức năng</h6>
+                    <p>Áp dụng logic AI để phân tích và đưa ra quyết định thông minh</p>
+
+                    <h6>🔧 Kỹ thuật sử dụng</h6>
+                    <div class="technique-tags">
+                        <span class="technique-tag">Machine Learning</span>
+                        <span class="technique-tag">Rule-based Reasoning</span>
+                        <span class="technique-tag">Collaborative Filtering</span>
+                        <span class="technique-tag">Content Analysis</span>
+                    </div>
+
+                    <h6>📥 Input:</h6>
+                    <div
+                        style="background: #fff3e0; border: 1px solid #ff9800; border-radius: 6px; padding: 10px; margin-top: 8px; color: #e65100; font-family: monospace; font-size: 12px;">
+                        Search results, customer profile, business rules
+                    </div>
+
+                    <h6>📤 Output:</h6>
+                    <div
+                        style="background: #e8f5e8; border: 1px solid #4caf50; border-radius: 6px; padding: 10px; margin-top: 8px; color: #2e7d32; font-family: monospace; font-size: 12px;">
+                        Scored recommendations với reasoning explanations
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="demo-success" style="display: none;" id="successMessage">
+            ✅ Tuyệt vời! Tính năng expandable workflow đã hoạt động thành công!
+        </div>
+    </div>
+
+    <script>
+        let expandedSteps = 0;
+
+        function toggleStep(stepId) {
+            const stepElement = document.getElementById(stepId).parentElement;
+            const details = document.getElementById(stepId);
+            const isExpanded = stepElement.classList.contains('expanded');
+
+            if (isExpanded) {
+                stepElement.classList.remove('expanded');
+                stepElement.classList.add('collapsed');
+                expandedSteps--;
+            } else {
+                stepElement.classList.remove('collapsed');
+                stepElement.classList.add('expanded');
+                expandedSteps++;
+            }
+
+            // Show success message if user has tested at least 2 steps
+            if (expandedSteps >= 2) {
+                document.getElementById('successMessage').style.display = 'block';
+            }
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Chat History Feature</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2><i class="fas fa-vial text-primary"></i> Test Chat History Feature</h2>
+        <p class="text-muted">Kiểm tra tính năng lưu trữ lịch sử chat tự động</p>
+
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>🧪 Test Cases</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="test-case mb-3">
+                            <h6>✅ 1. Tính năng lưu trữ tự động</h6>
+                            <ul>
+                                <li>Mỗi tin nhắn được lưu tự động vào localStorage</li>
+                                <li>Giới hạn 100 tin nhắn gần nhất</li>
+                                <li>Lưu timestamp cho mỗi tin nhắn</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-case mb-3">
+                            <h6>✅ 2. Phục hồi lịch sử khi F5</h6>
+                            <ul>
+                                <li>Lịch sử chat được tải lại sau khi refresh</li>
+                                <li>Tin nhắn hiển thị đúng thứ tự thời gian</li>
+                                <li>Giữ nguyên format và style</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-case mb-3">
+                            <h6>✅ 3. Xuất lịch sử chat</h6>
+                            <ul>
+                                <li>Xuất file JSON với toàn bộ lịch sử</li>
+                                <li>Bao gồm thông tin timestamp và loại tin nhắn</li>
+                                <li>Tên file có ngày tháng</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-case mb-3">
+                            <h6>✅ 4. Thống kê chat</h6>
+                            <ul>
+                                <li>Đếm tổng số tin nhắn</li>
+                                <li>Phân loại tin nhắn người dùng/AI</li>
+                                <li>Hiển thị thời gian bắt đầu và gần nhất</li>
+                            </ul>
+                        </div>
+
+                        <div class="test-case mb-3">
+                            <h6>✅ 5. Xóa lịch sử an toàn</h6>
+                            <ul>
+                                <li>Xác nhận trước khi xóa</li>
+                                <li>Xóa hoàn toàn khỏi localStorage</li>
+                                <li>Hiển thị thông báo thành công</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-header">
+                        <h5>🔧 Quick Tests</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-grid gap-2">
+                            <a href="/agent" class="btn btn-primary">
+                                <i class="fas fa-robot me-1"></i>Mở AI Agent
+                            </a>
+                            <button class="btn btn-outline-info" onclick="checkLocalStorage()">
+                                <i class="fas fa-database me-1"></i>Kiểm tra localStorage
+                            </button>
+                            <button class="btn btn-outline-warning" onclick="simulateMessages()">
+                                <i class="fas fa-comments me-1"></i>Tạo tin nhắn test
+                            </button>
+                            <button class="btn btn-outline-danger" onclick="clearTestData()">
+                                <i class="fas fa-trash me-1"></i>Xóa dữ liệu test
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mt-3">
+                    <div class="card-header">
+                        <h6>📊 Storage Info</h6>
+                    </div>
+                    <div class="card-body">
+                        <div id="storageInfo">
+                            <small class="text-muted">Đang tải...</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="alert alert-info mt-4">
+            <h6><i class="fas fa-info-circle me-2"></i>Hướng dẫn test:</h6>
+            <ol>
+                <li>Mở AI Agent và gửi vài tin nhắn</li>
+                <li>Nhấn F5 để refresh trang</li>
+                <li>Kiểm tra xem lịch sử có được phục hồi không</li>
+                <li>Thử xuất lịch sử và xem thống kê</li>
+                <li>Test xóa lịch sử</li>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        // Check localStorage data
+        function checkLocalStorage() {
+            const chatHistory = localStorage.getItem('aiAgentChatHistory');
+            if (chatHistory) {
+                const history = JSON.parse(chatHistory);
+                alert(`💾 LocalStorage Info:
+• Số tin nhắn: ${history.length}
+• Kích thước: ${(JSON.stringify(history).length / 1024).toFixed(1)} KB
+• Tin nhắn đầu: ${history[0]?.timestamp || 'N/A'}
+• Tin nhắn cuối: ${history[history.length - 1]?.timestamp || 'N/A'}`);
+            } else {
+                alert('❌ Không có dữ liệu chat trong localStorage');
+            }
+        }
+
+        // Simulate test messages
+        function simulateMessages() {
+            const testMessages = [
+                { message: 'Xin chào AI Agent!', type: 'user', timestamp: new Date().toISOString() },
+                { message: 'Xin chào! Tôi có thể giúp gì cho bạn?', type: 'ai', timestamp: new Date().toISOString() },
+                { message: 'Gợi ý món ăn healthy cho tôi', type: 'user', timestamp: new Date().toISOString() },
+                { message: 'Tôi gợi ý các món ăn healthy như: salad, cá hồi nướng, súp rau...', type: 'ai', timestamp: new Date().toISOString() }
+            ];
+
+            localStorage.setItem('aiAgentChatHistory', JSON.stringify(testMessages));
+            alert('✅ Đã tạo ' + testMessages.length + ' tin nhắn test!');
+            updateStorageInfo();
+        }
+
+        // Clear test data
+        function clearTestData() {
+            if (confirm('Xóa toàn bộ dữ liệu test?')) {
+                localStorage.removeItem('aiAgentChatHistory');
+                alert('🗑️ Đã xóa dữ liệu test!');
+                updateStorageInfo();
+            }
+        }
+
+        // Update storage info display
+        function updateStorageInfo() {
+            const chatHistory = localStorage.getItem('aiAgentChatHistory');
+            const darkMode = localStorage.getItem('darkMode');
+
+            let info = '<div class="small">';
+
+            if (chatHistory) {
+                const history = JSON.parse(chatHistory);
+                info += `<div><strong>Chat History:</strong></div>`;
+                info += `<div>• ${history.length} tin nhắn</div>`;
+                info += `<div>• ${(JSON.stringify(history).length / 1024).toFixed(1)} KB</div>`;
+            } else {
+                info += `<div>• Chưa có lịch sử chat</div>`;
+            }
+
+            info += `<div class="mt-2"><strong>Other:</strong></div>`;
+            info += `<div>• Dark mode: ${darkMode || 'false'}</div>`;
+            info += '</div>';
+
+            document.getElementById('storageInfo').innerHTML = info;
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function () {
+            updateStorageInfo();
+            setInterval(updateStorageInfo, 2000); // Update every 2 seconds
+        });
+    </script>
+</body>
+
+</html>

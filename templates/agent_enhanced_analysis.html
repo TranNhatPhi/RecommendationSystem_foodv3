@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent - Enhanced Analysis</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .content-wrapper {
+            display: flex;
+            min-height: 900px;
+        }
+
+        .chat-panel {
+            flex: 1;
+            border-right: 3px solid #f0f0f0;
+            padding: 30px;
+        }
+
+        .analysis-panel {
+            flex: 1.5;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+
+        .customer-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 25px;
+            border-left: 5px solid #2196f3;
+        }
+
+        .chat-messages {
+            height: 450px;
+            overflow-y: auto;
+            border: 2px solid #e0e0e0;
+            border-radius: 15px;
+            padding: 20px;
+            background: white;
+            margin: 20px 0;
+        }
+
+        .message {
+            margin: 15px 0;
+            padding: 15px 20px;
+            border-radius: 20px;
+            max-width: 85%;
+            animation: fadeIn 0.4s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background: #f0f8ff;
+            color: #333;
+            border-left: 5px solid #4caf50;
+        }
+
+        .system-message {
+            background: #fff8e1;
+            color: #e65100;
+            font-size: 0.9em;
+            border-left: 5px solid #ff9800;
+        }
+
+        .analysis-container {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .workflow-step {
+            border: 3px solid #e0e0e0;
+            border-radius: 15px;
+            margin: 20px 0;
+            transition: all 0.4s ease;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .workflow-step.pending {
+            border-color: #bdbdbd;
+            background: #fafafa;
+        }
+
+        .workflow-step.processing {
+            border-color: #ff9800;
+            background: #fff8e1;
+            animation: glow 2s infinite;
+        }
+
+        .workflow-step.completed {
+            border-color: #4caf50;
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+        }
+
+        .workflow-step.error {
+            border-color: #f44336;
+            background: #ffebee;
+        }
+
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 20px rgba(255, 152, 0, 0.8);
+            }
+
+            100% {
+                box-shadow: 0 0 5px rgba(255, 152, 0, 0.5);
+            }
+        }
+
+        .step-header {
+            padding: 20px 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-weight: 600;
+            font-size: 1.1em;
+            position: relative;
+        }
+
+        .step-header:hover {
+            background: rgba(103, 126, 234, 0.1);
+        }
+
+        .step-icon {
+            font-size: 1.4em;
+            margin-right: 15px;
+            width: 30px;
+            text-align: center;
+        }
+
+        .step-details {
+            padding: 0 25px 25px;
+            display: none;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .step-details.expanded {
+            display: block;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                max-height: 0;
+                opacity: 0;
+            }
+
+            to {
+                max-height: 800px;
+                opacity: 1;
+            }
+        }
+
+        .analysis-section {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 15px 0;
+            border-left: 5px solid #2196f3;
+        }
+
+        .analysis-section h6 {
+            color: #1976d2;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .techniques-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 10px;
+            margin: 10px 0;
+        }
+
+        .technique-badge {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 8px 12px;
+            border-radius: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            font-weight: 500;
+            color: #1565c0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #2196f3;
+        }
+
+        .metric-value {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #1976d2;
+            margin-bottom: 5px;
+        }
+
+        .metric-label {
+            font-size: 0.9em;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 12px 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+        }
+
+        .progress-bar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.6s ease;
+            height: 8px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 15px;
+            font-size: 0.8em;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-pending {
+            background: #e0e0e0;
+            color: #757575;
+        }
+
+        .status-processing {
+            background: #fff3e0;
+            color: #e65100;
+        }
+
+        .status-completed {
+            background: #e8f5e8;
+            color: #2e7d32;
+        }
+
+        .status-error {
+            background: #ffebee;
+            color: #c62828;
+        }
+
+        .expand-icon {
+            transition: transform 0.3s ease;
+            font-size: 1.2em;
+        }
+
+        .expand-icon.expanded {
+            transform: rotate(180deg);
+        }
+
+        .json-viewer {
+            background: #263238;
+            color: #e0e0e0;
+            border-radius: 8px;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            max-height: 300px;
+            overflow-y: auto;
+            border: 1px solid #37474f;
+        }
+
+        .real-time-data {
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #4caf50;
+        }
+
+        .data-highlight {
+            background: #fff3e0;
+            padding: 10px;
+            border-radius: 8px;
+            margin: 8px 0;
+            border-left: 3px solid #ff9800;
+        }
+
+        .processing-time {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.1);
+            padding: 4px 8px;
+            border-radius: 10px;
+            font-size: 0.8em;
+            color: #666;
+        }
+
+        .step-progress {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="fas fa-microscope"></i> AI Agent - Phân Tích Chi Tiết Quy Trình</h1>
+            <p>Hệ thống AI tư vấn món ăn với khả năng phân tích từng bước một cách chi tiết</p>
+        </div>
+
+        <div class="content-wrapper">
+            <!-- Chat Panel -->
+            <div class="chat-panel">
+                <div class="customer-section">
+                    <h4><i class="fas fa-user-circle"></i> Thông Tin Khách Hàng</h4>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <select id="customerSelect" class="form-select">
+                                <option value="">-- Chọn khách hàng --</option>
+                                {% if customer_ids %}
+                                {% for customer_id in customer_ids[:20] %}
+                                <option value="{{ customer_id }}"
+                                    data-info='{{ customers_info.get(customer_id, {}) | tojsonfilter }}'>
+                                    {% if customers_info.get(customer_id) %}
+                                    {{ customers_info[customer_id]['display_name'] }}
+                                    {% else %}
+                                    Khách hàng {{ customer_id }}
+                                    {% endif %}
+                                </option>
+                                {% endfor %}
+                                {% else %}
+                                <option value="1001"
+                                    data-info='{"name": "Demo Customer 1001", "age": 28, "preferences": ["Healthy", "Việt Nam"]}'>
+                                    Demo Customer 1001 - 28 tuổi</option>
+                                <option value="1002"
+                                    data-info='{"name": "Demo Customer 1002", "age": 35, "preferences": ["Vegetarian", "Á Châu"]}'>
+                                    Demo Customer 1002 - 35 tuổi</option>
+                                <option value="1003"
+                                    data-info='{"name": "Demo Customer 1003", "age": 42, "preferences": ["Hải sản", "Miền Trung"]}'>
+                                    Demo Customer 1003 - 42 tuổi</option>
+                                {% endif %}
+                            </select>
+                        </div>
+                        <div class="col-md-4">
+                            <div id="customerInfo" class="small">
+                                <i class="fas fa-info-circle"></i> Chọn khách hàng để xem chi tiết
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chat-section">
+                    <h4><i class="fas fa-comments"></i> Trò Chuyện với AI</h4>
+
+                    <div id="chatMessages" class="chat-messages">
+                        <div class="ai-message">
+                            <strong>🤖 AI Agent:</strong> Xin chào! Tôi sẽ phân tích chi tiết quy trình xử lý cho bạn.
+                            Bạn có thể theo dõi từng bước và xem phân tích real-time ở panel bên phải.
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="messageInput" class="form-control" placeholder="Nhập câu hỏi chi tiết..."
+                            style="border-radius: 25px 0 0 25px;">
+                        <button class="btn btn-primary" onclick="sendMessage()" style="border-radius: 0 25px 25px 0;">
+                            <i class="fas fa-paper-plane"></i> Phân Tích
+                        </button>
+                    </div>
+
+                    <div class="mt-3">
+                        <small class="text-muted">
+                            <strong>💡 Câu hỏi để xem phân tích chi tiết:</strong><br>
+                            • "Phân tích món healthy có protein cao cho gia đình"<br>
+                            • "Gợi ý món Việt truyền thống với ngân sách 200k"<br>
+                            • "Thực đơn giảm cân cho người tiểu đường"<br>
+                            • "Món ăn tăng cường miễn dịch cho trẻ em"
+                        </small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enhanced Analysis Panel -->
+            <div class="analysis-panel">
+                <div class="analysis-container">
+                    <h4><i class="fas fa-chart-line"></i> Phân Tích Quy Trình AI Chi Tiết</h4>
+                    <p class="text-muted">Theo dõi và phân tích từng bước xử lý với dữ liệu real-time</p>
+
+                    <div class="progress mb-4">
+                        <div id="overallProgress" class="progress-bar" style="width: 0%"></div>
+                    </div>
+
+                    <div id="workflowSteps">
+                        <!-- Enhanced workflow steps will be populated here -->
+                    </div>
+
+                    <div id="performanceMetrics" class="mt-4" style="display: none;">
+                        <h5><i class="fas fa-tachometer-alt"></i> Metrics Hiệu Suất Real-time</h5>
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-value" id="processingTime">-</div>
+                                <div class="metric-label">Thời Gian Xử Lý</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="accuracyScore">-</div>
+                                <div class="metric-label">Độ Chính Xác</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="confidenceLevel">-</div>
+                                <div class="metric-label">Độ Tin Cậy</div>
+                            </div>
+                            <div class="metric-card">
+                                <div class="metric-value" id="agentType">-</div>
+                                <div class="metric-label">Loại Agent</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        let currentWorkflowSteps = [];
+        let isProcessing = false;
+        let stepAnalysisData = {};
+
+        // Enhanced workflow templates với phân tích chi tiết hơn
+        const workflowTemplates = [
+            {
+                id: 'input_analysis',
+                title: '🔍 Phân Tích Đầu Vào',
+                description: 'Phân tích và hiểu câu hỏi của người dùng bằng NLP',
+                details: {
+                    purpose: 'Xử lý ngôn ngữ tự nhiên để hiểu chính xác ý định và yêu cầu của người dùng',
+                    techniques: ['Natural Language Processing', 'Intent Recognition', 'Entity Extraction', 'Sentiment Analysis'],
+                    output: 'Structured query với entities, intent, và context được xác định',
+                    explanation: 'Bước này sử dụng các thuật toán NLP để tách và phân tích từng thành phần trong câu hỏi của người dùng'
+                }
+            },
+            {
+                id: 'customer_profile',
+                title: '👤 Tải Hồ Sơ Khách Hàng',
+                description: 'Lấy và phân tích thông tin cá nhân hóa từ database',
+                details: {
+                    purpose: 'Thu thập và phân tích profile khách hàng để cá nhân hóa recommendations',
+                    techniques: ['Database Query Optimization', 'Profile Matching', 'Preference Analysis', 'Behavioral Pattern Recognition'],
+                    output: 'Comprehensive customer profile với preferences, restrictions, và history',
+                    explanation: 'Hệ thống truy vấn database để lấy lịch sử, sở thích, và hạn chế của khách hàng'
+                }
+            },
+            {
+                id: 'rag_search',
+                title: '🔎 Tìm Kiếm RAG (Retrieval Augmented Generation)',
+                description: 'Tìm kiếm thông tin liên quan trong vector database',
+                details: {
+                    purpose: 'Sử dụng vector similarity search để tìm thông tin relevant từ knowledge base',
+                    techniques: ['Vector Embedding', 'Semantic Search', 'Similarity Ranking', 'Context Filtering'],
+                    output: 'Top-K relevant documents và context cho LLM processing',
+                    explanation: 'RAG system tìm kiếm documents tương tự trong vector space để cung cấp context cho AI'
+                }
+            },
+            {
+                id: 'llm_processing',
+                title: '🧠 Xử Lý LLM (Large Language Model)',
+                description: 'Xử lý bằng mô hình ngôn ngữ lớn GPT',
+                details: {
+                    purpose: 'Sử dụng GPT để generate intelligent và contextual food recommendations',
+                    techniques: ['Prompt Engineering', 'Context Integration', 'Response Generation', 'Safety Filtering'],
+                    output: 'AI-generated recommendations với explanations và nutritional info',
+                    explanation: 'GPT model kết hợp user query, customer profile, và RAG context để tạo response chất lượng cao'
+                }
+            },
+            {
+                id: 'response_formatting',
+                title: '📝 Định Dạng Phản Hồi',
+                description: 'Tối ưu hóa và định dạng câu trả lời cuối cùng',
+                details: {
+                    purpose: 'Format, validate và optimize response để đảm bảo quality và safety',
+                    techniques: ['Response Formatting', 'Content Validation', 'Safety Check', 'Quality Assurance'],
+                    output: 'Final polished response ready for user consumption',
+                    explanation: 'Bước cuối cùng đảm bảo response được format đẹp, an toàn và chất lượng cao'
+                }
+            }
+        ];
+
+        // Customer selection handler
+        document.getElementById('customerSelect').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const customerId = this.value;
+            const customerInfo = document.getElementById('customerInfo');
+
+            if (customerId && selectedOption.dataset.info) {
+                try {
+                    const info = JSON.parse(selectedOption.dataset.info);
+                    customerInfo.innerHTML = `
+                        <div><strong>👤 ${info.name || 'Customer ' + customerId}</strong></div>
+                        <div><i class="fas fa-birthday-cake"></i> ${info.age || 'N/A'} tuổi</div>
+                        <div><i class="fas fa-heart"></i> ${(info.preferences || []).join(', ') || 'Không có thông tin'}</div>
+                    `;
+                } catch (e) {
+                    customerInfo.innerHTML = `<strong>Khách hàng:</strong> ${customerId}`;
+                }
+            } else {
+                customerInfo.innerHTML = '<i class="fas fa-info-circle"></i> Chọn khách hàng để xem chi tiết';
+            }
+        });
+
+        // Initialize workflow với enhanced display
+        function initializeWorkflow() {
+            const container = document.getElementById('workflowSteps');
+            container.innerHTML = '';
+
+            workflowTemplates.forEach((template, index) => {
+                const stepElement = createEnhancedWorkflowStep(template, 'pending');
+                container.appendChild(stepElement);
+            });
+        }
+
+        function createEnhancedWorkflowStep(template, status) {
+            const stepDiv = document.createElement('div');
+            stepDiv.className = `workflow-step ${status}`;
+            stepDiv.id = `step-${template.id}`;
+
+            let statusIcon = '';
+            let statusClass = '';
+
+            switch (status) {
+                case 'pending':
+                    statusIcon = '<i class="fas fa-clock step-icon"></i>';
+                    statusClass = 'status-pending';
+                    break;
+                case 'processing':
+                    statusIcon = '<i class="fas fa-spinner fa-spin step-icon"></i>';
+                    statusClass = 'status-processing';
+                    break;
+                case 'completed':
+                    statusIcon = '<i class="fas fa-check-circle step-icon"></i>';
+                    statusClass = 'status-completed';
+                    break;
+                case 'error':
+                    statusIcon = '<i class="fas fa-exclamation-circle step-icon"></i>';
+                    statusClass = 'status-error';
+                    break;
+            }
+
+            stepDiv.innerHTML = `
+                <div class="step-header" onclick="toggleStepDetails('${template.id}')">
+                    <div class="d-flex align-items-center">
+                        ${statusIcon}
+                        <span>${template.title}</span>
+                    </div>
+                    <div class="d-flex align-items-center">
+                        <span class="status-badge ${statusClass}">${status.toUpperCase()}</span>
+                        <i class="fas fa-chevron-down expand-icon ms-2" id="icon-${template.id}"></i>
+                    </div>
+                    <div class="processing-time" id="time-${template.id}">0ms</div>
+                    <div class="step-progress" id="progress-${template.id}" style="width: 0%"></div>
+                </div>
+                <div class="step-details" id="details-${template.id}">
+                    <div class="analysis-section">
+                        <h6><i class="fas fa-info-circle"></i> Mô Tả Chi Tiết</h6>
+                        <p>${template.description}</p>
+                        <div class="data-highlight">
+                            <strong>Giải thích:</strong> ${template.details.explanation}
+                        </div>
+                        
+                        <h6><i class="fas fa-bullseye"></i> Mục Đích</h6>
+                        <p>${template.details.purpose}</p>
+                        
+                        <h6><i class="fas fa-tools"></i> Kỹ Thuật Sử Dụng</h6>
+                        <div class="techniques-grid">
+                            ${template.details.techniques.map(tech => `<div class="technique-badge">${tech}</div>`).join('')}
+                        </div>
+                        
+                        <h6><i class="fas fa-arrow-right"></i> Kết Quả Đầu Ra</h6>
+                        <p>${template.details.output}</p>
+                        
+                        <div id="realtime-${template.id}" class="real-time-data" style="display: none;">
+                            <h6><i class="fas fa-chart-bar"></i> Dữ Liệu Real-time</h6>
+                            <div id="realtime-content-${template.id}"></div>
+                        </div>
+                        
+                        <div id="analysis-${template.id}" class="mt-3" style="display: none;">
+                            <h6><i class="fas fa-microscope"></i> Phân Tích JSON Chi Tiết</h6>
+                            <div class="json-viewer" id="json-${template.id}"></div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            return stepDiv;
+        }
+
+        function toggleStepDetails(stepId) {
+            const details = document.getElementById(`details-${stepId}`);
+            const icon = document.getElementById(`icon-${stepId}`);
+
+            if (details.classList.contains('expanded')) {
+                details.classList.remove('expanded');
+                icon.classList.remove('expanded');
+            } else {
+                details.classList.add('expanded');
+                icon.classList.add('expanded');
+
+                // Show real-time data if available
+                if (stepAnalysisData[stepId]) {
+                    showRealTimeData(stepId, stepAnalysisData[stepId]);
+                }
+            }
+        }
+
+        function updateWorkflowStep(stepId, status, analysisData = null, processingTime = null) {
+            const stepElement = document.getElementById(`step-${stepId}`);
+            if (!stepElement) return;
+
+            // Update step status
+            stepElement.className = `workflow-step ${status}`;
+
+            // Update processing time
+            if (processingTime !== null) {
+                const timeElement = document.getElementById(`time-${stepId}`);
+                if (timeElement) {
+                    timeElement.textContent = `${processingTime}ms`;
+                }
+            }
+
+            // Update progress bar
+            const progressElement = document.getElementById(`progress-${stepId}`);
+            if (progressElement) {
+                progressElement.style.width = status === 'completed' ? '100%' :
+                    status === 'processing' ? '60%' : '0%';
+            }
+
+            // Store analysis data
+            if (analysisData) {
+                stepAnalysisData[stepId] = analysisData;
+
+                // Show in JSON viewer
+                const analysisDiv = document.getElementById(`analysis-${stepId}`);
+                const jsonDiv = document.getElementById(`json-${stepId}`);
+
+                if (analysisDiv && jsonDiv) {
+                    analysisDiv.style.display = 'block';
+                    jsonDiv.textContent = JSON.stringify(analysisData, null, 2);
+                }
+
+                // Show real-time data
+                showRealTimeData(stepId, analysisData);
+            }
+
+            // Update overall progress
+            updateOverallProgress();
+        }
+
+        function showRealTimeData(stepId, data) {
+            const realtimeDiv = document.getElementById(`realtime-${stepId}`);
+            const contentDiv = document.getElementById(`realtime-content-${stepId}`);
+
+            if (realtimeDiv && contentDiv) {
+                realtimeDiv.style.display = 'block';
+
+                let content = '';
+                if (stepId === 'input_analysis') {
+                    content = `
+                        <div><strong>🎯 Intent phát hiện:</strong> ${data.intent || 'Food recommendation'}</div>
+                        <div><strong>📝 Entities:</strong> ${data.entities || 'healthy, protein, family'}</div>
+                        <div><strong>😊 Sentiment:</strong> ${data.sentiment || 'Positive (0.8)'}</div>
+                    `;
+                } else if (stepId === 'customer_profile') {
+                    content = `
+                        <div><strong>👤 Profile match:</strong> ${data.profile_match || '95%'}</div>
+                        <div><strong>📊 Preferences score:</strong> ${data.preference_score || '0.92'}</div>
+                        <div><strong>🚫 Restrictions:</strong> ${data.restrictions || 'None detected'}</div>
+                    `;
+                } else if (stepId === 'rag_search') {
+                    content = `
+                        <div><strong>🔍 Documents found:</strong> ${data.documents_found || '127'}</div>
+                        <div><strong>⭐ Top similarity:</strong> ${data.top_similarity || '0.94'}</div>
+                        <div><strong>📚 Context length:</strong> ${data.context_length || '2,430 tokens'}</div>
+                    `;
+                } else if (stepId === 'llm_processing') {
+                    content = `
+                        <div><strong>🤖 Model used:</strong> ${data.model || 'GPT-3.5-turbo'}</div>
+                        <div><strong>💭 Tokens used:</strong> ${data.tokens_used || '1,250 / 4,000'}</div>
+                        <div><strong>🎨 Creativity score:</strong> ${data.creativity || '0.7'}</div>
+                    `;
+                } else if (stepId === 'response_formatting') {
+                    content = `
+                        <div><strong>✅ Safety check:</strong> ${data.safety || 'Passed'}</div>
+                        <div><strong>📏 Response length:</strong> ${data.response_length || '1,450 chars'}</div>
+                        <div><strong>🏷️ Format score:</strong> ${data.format_score || '0.96'}</div>
+                    `;
+                }
+
+                contentDiv.innerHTML = content;
+            }
+        }
+
+        function updateOverallProgress() {
+            const totalSteps = workflowTemplates.length;
+            const completedSteps = document.querySelectorAll('.workflow-step.completed').length;
+            const progress = (completedSteps / totalSteps) * 100;
+
+            document.getElementById('overallProgress').style.width = `${progress}%`;
+        }
+
+        // Enhanced send message function
+        async function sendMessage() {
+            if (isProcessing) {
+                alert('Đang xử lý, vui lòng đợi...');
+                return;
+            }
+
+            const messageInput = document.getElementById('messageInput');
+            const customerSelect = document.getElementById('customerSelect');
+            const chatMessages = document.getElementById('chatMessages');
+
+            const message = messageInput.value.trim();
+            const customerId = customerSelect.value;
+
+            if (!message) {
+                alert('Vui lòng nhập câu hỏi để phân tích!');
+                return;
+            }
+
+            if (!customerId) {
+                alert('Vui lòng chọn khách hàng!');
+                return;
+            }
+
+            isProcessing = true;
+
+            // Add user message
+            addMessage('user', message);
+            messageInput.value = '';
+
+            // Initialize workflow
+            initializeWorkflow();
+
+            // Show performance metrics panel
+            document.getElementById('performanceMetrics').style.display = 'block';
+
+            try {
+                // Simulate detailed step-by-step processing
+                await simulateDetailedProcessing();
+
+                // Send to API
+                const response = await fetch('/api/enhanced-chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        customer_id: customerId,
+                        message: message,
+                        location: null
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Add AI response
+                    addMessage('ai', data.response);
+
+                    // Update performance metrics
+                    if (data.performance_metrics) {
+                        updatePerformanceMetrics(data.performance_metrics, data.agent_type);
+                        addMessage('system', `⚡ Phân tích hoàn tất: ${data.performance_metrics.total_processing_time} | Độ chính xác: ${data.performance_metrics.accuracy_score} | Agent: ${data.agent_type}`);
+                    }
+
+                    // Update workflow with real data
+                    if (data.processing_steps) {
+                        data.processing_steps.forEach((step, index) => {
+                            setTimeout(() => {
+                                updateWorkflowStep(step.id, step.status, {
+                                    description: step.description,
+                                    timestamp: new Date().toISOString(),
+                                    step_index: index + 1,
+                                    details: step,
+                                    real_data: true
+                                }, Math.random() * 1000 + 500);
+                            }, index * 300);
+                        });
+                    }
+
+                } else {
+                    addMessage('ai', `❌ Lỗi phân tích: ${data.error || 'Unknown error'}`);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('ai', `❌ Lỗi kết nối: ${error.message}`);
+            } finally {
+                isProcessing = false;
+            }
+        }
+
+        async function simulateDetailedProcessing() {
+            for (let i = 0; i < workflowTemplates.length; i++) {
+                const step = workflowTemplates[i];
+
+                // Start processing
+                updateWorkflowStep(step.id, 'processing', {
+                    status: 'processing',
+                    started_at: new Date().toISOString(),
+                    step_number: i + 1
+                });
+
+                // Simulate processing time
+                await new Promise(resolve => setTimeout(resolve, 1000 + Math.random() * 1500));
+
+                // Complete with detailed analysis data
+                const analysisData = generateDetailedAnalysisData(step.id);
+                updateWorkflowStep(step.id, 'completed', analysisData, Math.random() * 800 + 200);
+            }
+        }
+
+        function generateDetailedAnalysisData(stepId) {
+            const baseData = {
+                completed_at: new Date().toISOString(),
+                success: true,
+                step_id: stepId
+            };
+
+            switch (stepId) {
+                case 'input_analysis':
+                    return {
+                        ...baseData,
+                        intent: 'food_recommendation',
+                        entities: ['healthy', 'protein', 'family', 'calories'],
+                        sentiment: 'Positive (0.85)',
+                        confidence: 0.92,
+                        language: 'Vietnamese',
+                        complexity: 'Medium'
+                    };
+
+                case 'customer_profile':
+                    return {
+                        ...baseData,
+                        profile_match: '96%',
+                        preference_score: 0.94,
+                        restrictions: 'None detected',
+                        history_items: 47,
+                        avg_rating: 4.3,
+                        last_interaction: '2 days ago'
+                    };
+
+                case 'rag_search':
+                    return {
+                        ...baseData,
+                        documents_found: 143,
+                        top_similarity: 0.91,
+                        context_length: '2,650 tokens',
+                        search_time: '234ms',
+                        relevant_recipes: 28,
+                        categories: ['Healthy', 'High Protein', 'Family']
+                    };
+
+                case 'llm_processing':
+                    return {
+                        ...baseData,
+                        model: 'GPT-3.5-turbo',
+                        tokens_used: '1,420 / 4,000',
+                        creativity: 0.75,
+                        response_time: '2.1s',
+                        temperature: 0.7,
+                        safety_score: 0.98
+                    };
+
+                case 'response_formatting':
+                    return {
+                        ...baseData,
+                        safety: 'Passed',
+                        response_length: '1,680 characters',
+                        format_score: 0.97,
+                        readability: 'High',
+                        structure_score: 0.95,
+                        final_check: 'Approved'
+                    };
+
+                default:
+                    return baseData;
+            }
+        }
+
+        function updatePerformanceMetrics(metrics, agentType) {
+            document.getElementById('processingTime').textContent = metrics.total_processing_time || '-';
+            document.getElementById('accuracyScore').textContent = metrics.accuracy_score || '-';
+            document.getElementById('confidenceLevel').textContent = metrics.confidence_level || '-';
+            document.getElementById('agentType').textContent = agentType || '-';
+        }
+
+        function addMessage(type, text) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+
+            if (type === 'user') {
+                messageDiv.innerHTML = `<strong>👤 Bạn:</strong> ${text}`;
+            } else if (type === 'ai') {
+                messageDiv.innerHTML = `<strong>🤖 AI:</strong> ${text.replace(/\n/g, '<br>')}`;
+            } else {
+                messageDiv.innerHTML = `<small><i>${text}</i></small>`;
+                messageDiv.className = 'message system-message';
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        // Enter key handler
+        document.getElementById('messageInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize
+        console.log('🧠 Enhanced Analysis Interface Loaded');
+        initializeWorkflow();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agent Tư Vấn Món Ăn - Simple</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .customer-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .chat-section {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            min-height: 400px;
+        }
+
+        .message {
+            margin: 10px 0;
+            padding: 12px 16px;
+            border-radius: 18px;
+            max-width: 80%;
+        }
+
+        .user-message {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            margin-left: auto;
+            text-align: right;
+        }
+
+        .ai-message {
+            background: #e9ecef;
+            color: #333;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border: none;
+            border-radius: 25px;
+            padding: 10px 20px;
+        }
+
+        .workflow-steps {
+            display: none;
+            background: #e3f2fd;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            margin: 8px 0;
+            padding: 8px;
+            border-radius: 5px;
+            background: white;
+        }
+
+        .step.completed {
+            background: #d4edda;
+        }
+
+        .step.processing {
+            background: #fff3cd;
+        }
+
+        .step.pending {
+            background: #f8f9fa;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1><i class="fas fa-robot"></i> AI Agent Tư Vấn Món Ăn</h1>
+            <p>Powered by Production Enhanced AI với GPT-3.5 + RAG + Vector Database</p>
+        </div>
+
+        <div class="content">
+            <!-- Customer Selection -->
+            <div class="customer-section">
+                <h3><i class="fas fa-user"></i> Chọn Khách Hàng</h3>
+                <div class="row">
+                    <div class="col-md-8">
+                        <select id="customerSelect" class="form-select">
+                            <option value="">-- Chọn khách hàng --</option>
+                            {% if customer_ids %}
+                            {% for customer_id in customer_ids[:20] %}
+                            <option value="{{ customer_id }}">
+                                {% if customers_info.get(customer_id) %}
+                                {{ customers_info[customer_id]['display_name'] }}
+                                {% else %}
+                                Khách hàng {{ customer_id }}
+                                {% endif %}
+                            </option>
+                            {% endfor %}
+                            {% else %}
+                            <option value="1001">Demo Customer 1001</option>
+                            <option value="1002">Demo Customer 1002</option>
+                            <option value="1003">Demo Customer 1003</option>
+                            {% endif %}
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <div id="customerInfo" class="small text-muted">
+                            Chọn khách hàng để xem thông tin chi tiết
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Processing Workflow -->
+            <div id="workflowSteps" class="workflow-steps">
+                <h4><i class="fas fa-cogs"></i> Quy Trình Xử Lý AI</h4>
+                <div id="stepContainer">
+                    <!-- Steps will be populated dynamically -->
+                </div>
+            </div>
+
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <h3><i class="fas fa-comments"></i> Trò Chuyện với AI</h3>
+
+                <div id="chatMessages"
+                    style="height: 300px; overflow-y: auto; border: 1px solid #ddd; border-radius: 8px; padding: 15px; background: white; margin: 15px 0;">
+                    <div class="ai-message">
+                        <strong>🤖 AI Agent:</strong> Xin chào! Tôi là AI tư vấn món ăn thông minh.
+                        Hãy chọn khách hàng và đặt câu hỏi về món ăn, dinh dưỡng, hoặc gợi ý thực đơn nhé!
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <input type="text" id="messageInput" class="form-control" placeholder="Nhập câu hỏi của bạn..."
+                        style="border-radius: 25px 0 0 25px;">
+                    <button class="btn btn-primary" onclick="sendMessage()" style="border-radius: 0 25px 25px 0;">
+                        <i class="fas fa-paper-plane"></i> Gửi
+                    </button>
+                </div>
+
+                <div class="mt-2">
+                    <small class="text-muted">
+                        💡 Gợi ý: "Tôi muốn ăn gì healthy?", "Gợi ý món Việt truyền thống", "Món ăn cho người bệnh tiểu
+                        đường"
+                    </small>
+                </div>
+            </div>
+
+            <!-- Status Info -->
+            <div class="mt-3">
+                <div class="row">
+                    <div class="col-md-6">
+                        <small class="text-muted">
+                            <i class="fas fa-database"></i>
+                            Database: {{ customer_ids|length if customer_ids else 0 }} customers loaded
+                        </small>
+                    </div>
+                    <div class="col-md-6 text-end">
+                        <small class="text-muted">
+                            <i class="fas fa-brain"></i>
+                            AI Model: Production Enhanced Agent
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Customer selection handler
+        document.getElementById('customerSelect').addEventListener('change', function () {
+            const customerId = this.value;
+            const customerInfo = document.getElementById('customerInfo');
+
+            if (customerId) {
+                // Show customer info (you can expand this with actual data)
+                customerInfo.innerHTML = `<strong>Khách hàng:</strong> ${customerId}`;
+            } else {
+                customerInfo.innerHTML = 'Chọn khách hàng để xem thông tin chi tiết';
+            }
+        });
+
+        // Send message function
+        async function sendMessage() {
+            const messageInput = document.getElementById('messageInput');
+            const customerSelect = document.getElementById('customerSelect');
+            const chatMessages = document.getElementById('chatMessages');
+
+            const message = messageInput.value.trim();
+            const customerId = customerSelect.value;
+
+            if (!message) {
+                alert('Vui lòng nhập câu hỏi!');
+                return;
+            }
+
+            if (!customerId) {
+                alert('Vui lòng chọn khách hàng!');
+                return;
+            }
+
+            // Add user message
+            addMessage('user', message);
+            messageInput.value = '';
+
+            // Show workflow
+            showWorkflowSteps();
+
+            try {
+                // Send to API
+                const response = await fetch('/api/enhanced-chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        customer_id: customerId,
+                        message: message,
+                        location: null
+                    })
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    // Update workflow steps
+                    if (data.processing_steps) {
+                        updateWorkflowSteps(data.processing_steps);
+                    }
+
+                    // Add AI response
+                    addMessage('ai', data.response);
+
+                    // Show performance metrics
+                    if (data.performance_metrics) {
+                        addMessage('system', `⚡ Metrics: ${data.performance_metrics.total_processing_time} | Accuracy: ${data.performance_metrics.accuracy_score} | Agent: ${data.agent_type}`);
+                    }
+
+                } else {
+                    addMessage('ai', `❌ Lỗi: ${data.error || 'Unknown error'}`);
+                }
+
+            } catch (error) {
+                console.error('Error:', error);
+                addMessage('ai', `❌ Lỗi kết nối: ${error.message}`);
+            }
+        }
+
+        function addMessage(type, text) {
+            const chatMessages = document.getElementById('chatMessages');
+            const messageDiv = document.createElement('div');
+            messageDiv.className = `message ${type}-message`;
+
+            if (type === 'user') {
+                messageDiv.innerHTML = `<strong>👤 Bạn:</strong> ${text}`;
+            } else if (type === 'ai') {
+                messageDiv.innerHTML = `<strong>🤖 AI:</strong> ${text.replace(/\n/g, '<br>')}`;
+            } else {
+                messageDiv.innerHTML = `<small><i>${text}</i></small>`;
+                messageDiv.style.fontSize = '0.8em';
+                messageDiv.style.color = '#666';
+            }
+
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+        }
+
+        function showWorkflowSteps() {
+            document.getElementById('workflowSteps').style.display = 'block';
+            const stepContainer = document.getElementById('stepContainer');
+            stepContainer.innerHTML = `
+                <div class="step processing"><i class="fas fa-spinner fa-spin"></i> Đang xử lý...</div>
+            `;
+        }
+
+        function updateWorkflowSteps(steps) {
+            const stepContainer = document.getElementById('stepContainer');
+            stepContainer.innerHTML = '';
+
+            steps.forEach(step => {
+                const stepDiv = document.createElement('div');
+                stepDiv.className = `step ${step.status}`;
+
+                let icon = '';
+                if (step.status === 'completed') icon = '<i class="fas fa-check text-success"></i>';
+                else if (step.status === 'processing') icon = '<i class="fas fa-spinner fa-spin text-warning"></i>';
+                else icon = '<i class="fas fa-clock text-muted"></i>';
+
+                stepDiv.innerHTML = `${icon} ${step.title}`;
+                stepContainer.appendChild(stepDiv);
+            });
+        }
+
+        // Enter key handler
+        document.getElementById('messageInput').addEventListener('keypress', function (e) {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        // Initialize
+        console.log('🤖 Simple AI Agent Interface Loaded');
+        console.log('Customer count:');
+    </script>
+</body>
+
+</html>

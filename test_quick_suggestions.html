@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Quick Suggestions - AI Agent</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            background-attachment: fixed;
+            padding: 20px 0;
+        }
+
+        .test-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .test-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(25px);
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .title {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+            font-size: 2.2rem;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .suggestion-btn {
+            border-radius: 20px;
+            padding: 12px 20px;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid;
+            margin-bottom: 10px;
+            width: 100%;
+            text-align: left;
+        }
+
+        .suggestion-btn:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .result-area {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            min-height: 200px;
+            border: 2px dashed #dee2e6;
+        }
+
+        .customer-selector {
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .loading {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+        }
+
+        .error {
+            color: #dc3545;
+            background: #f8d7da;
+            padding: 10px;
+            border-radius: 8px;
+            border: 1px solid #f5c6cb;
+        }
+
+        .success {
+            color: #155724;
+            background: #d4edda;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid #c3e6cb;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="test-container">
+        <div class="test-card">
+            <h1 class="title">
+                <i class="fas fa-magic me-3"></i>
+                Test Quick Suggestions
+            </h1>
+
+            <div class="customer-selector">
+                <label for="customerSelect" class="form-label"><strong>Chọn khách hàng test:</strong></label>
+                <select class="form-select" id="customerSelect">
+                    <option value="">-- Chọn khách hàng --</option>
+                    <option value="CUS000001">CUS000001 - Test Customer 1</option>
+                    <option value="CUS000002">CUS000002 - Test Customer 2</option>
+                    <option value="CUS000003">CUS000003 - Test Customer 3</option>
+                </select>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-birthday-cake text-primary me-2"></i>Theo độ tuổi</h5>
+                    <button class="btn btn-outline-primary suggestion-btn"
+                        onclick="testQuickSuggestion('trẻ em', 'Món ăn bổ dưỡng cho trẻ em')">
+                        <i class="fas fa-child me-2"></i>Trẻ em (2-12 tuổi)
+                    </button>
+                    <button class="btn btn-outline-primary suggestion-btn"
+                        onclick="testQuickSuggestion('người cao tuổi', 'Món ăn dễ tiêu hóa cho người cao tuổi')">
+                        <i class="fas fa-user-plus me-2"></i>Người cao tuổi (60+)
+                    </button>
+                </div>
+
+                <div class="col-md-6">
+                    <h5><i class="fas fa-heartbeat text-danger me-2"></i>Tình trạng đặc biệt</h5>
+                    <button class="btn btn-outline-danger suggestion-btn"
+                        onclick="testQuickSuggestion('phụ nữ mang thai', 'Món ăn bổ dưỡng cho bà bầu')">
+                        <i class="fas fa-baby me-2"></i>Phụ nữ mang thai
+                    </button>
+                    <button class="btn btn-outline-danger suggestion-btn"
+                        onclick="testQuickSuggestion('người tiểu đường', 'Món ăn ít đường cho người tiểu đường')">
+                        <i class="fas fa-tint me-2"></i>Người tiểu đường
+                    </button>
+                </div>
+            </div>
+
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <h5><i class="fas fa-target text-success me-2"></i>Mục tiêu sức khỏe</h5>
+                    <button class="btn btn-outline-success suggestion-btn"
+                        onclick="testQuickSuggestion('giảm cân', 'Thực đơn giảm cân hiệu quả')">
+                        <i class="fas fa-weight me-2"></i>Giảm cân
+                    </button>
+                    <button class="btn btn-outline-success suggestion-btn"
+                        onclick="testQuickSuggestion('tăng cơ', 'Món ăn protein cao cho gym thủ')">
+                        <i class="fas fa-dumbbell me-2"></i>Tăng cơ bắp
+                    </button>
+                </div>
+
+                <div class="col-md-6">
+                    <h5><i class="fas fa-seedling text-info me-2"></i>Chế độ ăn</h5>
+                    <button class="btn btn-outline-info suggestion-btn"
+                        onclick="testQuickSuggestion('chay', 'Món chay đầy đủ dinh dưỡng')">
+                        <i class="fas fa-carrot me-2"></i>Ăn chay
+                    </button>
+                    <button class="btn btn-outline-info suggestion-btn"
+                        onclick="testQuickSuggestion('keto', 'Món ăn keto ít carb')">
+                        <i class="fas fa-fire me-2"></i>Chế độ Keto
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-area" id="resultArea">
+                <div class="text-center text-muted">
+                    <i class="fas fa-arrow-up fa-2x mb-3"></i>
+                    <p>Chọn khách hàng và click vào một gợi ý để test!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        async function testQuickSuggestion(category, description) {
+            const customerSelect = document.getElementById('customerSelect');
+            const customerId = customerSelect.value;
+            const resultArea = document.getElementById('resultArea');
+
+            if (!customerId) {
+                resultArea.innerHTML = `
+                    <div class="error">
+                        <i class="fas fa-exclamation-triangle me-2"></i>
+                        Vui lòng chọn khách hàng trước!
+                    </div>
+                `;
+                return;
+            }
+
+            // Show loading
+            resultArea.innerHTML = `
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin fa-2x mb-3"></i>
+                    <p>Đang test Quick Suggestion: ${description}</p>
+                    <p>Customer: ${customerId} | Category: ${category}</p>
+                </div>
+            `;
+
+            try {
+                // Create enhanced message
+                const message = `Gợi ý món ăn cho ${category}. ${description}. Vui lòng đưa ra 5-7 món ăn cụ thể với thông tin dinh dưỡng chi tiết.`;
+
+                const response = await fetch('/api/enhanced-chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        message: message,
+                        customer_id: customerId,
+                        quick_suggestion: true,
+                        category: category
+                    })
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+
+                    resultArea.innerHTML = `
+                        <div class="success">
+                            <h6><i class="fas fa-check-circle me-2"></i>Test thành công!</h6>
+                            <p><strong>Category:</strong> ${category}</p>
+                            <p><strong>Customer:</strong> ${customerId}</p>
+                            <p><strong>Agent Type:</strong> ${data.agent_type || 'fallback'}</p>
+                            <hr>
+                            <div style="background: white; padding: 15px; border-radius: 8px; margin-top: 10px;">
+                                <h6>📋 AI Response:</h6>
+                                <div style="max-height: 300px; overflow-y: auto; line-height: 1.6;">
+                                    ${data.response.replace(/\n/g, '<br>')}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+
+                // Show fallback result
+                resultArea.innerHTML = `
+                    <div class="error">
+                        <h6><i class="fas fa-exclamation-triangle me-2"></i>API Error - Showing Fallback</h6>
+                        <p><strong>Error:</strong> ${error.message}</p>
+                        <p><strong>Category:</strong> ${category}</p>
+                        <hr>
+                        <div style="background: #fff3cd; padding: 15px; border-radius: 8px; margin-top: 10px; color: #856404;">
+                            <h6>🔄 Fallback Result:</h6>
+                            <p>Quick Suggestion test cho <strong>${category}</strong> - ${description}</p>
+                            <p>Customer ID: ${customerId}</p>
+                            <p>Đây là test fallback khi API không available.</p>
+                            
+                            <div style="margin-top: 15px;">
+                                <strong>Sample Data từ RAG:</strong><br>
+                                • Món ăn mẫu 1 cho ${category}<br>
+                                • Món ăn mẫu 2 với thông tin dinh dưỡng<br>
+                                • Món ăn mẫu 3 phù hợp với yêu cầu<br>
+                                • Gợi ý bổ sung và lưu ý<br>
+                                • Cách chế biến và sử dụng
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Test connection on load
+        document.addEventListener('DOMContentLoaded', function () {
+            console.log('🧪 Quick Suggestions Test Page Loaded');
+
+            // Test API connection
+            fetch('/api/enhanced-chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ test: true })
+            }).then(response => {
+                if (response.status === 400) {
+                    console.log('✅ API endpoint accessible (expected 400 for test request)');
+                } else {
+                    console.log('⚠️ API response:', response.status);
+                }
+            }).catch(error => {
+                console.log('❌ API not accessible:', error.message);
+            });
+        });
+    </script>
+</body>
+
+</html>

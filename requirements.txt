@@ -6,4 +6,12 @@ scikit-learn>=0.24.0
 gunicorn>=20.1.0
 matplotlib>=3.4.0
 seaborn>=0.11.0
+chromadb>=0.4.0
+sentence-transformers>=2.2.0
+openai>=1.0.0
+requests>=2.25.0
+
+# Enhanced AI Agent Dependencies
+psutil>=5.8.0          # System monitoring
+concurrent.futures      # Async processing (built-in Python 3.2+)
 
